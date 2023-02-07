@@ -1,21 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date
 
 db = SQLAlchemy()
-
-class Tipo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100) , nullable=False)
-    user = db.relationship('User', backref='tipo', lazy=True)
-    menues = db.relationship('Menues', backref='tipo', lazy=True)
-    
-    def __repr__(self):
-        return '<Tipo %r>' % self.id
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-        }
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,7 +10,7 @@ class User(db.Model):
     apellido = db.Column(db.String(100) , nullable=False)
     email = db.Column(db.String(250), unique= True, nullable=False)
     password = db.Column(db.String(100) , nullable=False)
-    tipo_menu = db.Column(db.Integer , db.ForeignKey('tipo.id'))
+    role = db.Column(db.String(120), default='user')
     ratings = db.relationship('Reviews', backref='user', lazy=True)
     compras = db.relationship('Compras', backref='user', lazy=True)
     address = db.relationship('Address', backref='user', lazy=True)
@@ -39,15 +25,14 @@ class User(db.Model):
             "nombre": self.nombre,
             "apellido": self.apellido,
             "email": self.email,
-            "tipo": self.tipo,
         }
 
 
 class Menues(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    tipo_menues = db.Column(db.Integer , db.ForeignKey('tipo.id'))
+    tipo_menu = db.Column(db.String, nullable=False)
     title = db.Column(db.String(100) , nullable=False)
-    description = db.Column(db.String(100) , nullable=False)
+    description = db.Column(db.String(1000) , nullable=False)
     price = db.Column(db.Integer, nullable=False)
     compras = db.relationship('Compras', backref='menues', lazy=True)
 
@@ -58,7 +43,7 @@ class Menues(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "tipo": self.tipo,
+            "tipo_menu": self.tipo_menu,
             "title": self.title,
             "description": self.description,
             "price": self.price,
@@ -70,6 +55,7 @@ class Compras(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     monto = db.Column(db.Integer, nullable=False)
+    fecha = db.Column(db.Date, default=date.today, nullable=False)
     menu_name = db.Column(db.Integer , db.ForeignKey('menues.id'))
     
     def __repr__(self):
@@ -80,6 +66,7 @@ class Compras(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "monto": self.monto,
+            "fecha": self.fecha,
             "menu_name": self.menu_name,
         }
     
@@ -90,7 +77,7 @@ class Address(db.Model):
     calle = db.Column(db.String(100), nullable=False)
     ciudad = db.Column(db.String(100) , nullable=False)
     departamento = db.Column(db.String(100) , nullable=False)
-    door_number = db.Column(db.Integer)
+    door_number = db.Column(db.Integer, nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
     
     def __repr__(self):
@@ -112,7 +99,7 @@ class Reviews(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     puntos = db.Column(db.Integer, nullable=False)
-    comentario = db.Column(db.String(250) , nullable=False)
+    comentario = db.Column(db.String(400) , nullable=False)
     menu_name = db.Column(db.Integer, db.ForeignKey('menues.id'))
     
     def __repr__(self):
@@ -131,7 +118,7 @@ class Reviews(db.Model):
 class Recomendaciones(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100) , nullable=False)
-    description = db.Column(db.String(100) , nullable=False)
+    description = db.Column(db.String(1000) , nullable=False)
     
     def __repr__(self):
         return '<Recomendaciones %r>' % self.id
@@ -142,18 +129,3 @@ class Recomendaciones(db.Model):
             "title": self.title,
             "description": self.description,
         }
-
-
-        return '<User %r>' % self.id
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "user_name": self.user_name,
-            "nombre": self.nombre,
-            "apellido": self.apellido,
-            "email": self.email,
-            "tipo": self.tipo,
-        }
-
-
