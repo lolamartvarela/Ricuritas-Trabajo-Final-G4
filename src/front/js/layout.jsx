@@ -6,7 +6,7 @@ import Admin_Dashboard from "./pages/admin-dashboard"
 import Admin_Login from "./pages/admin-login";
 import {Register} from "./pages/register"
 
-import {Home} from "./pages/home";
+import {Home} from "./pages/home.jsx";
 import {Demo} from "./pages/demo";
 import {Single} from "./pages/single";
 import injectContext from "./store/appContext";
