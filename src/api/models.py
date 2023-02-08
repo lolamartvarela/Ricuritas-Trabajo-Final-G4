@@ -34,7 +34,9 @@ class Menues(db.Model):
     title = db.Column(db.String(100) , nullable=False)
     description = db.Column(db.String(1000) , nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    url = db.Column(db.String(250), nullable=False)
     compras = db.relationship('Compras', backref='menues', lazy=True)
+    
 
     
     def __repr__(self):
@@ -43,6 +45,7 @@ class Menues(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "url": self.url,
             "tipo_menu": self.tipo_menu,
             "title": self.title,
             "description": self.description,

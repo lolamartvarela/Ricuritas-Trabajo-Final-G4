@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
+
 function Carrusel() {
     return (
         <Carousel>
@@ -10,8 +11,8 @@ function Carrusel() {
                 <Carousel.Caption>
                     <h3>TIP #1</h3>
                     <p>Consume frutas y verduras todos los días. Son fuente de
-                                                        micronutrientes y ofrecen saciedad. Lo ideal es mantener el
-                                                        consumo en cinco porciones de frutas y verduras al día.</p>
+                                                                                                                                                                micronutrientes y ofrecen saciedad. Lo ideal es mantener el
+                                                                                                                                                                consumo en cinco porciones de frutas y verduras al día.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={500}>
@@ -20,9 +21,9 @@ function Carrusel() {
                     <h3>TIP #2</h3>
                     <p>
                         El consumo de alimentos procesados y ultraprocesados * Estos
-                                                        alimentos tienen grandes cantidades de sal, aceites, azúcares
-                                                        y conservantes. Si los consumes, te recomendamos hacerlo solo
-                                                        en porciones pequeñas y ocasionalmente.</p>
+                                                                                                                                                                alimentos tienen grandes cantidades de sal, aceites, azúcares
+                                                                                                                                                                y conservantes. Si los consumes, te recomendamos hacerlo solo
+                                                                                                                                                                en porciones pequeñas y ocasionalmente.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -31,9 +32,9 @@ function Carrusel() {
                     <h3>TIP #3</h3>
                     <p>
                         Consumiendo productos locales: Prefiere el consumo de
-                                                        productos orgánicos de tu ciudad, de esa manera comerás más
-                                                        sano y tendrás la seguridad de alimentarte con productos
-                                                        frescos.
+                                                                                                                                                                productos orgánicos de tu ciudad, de esa manera comerás más
+                                                                                                                                                                sano y tendrás la seguridad de alimentarte con productos
+                                                                                                                                                                frescos.
                     </p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -41,5 +42,4 @@ function Carrusel() {
 
     );
 }
-
 export default Carrusel;
