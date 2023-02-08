@@ -1,10 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShop } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import Logo from "../component/logo/logo.jpg";
+import {Context} from "../store/appContext";
 
 export const Navbar = () => {
+  const {store, actions} = useContext(Context)
+  function handleLogout() {
+		actions.logout()//cerrar la sesiono
+		navigate("/")//usamos navigate para redireccionar
+}
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand mx-auto" href="#">
@@ -48,6 +54,20 @@ export const Navbar = () => {
           </div>
         </div>
       </a>
+      {
+                store.auth === false ? <Link to={"/login"}
+                    className="btn btn-primary me-1">Login</Link> : null
+            }
+            
+            {
+                store.auth === false ? <Link to={"/register"}
+                    className="btn btn-primary me-1">Register</Link> : null
+            }
+
+{  
+                store.auth === true ? <button className="btn btn-primary me-1"
+                    onClick={handleLogout}>Logout</button> : null
+            }
     </nav>
   );
 };

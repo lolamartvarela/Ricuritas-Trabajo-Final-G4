@@ -1,5 +1,17 @@
+
+
+import React, {
+    useState
+} from 'react';
+const getState = ({
+    getStore,
+    getActions,
+    setStore
+}) => {
+
 import React, {useState} from 'react';
 const getState = ({getStore, getActions, setStore}) => {
+
     return {
         store: {
             message: null,
@@ -41,15 +53,19 @@ const getState = ({getStore, getActions, setStore}) => {
             valid_token: () => {
                 const token = localStorage.getItem('token');
                 if (token === null) {
-                    setStore({auth: false})
+                    setStore({
+                        auth: false
+                    })
                 } else {
-                    setStore({auth: true})
+                    setStore({
+                        auth: true
+                    })
                 }
             },
 
             // ? Acá empieza el fetch que nos permite conectar con el BackEnd
             login: (userEmail, userPassword) => {
-                fetch('https://3001-lolamartvar-ricuritastr-pvbzkm387ea.ws-us85.gitpod.io/api/login', {
+                fetch(process.env.BACKEND_URL + '/api/login', {
                     method: 'POST',
                     // mode: 'no-cors',
                     headers: {
@@ -57,13 +73,16 @@ const getState = ({getStore, getActions, setStore}) => {
                         // 'Access-Control-Allow-Origin': '*'
                         // 'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: JSON.stringify(
-                        {"email": userEmail, "password": userPassword}
-                    ) // body data type must match "Content-Type" header
+                    body: JSON.stringify({
+                        "email": userEmail,
+                        "password": userPassword
+                    }) // body data type must match "Content-Type" header
                 }).then((response) => {
                     console.log(response.status);
                     if (response.status === 200) {
-                        setStore({auth: true})
+                        setStore({
+                            auth: true
+                        })
                     }
 
                     return response.json()
@@ -80,29 +99,37 @@ const getState = ({getStore, getActions, setStore}) => {
                 })
             },
 
+            logout: () => {
+                localStorage.removeItem('token');
+                localStorage.removeItem('admin');
+                setStore({
+                    auth: false
+                })
+            },
+
             // ? Acá termina el fetch que nos permite conectar con el BackEnd
 
 
             // Acá está la función de crear un nuevo usuario
             register: (userEmail, userName, userNombre, userApellido, userPassword) => {
-                fetch('https://3001-lolamartvar-ricuritastr-pvbzkm387ea.ws-us85.gitpod.io/api/user', {
+                fetch('https://3001-lolamartvar-ricuritastr-tkfwuwqbxbg.ws-us85.gitpod.io/api/user', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(
-                        {
-                            "email": userEmail,
-                            "user_name": userName,
-                            "nombre": userNombre,
-                            "apellido": userApellido,
-                            "password": userPassword
-                        }
-                    )
+                    body: JSON.stringify({
+                        "email": userEmail,
+                        "user_name": userName,
+                        "nombre": userNombre,
+                        "apellido": userApellido,
+                        "password": userPassword
+                    })
                 }).then((response) => {
                     console.log(response.status);
                     if (response.status === 200) {
-                        setStore({auth: true})
+                        setStore({
+                            auth: true
+                        })
                     }
                     return response.json()
                 }).catch((err) => console.log(err))
@@ -117,7 +144,9 @@ const getState = ({getStore, getActions, setStore}) => {
                 try { // fetching data from the backend
                     const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
                     const data = await resp.json()
-                    setStore({message: data.message})
+                    setStore({
+                        message: data.message
+                    })
                     // don't forget to return something, that is how the async resolves
                     return data;
                 } catch (error) {
@@ -132,16 +161,18 @@ const getState = ({getStore, getActions, setStore}) => {
                 // we have to loop the entire demo array to look for the respective index
                 // and change its color
                 const demo = store.demo.map((elm, i) => {
-                    if (i === index) 
+                    if (i === index)
                         elm.background = color;
-                    
+
 
 
                     return elm;
                 });
 
                 // reset the global store
-                setStore({demo: demo});
+                setStore({
+                    demo: demo
+                });
             }
 
         }
