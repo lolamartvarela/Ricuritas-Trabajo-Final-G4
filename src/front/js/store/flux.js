@@ -1,4 +1,3 @@
-//
 import React, {useState} from 'react';
 const getState = ({getStore, getActions, setStore}) => {
     return {
@@ -6,9 +5,37 @@ const getState = ({getStore, getActions, setStore}) => {
             message: null,
             auth: false,
             numero: 0,
-            accessToken: false
+            accessToken: false,
+
+            // MENU Y MENU VEGANO
+
+            // menu: [],
+            // menuVegano: [],
+            // infoCadaMenu: {},
+            // infoCadaMenuVegano: {}
+
         },
+
         actions: {
+
+            // FETCH PARA MENU Y MENU VEGANO
+            // obtenerMenu: () => {
+            //     fetch("url").then(resp => resp.json()).then(data => setStore({menu: data.results})).catch(err => console.log(err))
+            // },
+
+
+            // obtenerMenuVegano: () => {
+            //     fetch("url").then(resp => resp.json()).then(data => setStore({menu: data.results})).catch(err => console.log(err))
+            // },
+
+            // infoCadaMenu: () => {
+            //     fetch("url").then(res => res.json()).then(data => setStore({menu: data.results})).catch(err => console.error(err))
+            // },
+
+            // infoCadaMenuVegano: () => {
+            //     fetch("https://swapi.dev/api/people/").then(res => res.json()).then(data => setStore({menuVegano: data.results})).catch(err => console.error(err))
+            // },
+
 
             // ? Esta función cambia el estado del auth
             valid_token: () => {
