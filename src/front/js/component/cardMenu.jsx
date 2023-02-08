@@ -14,7 +14,7 @@ export const Menu = ({}) => {
                     {width: "18rem"}
             }>
                 <h5 className="card-title mt-1 mx-2">Pasta Caprese</h5>
-                <img src="https://www.vivamisalud.com/wp-content/uploads/2018/07/pasta_caprese_web-1200x720.jpg" className="card-img-top mt-1" alt="..."/>
+                <img src="https://ensaladas.info/wp-content/uploads/2019/06/Pasta-Caprese-con-Pesto.jpg" className="card-img-top mt-1" alt="..."/>
 
 
                 <div className="align-self-center">

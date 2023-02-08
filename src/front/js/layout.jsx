@@ -7,11 +7,6 @@ import Admin_Dashboard from "./pages/admin-dashboard"
 import Admin_Login from "./pages/admin-login";
 import {Register} from "./pages/register"
 
-import Login from "./pages/login";
-import Admin_Dashboard from "./pages/admin-dashboard";
-import Admin_Login from "./pages/admin-login";
-import {Register} from "./pages/register";
-
 import {Home} from "./pages/home.jsx";
 import {Demo} from "./pages/demo";
 import {Single} from "./pages/single";
@@ -23,6 +18,8 @@ import {Footer} from "./component/footer.jsx";
 
 import {ViewCadaMenu} from "./pages/ViewCadaMenu.jsx";
 import {ViewCadaMenuVegano} from "./pages/ViewCadaMenuVegano.jsx";
+import {ViewComeConsciente} from "./pages/ViewComeConsciente.jsx";
+import {tips} from "./pages/tips.jsx";
 
 
 // create your first component
@@ -32,40 +29,14 @@ const Layout = () => {
     const basename = process.env.BASENAME || "";
 
 
-    return (<div>
-        <BrowserRouter basename={basename}>
-            <ScrollToTop>
-                <Navbar/>
-                <Routes>
-                    <Route element={<Home/>}
-                        path="/"/>
-                    <Route element={<Demo/>}
-                        path="/demo"/>
-                    <Route element={<Login/>}
-                        path="/login"/>
-                    <Route element={<Admin_Login/>}
-                        path="/admin-login"/>
-                    <Route element={<Admin_Dashboard/>}
-                        path="/admin-dashboard"/>
-                    <Route element={<Register/>}
-                        path="/register"/>
-                    <Route element={<Single/>}
-                        path="/single/:theid"/>
-                    <Route element={
-                        <h1>Not found!</h1>
-                    }/>
-                </Routes>
-                <Footer/>
-            </ScrollToTop>
-        </BrowserRouter>
-    </div>);
-
     return (
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar/>
                     <Routes>
+                        <Route path="/ViewComeConsciente"
+                            element={<ViewComeConsciente/>}/>
                         <Route path="/ViewCadaMenu"
                             element={<ViewCadaMenu/>}/>
                         <Route path="/ViewCadaMenuVegano"

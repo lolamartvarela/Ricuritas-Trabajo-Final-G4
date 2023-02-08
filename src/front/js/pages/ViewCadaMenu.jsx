@@ -17,7 +17,7 @@ export const ViewCadaMenu = () => {
         <div className="container mt-4 mb-5">
             <div className="jumbotron">
                 <div className="d-flex">
-                    <img src={"https://www.vivamisalud.com/wp-content/uploads/2018/07/pasta_caprese_web-1200x720.jpg"}
+                    <img src={"https://ensaladas.info/wp-content/uploads/2019/06/Pasta-Caprese-con-Pesto.jpg"}
                         style={
                             {
                                 width: "400px",
@@ -36,8 +36,8 @@ export const ViewCadaMenu = () => {
                         <div className="mx-5 mt-4 d-flex justify-content-end">
                             <CiWheat style={
                                 {
-                                    width: "40px",
-                                    height: "40px"
+                                    width: "45px",
+                                    height: "45px"
                                 }
                             }/>
                             <TbPlantOff style={
