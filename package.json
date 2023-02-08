@@ -73,6 +73,7 @@
 		]
 	},
 	"dependencies": {
+		"@react-icons/all-files": "^4.1.0",
 		"bootstrap": "^5.2.3",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
