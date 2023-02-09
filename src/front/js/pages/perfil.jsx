@@ -1,4 +1,4 @@
-mport React from 'react';
+import React from 'react';
 
 
 function Perfil() {
@@ -74,7 +74,7 @@ function Perfil() {
                     </div>
                 </div>
             </div>
-            <div className="container">
+            {/* <div className="container">
                 <h2 className="text-center mb-5">February 2023</h2>
                 <table className="table table-bordered text-center">
                     <thead>
@@ -136,8 +136,7 @@ function Perfil() {
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </section>
+            </div> */} </section>
 
     );
 }
