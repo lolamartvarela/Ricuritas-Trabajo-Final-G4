@@ -19,7 +19,8 @@ import {Footer} from "./component/footer.jsx";
 import {ViewCadaMenu} from "./pages/ViewCadaMenu.jsx";
 import {ViewCadaMenuVegano} from "./pages/ViewCadaMenuVegano.jsx";
 import {ViewComeConsciente} from "./pages/ViewComeConsciente.jsx";
-import {tips} from "./pages/tips.jsx";
+import Carrusel from "./pages/Tips.jsx";
+import Perfil from "./pages/perfil.jsx";
 
 
 // create your first component
@@ -35,12 +36,16 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar/>
                     <Routes>
+                        <Route path="/tips"
+                            element={<Carrusel/>}/>
                         <Route path="/ViewComeConsciente"
                             element={<ViewComeConsciente/>}/>
                         <Route path="/ViewCadaMenu"
                             element={<ViewCadaMenu/>}/>
                         <Route path="/ViewCadaMenuVegano"
                             element={<ViewCadaMenuVegano/>}/>
+                        <Route path="/perfil"
+                            element={<Perfil/>}/>
                         <Route element={<Home/>}
                             path="/"/>
                         <Route element={<Demo/>}
