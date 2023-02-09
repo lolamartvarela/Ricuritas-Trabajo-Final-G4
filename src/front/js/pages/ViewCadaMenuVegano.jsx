@@ -13,6 +13,8 @@ export const ViewCadaMenuVegano = () => {
     useEffect(() => { // actions.infoCadaMenuVegano();
     }, [])
 
+    // VISTA DE CADA MENU PARA REPLICAR EN INICIO CON INFO CARGADA EN LA BASE DE DATOS
+
     return (
         <div className="container mt-4 mb-5">
             <div className="jumbotron">
@@ -32,7 +34,7 @@ export const ViewCadaMenuVegano = () => {
                             store.infoCadaMenuVegano
                         } */}
                             Ensalada de quinoa y garbanzos</h1>
-                        <p className="mx-4 card-text">Deliciosa ensalada vegana a base de quinoa, acompañada de garbanzos frescos, rucula, lima tahiti, palta local, cherry's y boniatos de nuestra huerta y como toque final, unas semillas de sesamo tostado.<br/>Aliñada con aceite de olida, miel y mostaza, esta ensalada es perfecta para el verano, fresca y nutritiva.<br/>Viene acompañada de un jugo natural de frutos nativos, pan rustico de la casa libre de gluten y un alfajor vegano de mantequilla de!</p>
+                        <p className="mx-4 card-text">Deliciosa ensalada vegana a base de quinoa, acompañada de garbanzos frescos, rucula, lima tahiti, palta local, cherry's y boniatos de nuestra huerta y como toque final, unas semillas de sesamo tostado.<br/>Aliñada con aceite de oliva, miel y mostaza, esta ensalada es perfecta para el verano, fresca y nutritiva.<br/>Viene acompañada de un jugo natural de frutos nativos, pan rustico de la casa libre de gluten y un alfajor vegano de mantequilla de mani!</p>
                         <div className="mx-5 mt-4 d-flex justify-content-end">
                             <TbPlant2Off style={
                                 {

@@ -1,181 +1,176 @@
-import React, {
-    useState
-} from "react";
+import React, { useState } from "react";
 
-const getState = ({
-    getStore,
-    getActions,
-    setStore
-}) => {
-    return {
-        store: {
-            message: null,
+const getState = ({ getStore, getActions, setStore }) => {
+  return {
+    store: {
+      message: null,
+      auth: false,
+      numero: 0,
+      accessToken: false,
+
+      // MENU Y MENU VEGANO
+
+      // menu: [],
+      // menuVegano: [],
+      // infoCadaMenu: {},
+      // infoCadaMenuVegano: {}
+    },
+
+    actions: {
+      // FETCH PARA MENU Y MENU VEGANO
+
+      // obtenerMenu: () => {
+      //     fetch("url").then(resp => resp.json()).then(data => setStore({menu: data.results})).catch(err => console.log(err))
+      // },
+
+      // obtenerMenuVegano: () => {
+      //     fetch("url").then(resp => resp.json()).then(data => setStore({menuvegano: data.results})).catch(err => console.log(err))
+      // },
+
+      // infoCadaMenu: () => {
+      //     fetch("url").then(res => res.json()).then(data => setStore({omenu: data.results})).catch(err => console.error(err))
+      // },
+
+      // infoCadaMenuVegano: () => {
+      //     fetch("url").then(res => res.json()).then(data => setStore({menuVegano: data.results})).catch(err => console.error(err))
+      // },
+
+      // ? Esta función cambia el estado del auth
+      valid_token: () => {
+        const token = localStorage.getItem("token");
+        if (token === null) {
+          setStore({
             auth: false,
-            numero: 0,
-            accessToken: false,
+          });
+        } else {
+          setStore({
+            auth: true,
+          });
+        }
+      },
 
-            // MENU Y MENU VEGANO
+      // ? Acá empieza el fetch que nos permite conectar con el BackEnd
+      login: (userEmail, userPassword) => {
+        fetch(process.env.BACKEND_URL + "/api/login", {
+          method: "POST",
+          // mode: 'no-cors',
+          headers: {
+            "Content-Type": "application/json",
+            // 'Access-Control-Allow-Origin': '*'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            password: userPassword,
+          }), // body data type must match "Content-Type" header
+        })
+          .then((response) => {
+            console.log(response.status);
+            if (response.status === 200) {
+              setStore({
+                auth: true,
+              });
+            }
 
-            // menu: [],
-            // menuVegano: [],
-            // infoCadaMenu: {},
-            // infoCadaMenuVegano: {}
-        },
+            return response.json();
+          })
+          .then((data) => {
+            const adminData = data.is_admin;
+            localStorage.setItem("token", data.access_token);
+            if (adminData === true) {
+              localStorage.setItem(
+                "admin",
+                "34åÇkJhdkKhdf0'=)(675684fsg45sg744fs65g468sf4gJVvghhjksdfg8?=)(/$%32&ujsfdgjuibdgijk"
+              );
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            alert("algo salió mal");
+          });
+      },
 
-        actions: {
-            // FETCH PARA MENU Y MENU VEGANO
-            // obtenerMenu: () => {
-            //     fetch("url").then(resp => resp.json()).then(data => setStore({menu: data.results})).catch(err => console.log(err))
-            // },
+      logout: () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("admin");
+        setStore({
+          auth: false,
+        });
+      },
 
-            // obtenerMenuVegano: () => {
-            //     fetch("url").then(resp => resp.json()).then(data => setStore({menu: data.results})).catch(err => console.log(err))
-            // },
+      // ? Acá termina el fetch que nos permite conectar con el BackEnd
 
-            // infoCadaMenu: () => {
-            //     fetch("url").then(res => res.json()).then(data => setStore({menu: data.results})).catch(err => console.error(err))
-            // },
+      // Acá está la función de crear un nuevo usuario
+      register: (
+        userEmail,
+        userName,
+        userNombre,
+        userApellido,
+        userPassword
+      ) => {
+        fetch(process.env.BACKEND_URL + "/api/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            user_name: userName,
+            nombre: userNombre,
+            apellido: userApellido,
+            password: userPassword,
+          }),
+        })
+          .then((response) => {
+            console.log(response.status);
+            if (response.status === 200) {
+              setStore({
+                auth: true,
+              });
+            }
+            return response.json();
+          })
+          .catch((err) => console.log(err));
+      },
 
-            // infoCadaMenuVegano: () => {
-            //     fetch("url").then(res => res.json()).then(data => setStore({menuVegano: data.results})).catch(err => console.error(err))
-            // },
+      exampleFunction: () => {
+        getActions().changeColor(0, "green");
+      },
 
-            // ? Esta función cambia el estado del auth
-            valid_token: () => {
-                const token = localStorage.getItem("token");
-                if (token === null) {
-                    setStore({
-                        auth: false
-                    });
-                } else {
-                    setStore({
-                        auth: true
-                    });
-                }
-            },
+      getMessage: async () => {
+        try {
+          // fetching data from the backend
+          const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
+          const data = await resp.json();
+          setStore({
+            message: data.message,
+          });
+          // don't forget to return something, that is how the async resolves
+          return data;
+        } catch (error) {
+          console.log("Error loading message from backend", error);
+        }
+      },
 
-            // ? Acá empieza el fetch que nos permite conectar con el BackEnd
-            login: (userEmail, userPassword) => {
-                fetch(process.env.BACKEND_URL + "/api/login", {
-                        method: "POST",
-                        // mode: 'no-cors',
-                        headers: {
-                            "Content-Type": "application/json",
-                            // 'Access-Control-Allow-Origin': '*'
-                            // 'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: JSON.stringify({
-                            email: userEmail,
-                            password: userPassword
-                        }), // body data type must match "Content-Type" header
-                    })
-                    .then((response) => {
-                        console.log(response.status);
-                        if (response.status === 200) {
-                            setStore({
-                                auth: true
-                            });
-                        }
+      changeColor: (index, color) => {
+        // get the store
+        const store = getStore();
 
-                        return response.json();
-                    })
-                    .then((data) => {
-                        const adminData = data.is_admin;
-                        localStorage.setItem("token", data.access_token);
-                        if (adminData === true) {
-                            localStorage.setItem(
-                                "admin",
-                                "34åÇkJhdkKhdf0'=)(675684fsg45sg744fs65g468sf4gJVvghhjksdfg8?=)(/$%32&ujsfdgjuibdgijk"
-                            );
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        alert("algo salió mal");
-                    });
-            },
+        // we have to loop the entire demo array to look for the respective index
+        // and change its color
+        const demo = store.demo.map((elm, i) => {
+          if (i === index) elm.background = color;
 
-            logout: () => {
-                localStorage.removeItem("token");
-                localStorage.removeItem("admin");
-                setStore({
-                    auth: false
-                });
-            },
+          return elm;
+        });
 
-            // ? Acá termina el fetch que nos permite conectar con el BackEnd
-
-            // Acá está la función de crear un nuevo usuario
-            register: (
-                userEmail,
-                userName,
-                userNombre,
-                userApellido,
-                userPassword
-            ) => {
-                fetch(process.env.BACKEND_URL + "/api/user", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            email: userEmail,
-                            user_name: userName,
-                            nombre: userNombre,
-                            apellido: userApellido,
-                            password: userPassword,
-                        }),
-                    })
-                    .then((response) => {
-                        console.log(response.status);
-                        if (response.status === 200) {
-                            setStore({
-                                auth: true
-                            });
-                        }
-                        return response.json();
-                    })
-                    .catch((err) => console.log(err));
-            },
-
-            exampleFunction: () => {
-                getActions().changeColor(0, "green");
-            },
-
-            getMessage: async () => {
-                try {
-                    // fetching data from the backend
-                    const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
-                    const data = await resp.json();
-                    setStore({
-                        message: data.message
-                    });
-                    // don't forget to return something, that is how the async resolves
-                    return data;
-                } catch (error) {
-                    console.log("Error loading message from backend", error);
-                }
-            },
-
-            changeColor: (index, color) => {
-                // get the store
-                const store = getStore();
-
-                // we have to loop the entire demo array to look for the respective index
-                // and change its color
-                const demo = store.demo.map((elm, i) => {
-                    if (i === index) elm.background = color;
-
-                    return elm;
-                });
-
-                // reset the global store
-                setStore({
-                    demo: demo
-                });
-            },
-        },
-    };
+        // reset the global store
+        setStore({
+          demo: demo,
+        });
+      },
+    },
+  };
 };
 
 export default getState;

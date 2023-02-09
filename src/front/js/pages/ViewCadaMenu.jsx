@@ -13,6 +13,8 @@ export const ViewCadaMenu = () => {
     useEffect(() => { // actions.infoCadaMenu();
     }, [])
 
+    // VISTA DE CADA MENU PARA REPLICAR EN INICIO CON INFO CARGADA EN LA BASE DE DATOS
+
     return (
         <div className="container mt-4 mb-5">
             <div className="jumbotron">

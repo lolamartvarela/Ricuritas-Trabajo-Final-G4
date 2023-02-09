@@ -6,6 +6,7 @@ import {Context} from "../store/appContext";
 export const MenuVegano = ({}) => {
     const {actions} = useContext(Context)
 
+    // CARD DE UN MENU PARA REPLICAR EN INICIO CON INFO CARGADA EN LA BASE DE DATOS
 
     return (
         <div>
