@@ -24,11 +24,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       // },
 
       // obtenerMenuVegano: () => {
-      //     fetch("url").then(resp => resp.json()).then(data => setStore({menu: data.results})).catch(err => console.log(err))
+      //     fetch("url").then(resp => resp.json()).then(data => setStore({menuvegano: data.results})).catch(err => console.log(err))
       // },
 
       // infoCadaMenu: () => {
-      //     fetch("url").then(res => res.json()).then(data => setStore({menu: data.results})).catch(err => console.error(err))
+      //     fetch("url").then(res => res.json()).then(data => setStore({omenu: data.results})).catch(err => console.error(err))
       // },
 
       // infoCadaMenuVegano: () => {
