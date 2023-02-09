@@ -5,7 +5,7 @@ import {AiOutlineFacebook} from "react-icons/ai";
 import {AiOutlineMail} from "react-icons/ai";
 
 export const Footer = () => (
-    <footer className="bg-light py-3">
+    <footer className="bg-white py-3">
         <div className="container d-flex">
             <div className="flex-fill text-center">
                 <img src={Logo}
