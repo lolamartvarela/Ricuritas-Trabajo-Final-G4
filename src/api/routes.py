@@ -360,10 +360,28 @@ def login():
     return jsonify(access_token=access_token, is_admin=is_admin)
 
 
-# @api.route('/admin-dashboard', methods=['GET'])
-# @jwt_required
-# def admin_only():
-#     claims = get_jwt_claims()
-#     if claims['role'] != 'admin':
-#         return jsonify({"msg": "Acceso solo para Administrador"}), 401
-#     return jsonify({"msg": "Bienvenide queride Admin"})
+# ? Esta ruta verifica si el token es válido
+@api.route('/verify-token-validity', methods=['GET'])
+@jwt_required()
+def verify_token_validity():
+    # Obtiene la identidad del usuario actual a partir del token de JWT.
+    current_user = get_jwt_identity()
+    if not current_user:
+        return jsonify({'msg': 'Token inválido'}), 401
+    return jsonify({'msg': 'Token válido'}), 200
+
+
+# ? Esta ruta verifica si el user es admin o no lo es
+@api.route('/get-user-role', methods=['GET'])
+@jwt_required()
+def get_user_role():
+    current_user = get_jwt_identity()
+    if not current_user:
+        return jsonify({'msg': 'Token inválido'}), 401
+
+    user = User.query.filter_by(email=current_user).first()
+    if not user:
+        return jsonify({'msg': 'Usuario no encontrado'}), 404
+
+    return jsonify({'role': user.role}), 200
+
