@@ -19,7 +19,7 @@ export default function login() {
 
     return (
         <> {
-            store.auth === true ? <Navigate to="/"/> : <form className='container w-25 text-center'
+            store.auth === true ? <Navigate to="/"/> : <form className='container w-25 text-center divHeight'
                 onSubmit={enviarDatos}>
                 <h4 className='m-5'>Inicio de sesión</h4>
                 <div className="mb-3">

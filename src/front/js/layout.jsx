@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import Login from "./pages/login"
-import Admin_Dashboard from "./pages/admin-dashboard"
+import Dashboard from "./pages/dashboard"
 import Admin_Login from "./pages/admin-login";
 import {Register} from "./pages/register"
 
@@ -21,6 +21,7 @@ import {ViewCadaMenuVegano} from "./pages/ViewCadaMenuVegano.jsx";
 import {ViewComeConsciente} from "./pages/ViewComeConsciente.jsx";
 import Carrusel from "./pages/Tips.jsx";
 import Perfil from "./pages/perfil.jsx";
+import Carrito from "./pages/carrito";
 
 
 // create your first component
@@ -38,6 +39,8 @@ const Layout = () => {
                     <Routes>
                         <Route path="/tips"
                             element={<Carrusel/>}/>
+                        <Route path="/carrito"
+                            element={<Carrito/>}/>
                         <Route path="/ViewComeConsciente"
                             element={<ViewComeConsciente/>}/>
                         <Route path="/ViewCadaMenu"
@@ -54,8 +57,8 @@ const Layout = () => {
                             path="/login"/>
                         <Route element={<Admin_Login/>}
                             path="/admin-login"/>
-                        <Route element={<Admin_Dashboard/>}
-                            path="/admin-dashboard"/>
+                        <Route element={<Dashboard/>}
+                            path="/dashboard"/>
                         <Route element={<Register/>}
                             path="/register"/>
                         <Route element={<Single/>}
