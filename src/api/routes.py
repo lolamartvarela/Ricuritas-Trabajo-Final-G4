@@ -89,15 +89,15 @@ def get_all_menues():
         return jsonify({"msg": "Aún no hay ningún menú creado"}), 404
 
 
-#* Esta función nos permite añadir un nuevo menú mediante el método POST
 @api.route('/menues', methods=['POST'])
 def add_menu():
     tipo_menu = request.json.get('tipo_menu')
     title = request.json.get('title')
     description = request.json.get('description')
     price = request.json.get('price')
+    url = request.json.get('url')
 
-    new_menu = Menues(tipo_menu=tipo_menu, title=title, description=description, price=price)
+    new_menu = Menues(tipo_menu=tipo_menu, title=title, description=description, price=price, url=url)
 
     try:
         db.session.add(new_menu)

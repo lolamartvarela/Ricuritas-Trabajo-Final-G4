@@ -4,6 +4,7 @@ import {BsInstagram} from "react-icons/bs";
 import {AiOutlineFacebook} from "react-icons/ai";
 import {AiOutlineMail} from "react-icons/ai";
 import {Link, Navigate} from "react-router-dom";
+import {AiOutlineShop} from "react-icons/ai";
 
 export const Footer = () => (
     <footer className="bg-white py-3">
@@ -17,16 +18,16 @@ export const Footer = () => (
             </div>
             <div className="flex-fill text-start">
             <Link to={"/"}
-                                    className="nav-link nav-item">Inicio</Link>
+                                    className="nav-link nav-item text-secondary">Inicio</Link>
 
                 <Link to={"/ViewComeConsciente/"}
-                                    className="nav-link">Come consciente</Link>
+                                    className="nav-link text-secondary">Come consciente</Link>
 
                                     <Link to={"/tips"}
-                                        className="nav-link">Tips</Link>
+                                        className="nav-link text-secondary">Tips</Link>
 
 <Link to={"/carrito"}
-                                        className="nav-link">Tienda</Link>
+                                        className="nav-link text-secondary"><AiOutlineShop/></Link>
 
             </div>
             <div className="flex-fill text-center">
