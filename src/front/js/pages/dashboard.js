@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {Context} from '../store/appContext';
 import AdmindDashboard from './admin-dashboard';
 import UserDashboard from './user-dashboard';
+import MenuCreator from '../component/menu-creator';
 
 const Dashboard = () => {
     const {store, actions} = useContext(Context);
@@ -13,7 +14,12 @@ const Dashboard = () => {
 
     if (store.isAdmin === true) {
         return (
-            <AdmindDashboard/>)
+            <>
+                <AdmindDashboard/>
+                <MenuCreator/>
+            </>
+        )
+
     } else if (store.auth === true) {
         return (
             <UserDashboard/>)
