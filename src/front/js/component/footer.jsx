@@ -26,7 +26,7 @@ export const Footer = () => (
                 </a>
             </div>
             <div className="flex-fill text-center">
-                <p>Sección 3</p>
+                <img src="https://www.gub.uy/presidencia/sites/presidencia/files/imagenes/noticias/5a546ecf2a9ad084bb05fea635428a40.jpg" alt=""/>
             </div>
             <div className="flex-fill text-sm-start">
                 <div className="mb-4">

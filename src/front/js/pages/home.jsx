@@ -9,22 +9,24 @@ export const Home = () => {
     const {store} = useContext(Context);
 
 
-    return (<div>
-        <div className="d-flex justify-content-around mt-4 mb-4">
-            <Menu/>
-            <Menu/>
-            <Menu/>
-            <Menu/>
-        </div>
+    return (
+        <div className="divHeight">
+            <div className="d-flex justify-content-around mt-4 mb-4">
+                <Menu/>
+                <Menu/>
+                <Menu/>
+                <Menu/>
+            </div>
 
-        <div className="d-flex justify-content-around mt-4 mb-5">
-            <MenuVegano/>
-            <MenuVegano/>
-            <MenuVegano/>
-            <MenuVegano/>
-        </div>
+            <div className="d-flex justify-content-around mt-4 mb-5">
+                <MenuVegano/>
+                <MenuVegano/>
+                <MenuVegano/>
+                <MenuVegano/>
+            </div>
 
-    </div>);
+        </div>
+    );
 };
 
 

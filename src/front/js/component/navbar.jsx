@@ -1,18 +1,17 @@
 import React, {useContext, useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import {AiOutlineShop} from "react-icons/ai";
 import {BsSearch} from "react-icons/bs";
 import Logo from "../component/logo/logo.jpg";
 import {Context} from "../store/appContext";
-// import {AiOutlineMinus} from "react-icons/ai";
 
 export const Navbar = () => {
     const {store, actions} = useContext(Context)
     const [opacity, setOpacity] = useState(1);
 
+
     function handleLogout() {
-        actions.logout() // cerrar la sesiono
-        navigate("/") // usamos navigate para redireccionar
+        actions.logout(); <Navigate to="/"/>
     }
 
     useEffect(() => {
@@ -20,7 +19,9 @@ export const Navbar = () => {
         return() => {
             window.removeEventListener("scroll", handleScroll);
         };
+
     }, []);
+
 
     const handleScroll = () => {
         if (window.pageYOffset > 0) {
@@ -30,12 +31,13 @@ export const Navbar = () => {
         }
     };
 
-    return (
 
+    return (
         <>
             <nav className="navbar bg-body-tertiary">
 
                 <div className="col-12 d-flex justify-content-end px-5">
+
                     {
                     store.auth === false ? <Link to={"/login"}
                         className="btn btn-warning me-1">Login</Link> : null
@@ -46,10 +48,18 @@ export const Navbar = () => {
                         className="btn btn-warning me-1">Register</Link> : null
                 }
 
+
                     {
-                    store.auth === true ? <button className="btn btn-warning me-1"
-                        onClick={handleLogout}>Logout</button> : null
+                    store.auth === true ? <Link to={"/dashboard"}
+                        className="btn btn-warning me-1">Dashboard</Link> : null
+                }
+
+                    {
+                    store.auth === true ? <Link to={"/"}
+                        className="btn btn-warning me-1"
+                        onClick={handleLogout}>Logout</Link> : null
                 } </div>
+
 
             </nav>
 
@@ -57,8 +67,7 @@ export const Navbar = () => {
                 style={
                     {opacity}
             }>
-                <a className="navbar-brand mx-auto" href="#">
-
+                <div className="navbar-brand mx-auto" href="#">
                     {/* LOGO */}
                     <div className="d-flex justify-content-center">
                         <img src={Logo}
@@ -76,31 +85,28 @@ export const Navbar = () => {
                             <ul className="navbar-nav">
                                 <Link to={"/"}
                                     className="nav-link">Inicio</Link>
-                                {/* <AiOutlineMinus/> */}
+
                                 <Link to={"/ViewComeConsciente/"}
                                     className="nav-link">Come consciente</Link>
-                                {/* <AiOutlineMinus/> */}
+
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        Tips
-                                    </a>
+
+                                    <Link to={"/tips"}
+                                        className="nav-link">Tips</Link>
                                 </li>
-                                {/* <AiOutlineMinus/> */}
+
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <AiOutlineShop/>
-                                    </a>
+                                    <Link to={"/carrito"}
+                                        className="nav-link"><AiOutlineShop/></Link>
+
                                 </li>
-                                {/* <AiOutlineMinus/> */}
+
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        <BsSearch/>
-                                    </a>
-                                </li>
+                                    {/* Acá iría un dropdown para search. */} </li>
                             </ul>
                         </div>
                     </div>
-                </a>
+                </div>
             </nav>
         </>
     );
