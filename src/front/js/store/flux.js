@@ -1,6 +1,7 @@
 //
 import React from "react";
 import swal from 'sweetalert'
+import axios, {isCancel, AxiosError} from 'axios';
 
 const getState = ({getStore, getActions, setStore}) => {
     return {
@@ -12,7 +13,37 @@ const getState = ({getStore, getActions, setStore}) => {
 
         actions: {
 
+            // ? Esta función crea los menues en la base de datos
+            createMenu: async (tipoMenu, nombreMenu, descriptionMenu, precioMenu, urlMenu) => {
+                try {
+                    const response = await axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us86.gitpod.io/api/menues", {
+                        tipo_menu: tipoMenu,
+                        title: nombreMenu,
+                        description: descriptionMenu,
+                        price: precioMenu,
+                        url: urlMenu
+                    });
+                    console.log(response.status);
+                    if (response.status === 200) {
+                        console.log("Menú creado con éxito");
+                    };
+                } catch (error) {
+                    console.log(error);
+                    swal("Algo salió mal", "El menú no pudo ser creado");
+                }
+            },
 
+            // ? Esta función obtiene todos los menues del backend
+            getMenu: async () => {
+
+                await axios.get('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us86.gitpod.io/api/menues').then(resp => {
+
+                    console.log(resp.data);
+                });
+            },
+
+
+            // ? Esta función compara el token del usuario actual con el token válido en el JWT del backend
             getUserRole: async () => {
                 try {
                     const token = localStorage.getItem("token");
