@@ -21,7 +21,7 @@ import {ViewCadaMenuVegano} from "./pages/ViewCadaMenuVegano.jsx";
 import {ViewComeConsciente} from "./pages/ViewComeConsciente.jsx";
 import Carrusel from "./pages/Tips.jsx";
 import Perfil from "./pages/perfil.jsx";
-import Carrito from "./pages/carrito";
+import CarritoCompras from "./pages/carrito";
 
 
 // create your first component
@@ -40,7 +40,7 @@ const Layout = () => {
                         <Route path="/tips"
                             element={<Carrusel/>}/>
                         <Route path="/carrito"
-                            element={<Carrito/>}/>
+                            element={<CarritoCompras/>}/>
                         <Route path="/ViewComeConsciente"
                             element={<ViewComeConsciente/>}/>
                         <Route path="/ViewCadaMenu"

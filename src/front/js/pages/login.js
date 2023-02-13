@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Context} from "../store/appContext";
-import {Navigate} from "react-router-dom"
+import {Navigate, Link} from "react-router-dom"
+import RecuperarPass from '../component/recuperar-pass';
 
 
 export default function login() {
@@ -16,6 +17,7 @@ export default function login() {
         setPassword("")
         console.log(email, password)
     }
+
 
     return (
         <> {
@@ -39,8 +41,16 @@ export default function login() {
                             (e) => setPassword(e.target.value)
                         }/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+
+                <button type="submit" className="btn btn-primary">Loguearse</button>
+                <button type="button" className="btn btn-primary mt-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    ¿Olvidaste tu contraseña?
+                </button>
             </form>
-        } </>
+        }
+            <div>
+                <RecuperarPass/>
+            </div>
+        </>
     )
 }

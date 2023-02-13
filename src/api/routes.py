@@ -1,14 +1,43 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Menues, Recomendaciones, Reviews, Address, Compras
 from api.utils import generate_sitemap, APIException
 
+
+
 #? Acá importamos la librería de JWT y sus componentes
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 
+#? Acá se importa la librería Mail desde Flask para la recuperación de contrasepñas
+from flask_mail import Mail, Message
+
+
+#! Esta es la importación del Blueprint
 api = Blueprint('api', __name__)
+
+# mail = Mail(api)
+
+#? Este es el endpoint que permite recuperar contraseñas
+
+# @app.route("/recuperar_contraseña", methods=["POST"])
+# def recuperar_contraseña():
+#     email = request.json.get("correo")
+#     user = User.query.filter_by(email=email).first()
+#     if user:
+#         msg = Message(
+#             "Recuperación de contraseña",
+#             sender="ricuritas.info@gmail.com",
+#             recipients=[email],
+#         )
+#         msg.body = f"Su contraseña es: {user.password}"
+#         mail.send(msg)
+#         return jsonify({"msg": "Se ha enviado un correo electrónico con su contraseña"}), 200
+#     else:
+#         return jsonify({"msg": "No se ha encontrado una cuenta con esa dirección de correo electrónico"}), 404
+
 
 
 
@@ -320,8 +349,9 @@ def get_all_compras():
 def add_compra():
     monto = request.json.get('monto')
     fecha = request.json.get('fecha')
+    pago= request.json.get('pago')
 
-    new_compra = Compras(monto=monto, fecha=fecha)
+    new_compra = Compras(monto=monto, fecha=fecha, pago=pago)
 
     try:
         db.session.add(new_compra)
@@ -341,6 +371,7 @@ def delete_compra(compra_id):
     db.session.delete(compra)
     db.session.commit()
     return {"msg": "La compra ha sido eliminada con éxito"}, 200
+
 
 
 #? Aquí creamos el sistema de Login con JWT

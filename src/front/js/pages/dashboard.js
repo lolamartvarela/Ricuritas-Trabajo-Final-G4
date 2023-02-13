@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {Context} from '../store/appContext';
-import AdmindDashboard from './admin-dashboard';
+import AdminDashboard from './admin-dashboard';
 import UserDashboard from './user-dashboard';
 import MenuCreator from '../component/menu-creator';
 
@@ -15,7 +15,7 @@ const Dashboard = () => {
     if (store.isAdmin === true) {
         return (
             <>
-                <AdmindDashboard/>
+                <AdminDashboard/>
                 <MenuCreator/>
             </>
         )

@@ -50,10 +50,10 @@ export const Register = () => {
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="exampleInputUserName" className="form-label">
+                        <label htmlFor="exampleInputUserName1" className="form-label">
                             Nombe de usuario
                         </label>
-                        <input type="text" className="form-control" id="exampleInputUserName" aria-describedby="userNameHelp"
+                        <input type="text" className="form-control" id="exampleInputUserName1" aria-describedby="userNameHelp"
                             value={nombre}
                             onChange={
                                 (e) => setNombre(e.target.value)
@@ -64,10 +64,10 @@ export const Register = () => {
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="exampleInputUserName" className="form-label">
+                        <label htmlFor="exampleInputUserName2" className="form-label">
                             Apellido de usuario
                         </label>
-                        <input type="text" className="form-control" id="exampleInputUserName" aria-describedby="userNameHelp"
+                        <input type="text" className="form-control" id="exampleInputUserName2" aria-describedby="userNameHelp"
                             value={apellido}
                             onChange={
                                 (e) => setApellido(e.target.value)
@@ -78,10 +78,10 @@ export const Register = () => {
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="exampleInputUserName" className="form-label">
+                        <label htmlFor="exampleInputUserName3" className="form-label">
                             Username
                         </label>
-                        <input type="text" className="form-control" id="exampleInputUserName" aria-describedby="userNameHelp"
+                        <input type="text" className="form-control" id="exampleInputUserName3" aria-describedby="userNameHelp"
                             value={user_name}
                             onChange={
                                 (e) => setUser_Name(e.target.value)

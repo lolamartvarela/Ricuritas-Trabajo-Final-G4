@@ -30,6 +30,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type = True)
 db.init_app(app)
 
+
+#? Acá va la configuración de Flask Mail
+
+# app.config["MAIL_SERVER"] = "smtp.gmail.com"
+# app.config["MAIL_PORT"] = 465
+# app.config["MAIL_USE_SSL"] = True
+# app.config["MAIL_USERNAME"] = "ricuritas.info@gmail.com"
+# app.config["MAIL_PASSWORD"] = "45YTR*-Loop"
+
+
+
+
 # Allow CORS requests to this API
 CORS(app)
 

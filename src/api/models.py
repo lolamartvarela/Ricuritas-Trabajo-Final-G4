@@ -59,6 +59,7 @@ class Compras(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     monto = db.Column(db.Integer, nullable=False)
     fecha = db.Column(db.Date, default=date.today, nullable=False)
+    pago = db.Column(db.String(100) , nullable=False)
     menu_name = db.Column(db.Integer , db.ForeignKey('menues.id'))
     
     def __repr__(self):
