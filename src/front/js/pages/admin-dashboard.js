@@ -1,7 +1,8 @@
 import React from "react";
 import {BsFillTrashFill} from "react-icons/bs";
 import {Link} from "react-router-dom";
-const AdmindDashboard = () => {
+
+const AdminDashboard = () => {
 
     const handleSomething = () => {
         console.log("Yo debería borrar algo")
@@ -179,4 +180,4 @@ const AdmindDashboard = () => {
     );
 };
 
-export default AdmindDashboard;
+export default AdminDashboard;

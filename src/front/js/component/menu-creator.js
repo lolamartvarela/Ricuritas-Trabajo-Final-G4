@@ -12,16 +12,32 @@ export default function MenuCreator() {
     const [precioMenu, setPrecioMenu] = useState("")
     const [urlMenu, setUrlMenu] = useState("")
 
+    async function enviarDatos(e) {
+        e.preventDefault();
 
-    function enviarDatos(e) {
-        e.preventDefault()
-        actions.createMenu(tipoMenu, nombreMenu, descriptionMenu, precioMenu, urlMenu)
-        setTipoMenu("")
-        setNombreMenu("")
-        setDescriptionMenu("")
-        setPrecioMenu("")
-        setUrlMenu("")
-        console.log(tipoMenu, nombreMenu, descriptionMenu, precioMenu, urlMenu)
+        const data = new FormData();
+        data.append("file", urlMenu);
+        data.append("upload_preset", "kxtirvhp");
+        data.append("cloud_name", "deqzwxlgq");
+
+        try {
+            const res = await fetch("https://api.cloudinary.com/v1_1/deqzwxlgq/image/upload", {
+                method: "post",
+                body: data
+            });
+            const cloudinaryData = await res.json();
+            const imageUrl = cloudinaryData.secure_url;
+
+            // Envío de los datos del formulario y la URL de la imagen a Flask
+            actions.createMenu(tipoMenu, nombreMenu, descriptionMenu, precioMenu, imageUrl);
+            setTipoMenu("");
+            setNombreMenu("");
+            setDescriptionMenu("");
+            setPrecioMenu("");
+            setUrlMenu("");
+        } catch (err) {
+            console.error(err);
+        }
     }
 
 
@@ -68,11 +84,12 @@ export default function MenuCreator() {
 
             <div className="mb-3">
                 <label htmlFor="ImageUrl" className="form-label">URL de Imagen</label>
-                <input type="text" id="ImageUrl" className="form-control" placeholder="Imagen del Menú"
-                    value={urlMenu}
+                <input type="file" id="ImageUrl"
                     onChange={
-                        (e) => setUrlMenu(e.target.value)
-                    }/>
+                        (e) => setUrlMenu(e.target.files[0])
+                    }
+                    className="form-control"
+                    placeholder="Imagen del Menú"/>
             </div>
 
             <button type="submit" className="btn btn-primary">Submit</button>
