@@ -4,23 +4,22 @@ import {useParams} from "react-router-dom";
 import {Context} from "../store/appContext.js";
 import {CiWheat} from "react-icons/ci";
 import {TbPlantOff} from "react-icons/tb";
+import {ListGroup} from "react-bootstrap";
 
 
-export const ViewCadaMenu = (props) => {
+export const ViewCadaMenu = () => {
     const {store, actions} = useContext(Context);
     const params = useParams();
 
-    // useEffect(() => {
-    //     actions.infoCadaMenu();
-    // }, [])
 
-    // VISTA DE CADA MENU PARA REPLICAR EN INICIO CON INFO CARGADA EN LA BASE DE DATOS
-
+    // VISTA CON LA INFO DE CADA MENU CARGADA EN LA BASE DE DATOS
     return (
         <div className="container mt-4 mb-5">
             <div className="jumbotron">
                 <div className="d-flex">
-                    <img src={"https://ensaladas.info/wp-content/uploads/2019/06/Pasta-Caprese-con-Pesto.jpg"}
+                    <img src={
+                            store.cadaMenu[0] ?. url
+                        }
                         style={
                             {
                                 width: "400px",
@@ -32,11 +31,11 @@ export const ViewCadaMenu = (props) => {
                     <div className="card-body">
                         <h1 className="mx-4 mb-3 card-title">
                             {
-                            props ?. nombre
-                        }</h1>
+                            store.cadaMenu[0] ?. title
+                        } </h1>
                         <p className="mx-4 card-text">
                             {
-                            props.description
+                            store.cadaMenu[0] ?. description
                         }</p>
                         <div className="mx-5 mt-4 d-flex justify-content-end">
                             <CiWheat style={
