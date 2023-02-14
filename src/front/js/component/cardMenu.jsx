@@ -3,10 +3,11 @@ import {Link} from "react-router-dom";
 import {Context} from "../store/appContext";
 
 
-export const Menu = ({}) => {
-    const {actions} = useContext(Context)
+export const Menu = (props) => {
+    const {actions, store} = useContext(Context)
 
     // CARD DE UN MENU PARA REPLICAR EN INICIO CON INFO CARGADA EN LA BASE DE DATOS
+    console.log(store.cadaMenu);
 
     return (
         <div>
@@ -14,25 +15,42 @@ export const Menu = ({}) => {
                 style={
                     {width: "18rem"}
             }>
-                <h5 className="card-title mt-1 mx-2">Pasta Caprese</h5>
-                <img src="https://ensaladas.info/wp-content/uploads/2019/06/Pasta-Caprese-con-Pesto.jpg" className="card-img-top mt-1" alt="..."/>
-
+                <h5 className="card-title mt-1 mx-2">
+                    {
+                    props ?. nombre
+                }</h5>
+                <img src={
+                        props.imagen
+                    }
+                    className="card-img-top container mt-1"
+                    alt="..."
+                    style={
+                        {
+                            width: "280px",
+                            height: "200px"
+                        }
+                    }/>
 
                 <div className="align-self-center">
-                    {/* <button className="btn btn-light border mt-2 mx-1 mb-2"
-                    onClick={
-                        () => actions.viewCadaMenu()
-                }>Preparacion</button> */}
                     <Link to={"/ViewCadaMenu/"}
                         className="btn btn-light border mt-2 mx-1 mb-2">Preparacion</Link>
-                    <button className="btn btn-warning mt-2 mx-1 mb-2"
-                        onClick={
-                            () => actions.agregarcarrito()
-                    }>Comprar</button>
+                    <Link to={"/Carrito/"}
+                        className="btn btn-light border mt-2 mx-1 mb-2">Comprar</Link>
+
                     <div/>
                 </div>
             </div>
 
         </div>
     );
+}
+
+{ /* <button className="btn btn-light border mt-2 mx-1 mb-2"
+                    onClick={
+                        () => actions.viewCadaMenu()
+                }>Preparacion</button> */
+} { /* <button className="btn btn-warning mt-2 mx-1 mb-2"
+                        onClick={
+                            () => actions.agregarcarrito()
+                    }>Comprar</button> */
 }
