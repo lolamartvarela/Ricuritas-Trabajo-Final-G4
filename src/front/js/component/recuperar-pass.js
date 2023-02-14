@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 const RecuperarPass = () => {
     const [emailRecovery, setEmailRecovery] = useState("")
@@ -10,7 +11,7 @@ const RecuperarPass = () => {
     }
 
     const enviarCorreo = (correo) => {
-        axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us86.gitpod.io/enviar_correo", {correo: correo}).then(res => console.log(res.data)).catch(err => console.log(err));
+        axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us86.gitpod.io/api/forgotpassword", {email: correo}).then(res => console.log(res.data)).catch(err => console.log(err));
     }
 
 
