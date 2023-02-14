@@ -30,21 +30,19 @@ export const Home = () => {
             } </div>
 
             {/* MAP PARA VENU VEGANO */}
-            <div className="d-flex justify-content-around mt-4 mb-5">
-                <h2 className="mx-4">Menú vegano</h2>
-                <div className="d-flex flex-nowrap row row-cols-4">
-                    {
-                    store.cadaMenu.map((menuVegano, index) =>< MenuVegano key = {
-                        index
-                    }
-                    nombre = {
-                        menuVegano.title
-                    }
-                    imagen = {
-                        menuVegano.url
-                    } />)
-                }</div>
-            </div>
+            <h2 className="mx-4">Menú vegano</h2>
+            <div className="d-flex justify-content-evenly mt-4 mb-5 mx-2">
+                {
+                store.cadaMenu.map((menuVegano, index) =>< MenuVegano key = {
+                    index
+                }
+                nombre = {
+                    menuVegano.title
+                }
+                imagen = {
+                    menuVegano.url
+                } />)
+            } </div>
 
         </div>
     );
