@@ -18,11 +18,11 @@ export const Menu = (props) => {
 
     return (
         <div>
-            <div className="card"
+            <div className="card mx-2"
                 style={
                     {width: "18rem"}
             }>
-                <h5 className="card-title mt-1 mx-2">
+                <h5 className="card-title mt-1 mx-3">
                     {
                     props ?. nombre
                 }</h5>
