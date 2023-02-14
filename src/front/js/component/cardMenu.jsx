@@ -9,6 +9,13 @@ export const Menu = (props) => {
     // CARD DE UN MENU PARA REPLICAR EN INICIO CON INFO CARGADA EN LA BASE DE DATOS
     console.log(store.cadaMenu);
 
+    const idDinamica = () => {
+
+        localStorage.setItem("idDinamica", JSON.stringify(props.id))
+
+        // actions.setStoreId(props.id)
+    }
+
     return (
         <div>
             <div className="card"
@@ -30,9 +37,13 @@ export const Menu = (props) => {
                             height: "200px"
                         }
                     }/>
+                <h5 className="d-flex justify-content-end mx-4 mt-2">$ {
+                    props.price
+                }</h5>
 
                 <div className="align-self-center">
                     <Link to={"/ViewCadaMenu/"}
+                        onClick={idDinamica}
                         className="btn btn-light border mt-2 mx-1 mb-2">Preparacion</Link>
                     <Link to={"/Carrito/"}
                         className="btn btn-light border mt-2 mx-1 mb-2">Comprar</Link>
