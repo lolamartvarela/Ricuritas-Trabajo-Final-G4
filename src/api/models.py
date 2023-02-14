@@ -71,6 +71,7 @@ class Compras(db.Model):
             "user_id": self.user_id,
             "monto": self.monto,
             "fecha": self.fecha,
+            "pago": self.pago,
             "menu_name": self.menu_name,
         }
     
