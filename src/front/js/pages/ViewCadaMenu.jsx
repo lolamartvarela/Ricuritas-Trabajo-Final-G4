@@ -18,11 +18,8 @@ export const ViewCadaMenu = () => {
             <div className="jumbotron">
                 <div className="d-flex">
                     <img src={
-<<<<<<< HEAD
+
                             store.cadaMenu[localStorage.getItem('idDinamica')] ?. url
-=======
-                            store.cadaMenu[localStorage.getItem("idDinamica")] ?. url
->>>>>>> e07890536bc57143fa3554720c4153a495d551eb
                         }
                         style={
                             {
@@ -35,25 +32,15 @@ export const ViewCadaMenu = () => {
                     <div className="card-body">
                         <h1 className="mx-4 mb-3 card-title">
                             {
-<<<<<<< HEAD
+
                             store.cadaMenu[localStorage.getItem('idDinamica')] ?. title
                         } </h1>
                         <p className="mx-4 card-text">
                             {
                             store.cadaMenu[localStorage.getItem('idDinamica')] ?. description
-=======
-                            store.cadaMenu[localStorage.getItem("idDinamica")] ?. title
-                        }
-                            {/* {
-                            store.cadaMenu[store.idGuardada] ?. title
-                        }  */} </h1>
-                        <p className="mx-4 card-text">
-                            {
-                            store.cadaMenu[localStorage.getItem("idDinamica")] ?. description
-                        }</p>
+                        } </p>
                         <p className="d-flex justify-content-end mx-5">$ {
                             store.cadaMenu[localStorage.getItem("idDinamica")] ?. price
->>>>>>> e07890536bc57143fa3554720c4153a495d551eb
                         }</p>
                     </div>
                 </div>
