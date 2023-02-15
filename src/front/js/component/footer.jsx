@@ -31,7 +31,7 @@ export const Footer = () => (
 
             </div>
             <div className="flex-fill text-center">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.81212399986518!2d-55.23454334387574!3d-34.376073268089975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x950aba257fb6bc63%3A0xf650e57c6eceadf!2sIntendencia%20Departamental%20de%20Lavalleja!5e0!3m2!1ses!2suy!4v1676058743881!5m2!1ses!2suy" width="600" height="135"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.81212399986518!2d-55.23454334387574!3d-34.376073268089975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x950aba257fb6bc63%3A0xf650e57c6eceadf!2sIntendencia%20Departamental%20de%20Lavalleja!5e0!3m2!1ses!2suy!4v1676058743881!5m2!1ses!2suy" width="600" height="165"
                     style={
                         {border: "0"}
                     }
