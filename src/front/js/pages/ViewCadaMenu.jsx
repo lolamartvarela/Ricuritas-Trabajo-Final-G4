@@ -18,7 +18,7 @@ export const ViewCadaMenu = () => {
             <div className="jumbotron">
                 <div className="d-flex">
                     <img src={
-                            store.cadaMenu[0] ?. url
+                            store.cadaMenu[localStorage.getItem('idDinamica')] ?. url
                         }
                         style={
                             {
@@ -31,11 +31,11 @@ export const ViewCadaMenu = () => {
                     <div className="card-body">
                         <h1 className="mx-4 mb-3 card-title">
                             {
-                            store.cadaMenu[0] ?. title
+                            store.cadaMenu[localStorage.getItem('idDinamica')] ?. title
                         } </h1>
                         <p className="mx-4 card-text">
                             {
-                            store.cadaMenu[0] ?. description
+                            store.cadaMenu[localStorage.getItem('idDinamica')] ?. description
                         }</p>
                         <div className="mx-5 mt-4 d-flex justify-content-end">
                             <CiWheat style={

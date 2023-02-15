@@ -21,6 +21,11 @@ export const Home = () => {
                 store.cadaMenu.map((menuComun, index) => (< Menu key = {
                     index
                 }
+
+                id = {
+                    index
+                }
+
                 nombre = {
                     menuComun.title
                 }
@@ -38,6 +43,9 @@ export const Home = () => {
                 }
                 nombre = {
                     menuVegano.title
+                }
+                id = {
+                    index
                 }
                 imagen = {
                     menuVegano.url
