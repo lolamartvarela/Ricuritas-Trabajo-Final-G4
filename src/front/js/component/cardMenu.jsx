@@ -7,13 +7,8 @@ export const Menu = (props) => {
     const {actions, store} = useContext(Context)
 
     // CARD DE UN MENU PARA REPLICAR EN INICIO CON INFO CARGADA EN LA BASE DE DATOS
-    console.log(store.cadaMenu);
-
-    const idDinamica = () => {
-
-        localStorage.setItem("idDinamica", JSON.stringify(props.id))
-
-        // actions.setStoreId(props.id)
+    const changeId = () => {
+        localStorage.setItem("idDinamica", JSON.stringify(props.id));
     }
 
     return (
@@ -43,7 +38,9 @@ export const Menu = (props) => {
 
                 <div className="align-self-center">
                     <Link to={"/ViewCadaMenu/"}
-                        onClick={idDinamica}
+
+                        onClick={changeId}
+
                         className="btn btn-light border mt-2 mx-1 mb-2">Preparacion</Link>
                     <Link to={"/Carrito/"}
                         className="btn btn-light border mt-2 mx-1 mb-2">Comprar</Link>
