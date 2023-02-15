@@ -18,7 +18,11 @@ export const ViewCadaMenu = () => {
             <div className="jumbotron">
                 <div className="d-flex">
                     <img src={
+<<<<<<< HEAD
                             store.cadaMenu[localStorage.getItem('idDinamica')] ?. url
+=======
+                            store.cadaMenu[localStorage.getItem("idDinamica")] ?. url
+>>>>>>> e07890536bc57143fa3554720c4153a495d551eb
                         }
                         style={
                             {
@@ -31,38 +35,36 @@ export const ViewCadaMenu = () => {
                     <div className="card-body">
                         <h1 className="mx-4 mb-3 card-title">
                             {
+<<<<<<< HEAD
                             store.cadaMenu[localStorage.getItem('idDinamica')] ?. title
                         } </h1>
                         <p className="mx-4 card-text">
                             {
                             store.cadaMenu[localStorage.getItem('idDinamica')] ?. description
+=======
+                            store.cadaMenu[localStorage.getItem("idDinamica")] ?. title
+                        }
+                            {/* {
+                            store.cadaMenu[store.idGuardada] ?. title
+                        }  */} </h1>
+                        <p className="mx-4 card-text">
+                            {
+                            store.cadaMenu[localStorage.getItem("idDinamica")] ?. description
                         }</p>
-                        <div className="mx-5 mt-4 d-flex justify-content-end">
-                            <CiWheat style={
-                                {
-                                    width: "45px",
-                                    height: "45px"
-                                }
-                            }/>
-                            <TbPlantOff style={
-                                {
-                                    width: "40px",
-                                    height: "40px"
-                                }
-                            }/>
-                        </div>
+                        <p className="d-flex justify-content-end mx-5">$ {
+                            store.cadaMenu[localStorage.getItem("idDinamica")] ?. price
+>>>>>>> e07890536bc57143fa3554720c4153a495d551eb
+                        }</p>
                     </div>
                 </div>
                 <div className="d-flex justify-content-end mx-5">
-                    {/* <button className="btn btn-light border border-thumbnail mt-3 mx-1 mb-5"
+                    <button className="btn btn-light border border-thumbnail mt-3 mx-1 mb-5"
                         onClick={
                             () => actions.agregarcarrito()
-                    }>Agregar al carrito</button> */} </div>
+                    }>Agregar al carrito</button>
+                </div>
             </div>
-
-            {/* <Link to="/"> */}
-            {/* <span className="btn btn-warning border btn-lg" href="#" role="button">Comprar</span> */}
-            {/* </Link> */} </div>
+        </div>
     );
 };
 

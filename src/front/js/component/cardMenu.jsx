@@ -11,13 +11,20 @@ export const Menu = (props) => {
         localStorage.setItem("idDinamica", JSON.stringify(props.id));
     }
 
+    const idDinamica = () => {
+
+        localStorage.setItem("idDinamica", JSON.stringify(props.id))
+
+        // actions.setStoreId(props.id)
+    }
+
     return (
         <div>
-            <div className="card"
+            <div className="card mx-2"
                 style={
                     {width: "18rem"}
             }>
-                <h5 className="card-title mt-1 mx-2">
+                <h5 className="card-title mt-1 mx-3">
                     {
                     props ?. nombre
                 }</h5>
@@ -32,10 +39,17 @@ export const Menu = (props) => {
                             height: "200px"
                         }
                     }/>
+                <h5 className="d-flex justify-content-end mx-4 mt-2">$ {
+                    props.price
+                }</h5>
 
                 <div className="align-self-center">
                     <Link to={"/ViewCadaMenu/"}
+<<<<<<< HEAD
                         onClick={changeId}
+=======
+                        onClick={idDinamica}
+>>>>>>> e07890536bc57143fa3554720c4153a495d551eb
                         className="btn btn-light border mt-2 mx-1 mb-2">Preparacion</Link>
                     <Link to={"/Carrito/"}
                         className="btn btn-light border mt-2 mx-1 mb-2">Comprar</Link>

@@ -29,6 +29,9 @@ export const Home = () => {
                 nombre = {
                     menuComun.title
                 }
+                id = {
+                    index
+                }
                 imagen = {
                     menuComun.url
                 } />))
