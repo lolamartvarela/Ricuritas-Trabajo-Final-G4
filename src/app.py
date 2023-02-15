@@ -41,17 +41,10 @@ mail_settings = {
     "MAIL_PORT":  2525,
     "MAIL_USE_TLS": True,
     "MAIL_USE_SSL": False,
-    "MAIL_USERNAME":  '15e6f7228689d8',  # ACA COLOQUEN EL CORREO DE LA APP DEL ALUMN
-    "MAIL_PASSWORD": '651e8a3a578c08',  # PASSWORD DEL CORREO DE LA APP DEL ALUMNO
+    "MAIL_USERNAME":  '88e7ca9687cac6',  # ACA COLOQUEN EL CORREO DE LA APP DEL ALUMN
+    "MAIL_PASSWORD": '976d1947194172',  # PASSWORD DEL CORREO DE LA APP DEL ALUMNO
     "MAIL_DEFAULT_SENDER": 'ricuritas.info@gmail.com'
 }
-
-
-# app.config["MAIL_SERVER"] = "smtp.gmail.com"
-# app.config["MAIL_PORT"] = 465
-# app.config["MAIL_USE_SSL"] = True
-# app.config["MAIL_USERNAME"] = "ricuritas.info@gmail.com"
-# app.config["MAIL_PASSWORD"] = "45YTR*-Loop"
 
 app.config.update(mail_settings)
 mail = Mail(app)
