@@ -11,14 +11,18 @@ export const Home = () => {
 
     console.log(store.cadaMenuVegano);
 
+    const menuesComun = store.cadaMenu.filter((menu) => menu.tipo_menu === "Común")
+
+    const menuesVegetarianos = store.cadaMenu.filter((menu) => menu.tipo_menu === "Vegetariano")
+
     return (
-        <div className="d-flex flex-wrap">
+        <div className="d-block flex-wrap">
 
             {/* MAP PARA MENU COMUN */}
             <h2 className="mx-4">Menú común</h2>
             <div className="d-flex justify-content-evenly mt-4 mb-4 mx-2">
                 {
-                store.cadaMenu.map((menuComun, index) => (< Menu key = {
+                menuesComun.map((menu, index) => (< Menu key = {
                     index
                 }
 
@@ -27,13 +31,13 @@ export const Home = () => {
                 }
 
                 nombre = {
-                    menuComun.title
+                    menu.title
                 }
                 id = {
                     index
                 }
                 imagen = {
-                    menuComun.url
+                    menu.url
                 } />))
             } </div>
 
@@ -41,21 +45,22 @@ export const Home = () => {
             <h2 className="mx-4">Menú vegano</h2>
             <div className="d-flex justify-content-evenly mt-4 mb-5 mx-2">
                 {
-                store.cadaMenu.map((menuVegano, index) =>< MenuVegano key = {
+                menuesVegetarianos.map((menu, index) =>< MenuVegano key = {
                     index
                 }
                 nombre = {
-                    menuVegano.title
+                    menu.title
                 }
                 id = {
                     index
                 }
                 imagen = {
-                    menuVegano.url
+                    menu.url
                 } />)
             } </div>
-
         </div>
+
+
     );
 };
 
