@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import {Context} from '../store/appContext';
+import swal from 'sweetalert'
 
 
 const RecuperarPass = () => {
@@ -15,10 +16,16 @@ const RecuperarPass = () => {
 
     const enviarCorreo = (email) => {
         actions.recoverMail(email)
+            .then(response => {
+                swal("Contraseña enviada exitosamente", "", "success");
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
-
     return (
+        
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
@@ -44,6 +51,7 @@ const RecuperarPass = () => {
                 </div>
             </div>
         </div>
+        
     );
 };
 
