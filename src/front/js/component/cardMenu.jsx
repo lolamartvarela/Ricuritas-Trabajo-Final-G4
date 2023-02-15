@@ -33,7 +33,7 @@ export const Menu = (props) => {
                         }
                     }/>
                 <h5 className="d-flex justify-content-end mx-4 mt-2">$ {
-                    props.price
+                    props.precio
                 }</h5>
 
                 <div className="align-self-center">
@@ -41,24 +41,11 @@ export const Menu = (props) => {
 
                         onClick={changeId}
 
-                        className="btn btn-light border mt-2 mx-1 mb-2">Preparacion</Link>
-                    <Link to={"/Carrito/"}
-                        className="btn btn-light border mt-2 mx-1 mb-2">Comprar</Link>
-
+                        className="btn btn-light border mt-2 mx-1 mb-2">Ver Más! / Comprar</Link>
                     <div/>
                 </div>
             </div>
 
         </div>
     );
-}
-
-{ /* <button className="btn btn-light border mt-2 mx-1 mb-2"
-                    onClick={
-                        () => actions.viewCadaMenu()
-                }>Preparacion</button> */
-} { /* <button className="btn btn-warning mt-2 mx-1 mb-2"
-                        onClick={
-                            () => actions.agregarcarrito()
-                    }>Comprar</button> */
 }

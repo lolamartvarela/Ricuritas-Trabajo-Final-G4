@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
+import {Context} from '../store/appContext';
+
 
 const RecuperarPass = () => {
     const [emailRecovery, setEmailRecovery] = useState("")
+    const {store, actions} = useContext(Context);
 
     function recuperarMail(e) {
         e.preventDefault()
@@ -10,8 +13,8 @@ const RecuperarPass = () => {
         enviarCorreo(emailRecovery)
     }
 
-    const enviarCorreo = (correo) => {
-        axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us86.gitpod.io/api/forgotpassword", {email: correo}).then(res => console.log(res.data)).catch(err => console.log(err));
+    const enviarCorreo = (email) => {
+        actions.recoverMail(email)
     }
 
 

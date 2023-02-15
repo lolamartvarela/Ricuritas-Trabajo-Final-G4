@@ -15,16 +15,16 @@ const getState = ({
             message: null,
             auth: false,
             isAdmin: false,
-            cadaMenu: [],
-            // idGuardada: null,
+            cadaMenu: []
         },
 
         actions: {
-            // setStoreId: (id) => {
-            //     setStore({
-            //         idGuardada: id,
-            //     });
-            // },
+
+            // ? POR FAVOR NO BORRAR: Nos ayuda a recuperar la contraseña
+            recoverMail: async (email) => {
+                axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {email: email}).then(res => console.log(res.data)).catch(err => console.log(err));
+            },
+
 
             // ? Esta función crea los menues en la base de datos
             createMenu: async (tipoMenu, nombreMenu, descriptionMenu, precioMenu, imageUrl) => {
@@ -195,6 +195,7 @@ const getState = ({
                 const demo = store.demo.map((elm, i) => {
                     if (i === index)
                         elm.background = color;
+
 
 
                     return elm;

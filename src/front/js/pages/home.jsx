@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Context} from "../store/appContext";
 import {Menu} from "../component/cardMenu.jsx"
-import {MenuVegano} from "../component/cardMenuVegano.jsx"
+
 
 import "../../styles/home.css";
 
@@ -11,59 +11,58 @@ export const Home = () => {
 
     console.log(store.cadaMenuVegano);
 
-    return (
-        <div className="d-flex flex-wrap">
+    const menuesComun = store.cadaMenu.filter((menu) => menu.tipo_menu === "Común");
 
-            {/* MAP PARA MENU COMUN */}
-            <h2 className="mx-4">Menú común</h2>
+    const menuesVegetarianos = store.cadaMenu.filter((menu) => menu.tipo_menu === "Vegetariano");
+
+    return (
+        <div className="d-block flex-wrap">
+
+            {/* MAP PARA MENU COMÚN */}
+            <h2 className="mx-4 text-center text-info">Menú común</h2>
             <div className="d-flex justify-content-evenly mt-4 mb-4 mx-2">
                 {
-                store.cadaMenu.map((menuComun, index) => (< Menu key = {
+                menuesComun.map((menu, index) => (< Menu key = {
                     index
                 }
-
                 id = {
-                    index
+                    store.cadaMenu.findIndex(m => m === menu)
                 }
 
                 nombre = {
-                    menuComun.title
-                }
-                id = {
-                    index
+                    menu.title
                 }
                 imagen = {
-                    menuComun.url
+                    menu.url
+                }
+                precio = {
+                    menu.price
                 } />))
             } </div>
 
-            {/* MAP PARA VENU VEGANO */}
-            <h2 className="mx-4">Menú vegano</h2>
+            {/* MAP PARA VENU VEGETARIANO */}
+            <h2 className="mx-4 text-center text-info">Menú Vegetariano</h2>
             <div className="d-flex justify-content-evenly mt-4 mb-5 mx-2">
                 {
-                store.cadaMenu.map((menuVegano, index) =>< MenuVegano key = {
+                menuesVegetarianos.map((menu, index) =>< Menu key = {
                     index
                 }
                 nombre = {
-                    menuVegano.title
+                    menu.title
                 }
                 id = {
-                    index
+                    store.cadaMenu.findIndex(m => m === menu)
                 }
                 imagen = {
-                    menuVegano.url
+                    menu.url
+                }
+
+                precio = {
+                    menu.price
                 } />)
             } </div>
-
         </div>
+
+
     );
 };
-
-
-{ /* <div className="d-flex flex-nowrap row row-cols-4"> {store.menu.map((cadaMenu, index) =>< Menu key = {index}
-            id = {index}nombre = { cadaMenu.nombre} />)}</div>
-
-
-        <div className="d-flex flex-nowrap row row-cols-4"> {store.menuVegano.map((cadaMenuVegano, index) =>< MenuVegano key = {
-                index} id = {index }nombre = {cadaMenuVegano.nombre} />) }</div> */
-}
