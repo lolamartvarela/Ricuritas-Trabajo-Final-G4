@@ -16,9 +16,16 @@ const getState = ({
             auth: false,
             isAdmin: false,
             cadaMenu: [],
+            // idGuardada: null,
         },
 
         actions: {
+            // setStoreId: (id) => {
+            //     setStore({
+            //         idGuardada: id,
+            //     });
+            // },
+
             // ? Esta función crea los menues en la base de datos
             createMenu: async (
                 tipoMenu,
@@ -29,7 +36,11 @@ const getState = ({
             ) => {
                 try {
                     const response = await axios.post(
+<<<<<<< HEAD
                         "https://3001-lolamartvar-ricuritastr-42c56mnz3pf.ws-us86.gitpod.io/api/menues", {
+=======
+                        "https://3001-lolamartvar-ricuritastr-9q3gdhv4j0n.ws-us86.gitpod.io/api/menues/", {
+>>>>>>> e07890536bc57143fa3554720c4153a495d551eb
                             tipo_menu: tipoMenu,
                             title: nombreMenu,
                             description: descriptionMenu,
@@ -51,7 +62,7 @@ const getState = ({
             getMenu: async () => {
                 await axios
                     .get(
-                        "https://3001-lolamartvar-ricuritastr-byrppbdug0i.ws-us86.gitpod.io/api/menues"
+                        "https://3001-lolamartvar-ricuritastr-9q3gdhv4j0n.ws-us86.gitpod.io/api/menues/"
                     )
                     .then((resp) => {
                         setStore({
