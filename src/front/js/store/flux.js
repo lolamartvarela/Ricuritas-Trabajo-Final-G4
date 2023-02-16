@@ -16,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       recoverMail: async (email) => {
         axios
           .post(
-            "https://3001-lolamartvar-ricuritastr-82mj0inqlhh.ws-us87.gitpod.io/api/menues",
+            "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword",
             {
               email: email,
             }
@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ) => {
         try {
           const response = await axios.post(
-            "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/",
+            "https://3000-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/menues/",
             {
               tipo_menu: tipoMenu,
               title: nombreMenu,
@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getMenu: async () => {
         await axios
           .get(
-            "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/"
+            "https://3000-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/menues/"
           )
           .then((resp) => {
             setStore({

@@ -9,8 +9,6 @@ import "../../styles/home.css";
 export const Home = () => {
     const {store} = useContext(Context);
 
-    console.log(store.cadaMenuVegano);
-
     const menuesComun = store.cadaMenu.filter((menu) => menu.tipo_menu === "Común");
 
     const menuesVegetarianos = store.cadaMenu.filter((menu) => menu.tipo_menu === "Vegetariano");
