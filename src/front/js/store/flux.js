@@ -22,14 +22,16 @@ const getState = ({
 
             // ? POR FAVOR NO BORRAR: Nos ayuda a recuperar la contraseña
             recoverMail: async (email) => {
-                axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {email: email}).then(res => console.log(res.data)).catch(err => console.log(err));
+                axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {
+                    email: email
+                }).then(res => console.log(res.data)).catch(err => console.log(err));
             },
 
 
             // ? Esta función crea los menues en la base de datos
             createMenu: async (tipoMenu, nombreMenu, descriptionMenu, precioMenu, imageUrl) => {
                 try {
-                    const response = await axios.post("https://3000-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/menues/", {
+                    const response = await axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/", {
                         tipo_menu: tipoMenu,
                         title: nombreMenu,
                         description: descriptionMenu,
@@ -108,7 +110,7 @@ const getState = ({
 
             // ? Acá empieza el fetch que nos permite conectar con el BackEnd
             login: (userEmail, userPassword) => {
-                fetch("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/login", {
+                fetch("https://3001-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
