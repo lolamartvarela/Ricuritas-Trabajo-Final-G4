@@ -8,10 +8,31 @@ const getState = ({getStore, getActions, setStore}) => {
             message: null,
             auth: false,
             isAdmin: false,
-            cadaMenu: []
+            cadaMenu: [],
+            carrito: []
         },
 
         actions: {
+
+            // ? Esta función agrega de a un menú al carrito de compras
+            agregarAlCarrito: menu => {
+                const store = getStore();
+                setStore({
+                    carrito: [
+                        ... store.carrito,
+                        menu
+                    ]
+                });
+            },
+
+
+            // ? Esta función elimina menús del carrito de compras
+            eliminarDelCarrito: menu => {
+                const store = getStore();
+                const newCarrito = store.carrito.filter(item => item !== menu);
+                setStore({carrito: newCarrito});
+            },
+
 
             // ? POR FAVOR NO BORRAR: Nos ayuda a recuperar la contraseña
             recoverMail: async (email) => {
