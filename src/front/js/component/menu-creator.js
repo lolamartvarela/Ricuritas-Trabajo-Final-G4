@@ -44,7 +44,9 @@ export default function MenuCreator() {
     return (
         <form className='container w-50'
             onSubmit={enviarDatos}>
-
+            <div>
+                <h1>Puede crear un nuevo menú</h1>
+            </div>
             <div className="mb-3">
                 <label htmlFor="MenuType" className="form-label">Tipo de Menú</label>
                 <input type="text" id="MenuType" className="form-control" placeholder="Tipo de Menú"
