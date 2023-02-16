@@ -11,6 +11,13 @@ export const ViewCadaMenu = () => {
     const {store, actions} = useContext(Context);
     const params = useParams();
 
+    const agregarcarrito = () => {
+        const id = localStorage.getItem('idDinamica');
+        console.log('id:', id);
+        actions.agregarAlCarrito(id)
+        console.log(store.carrito)
+        console.log(store.cadaMenu)
+    }
 
     // VISTA CON LA INFO DE CADA MENU CARGADA EN LA BASE DE DATOS
     return (
@@ -46,9 +53,7 @@ export const ViewCadaMenu = () => {
                 </div>
                 <div className="d-flex justify-content-end mx-5">
                     <button className="btn btn-light border border-thumbnail mt-3 mx-1 mb-5"
-                        onClick={
-                            () => actions.agregarcarrito()
-                    }>Agregar al carrito</button>
+                        onClick={agregarcarrito}>Agregar al carrito</button>
                 </div>
             </div>
         </div>
