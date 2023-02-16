@@ -4,19 +4,20 @@ import GooglePayButton from "@google-pay/button-react";
 import {Context} from "../store/appContext";
 
 const CarritoCompras = () => {
-  const {store} = useContext(Context);
-  const menuItems = store.cadaMenu;
+  const {store, actions} = useContext(Context);
 
-  const total = menuItems.reduce((acc, item) => acc + item.price, 0);
+  const menuSelected = store.cadaMenu.filter((item, index) => store.carrito.map(Number).includes(index));
+  const total = menuSelected.reduce((acc, item) => acc + item.price, 0);
 
   return (
     <div>
     <h2>Carrito de compras</h2>
     <ul>
-      {menuItems.map(item => (
+      {menuSelected.map(item => (
         <li key={item.id}>
           <span>{item.title}</span>
           <span>{item.price}</span>
+          <button onClick={() => actions.eliminarDelCarrito(item.index)}>Borrar</button>
         </li>
       ))}
     </ul>
