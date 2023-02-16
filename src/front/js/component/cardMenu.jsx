@@ -32,7 +32,7 @@ export const Menu = (props) => {
                             height: "200px"
                         }
                     }/>
-                <h5 className="d-flex justify-content-end mx-4 mt-2">$ {
+                <h5 className="d-flex justify-content-end mx-4 mt-2 fst-italic">$ {
                     props.precio
                 }</h5>
 
@@ -41,7 +41,12 @@ export const Menu = (props) => {
 
                         onClick={changeId}
 
-                        className="btn btn-light border mt-2 mx-1 mb-2">Ver Más! / Comprar</Link>
+                        className="btn btn-light border mt-2 mx-1 mb-2">Ver Más!</Link>
+                    <Link to={"/carrito/"}
+
+                        onClick={changeId}
+
+                        className="btn btn-light border mt-2 mx-1 mb-2">Comprar</Link>
                     <div/>
                 </div>
             </div>

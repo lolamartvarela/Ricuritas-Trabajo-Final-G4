@@ -2,6 +2,7 @@ import React, {useEffect, useContext, useState} from "react";
 // import PropTypes from "prop-types";
 import {useParams} from "react-router-dom";
 import {Context} from "../store/appContext.js";
+import {Link} from "react-router-dom";
 import {CiWheat} from "react-icons/ci";
 import {TbPlantOff} from "react-icons/tb";
 import {ListGroup} from "react-bootstrap";
@@ -45,10 +46,8 @@ export const ViewCadaMenu = () => {
                     </div>
                 </div>
                 <div className="d-flex justify-content-end mx-5">
-                    <button className="btn btn-light border border-thumbnail mt-3 mx-1 mb-5"
-                        onClick={
-                            () => actions.agregarcarrito()
-                    }>Agregar al carrito</button>
+                    <Link to={"/carrito/"}
+                        className="btn btn-light border border-thumbnail mt-3 mx-1 mb-5">Comprar</Link>
                 </div>
             </div>
         </div>
