@@ -12,40 +12,47 @@ export const Menu = (props) => {
     }
 
     return (
-        <div>
+        <div className="col-lg-4 col-md-6 mb-3">
+
+            {/* CARD */}
             <div className="card mx-2"
                 style={
                     {width: "18rem"}
             }>
-                <h5 className="card-title mt-1 mx-3">
+
+                {/* Titulo */}
+                <h5 className="card-title mt-1 mx-4 text-responsive text-lg">
                     {
                     props ?. nombre
                 }</h5>
+
+                {/* Imagen */}
                 <img src={
                         props.imagen
                     }
-                    className="card-img-top container mt-1"
-                    alt="..."
+                    className="card-img-top container mt-1 img-fluid"
+                    alt="Responsive image"
                     style={
                         {
                             width: "280px",
                             height: "200px"
                         }
-                    }/>
-                <h5 className="d-flex justify-content-end mx-4 mt-2">$ {
+                    }/> {/* Precio */}
+                <h5 className="text-responsive text-lg d-flex justify-content-end mx-4 mt-3 mb-1 fst-italic">$ {
                     props.precio
                 }</h5>
 
+                {/* BOTON */}
                 <div className="align-self-center">
                     <Link to={"/ViewCadaMenu/"}
 
                         onClick={changeId}
 
-                        className="btn btn-light border mt-2 mx-1 mb-2">Ver Más! / Comprar</Link>
+                        className="btn btn-light border mt-2 mx-1 mb-2">Ver Más!</Link>
                     <div/>
+
                 </div>
             </div>
-
         </div>
     );
 }
