@@ -14,11 +14,10 @@ export const Home = () => {
     const menuesVegetarianos = store.cadaMenu.filter((menu) => menu.tipo_menu === "Vegetariano");
 
     return (
-        <div className="d-flex flex-wrap">
+        <div> {/* MAP PARA MENU COMÚN */}
+            <h2 className="text-center bg-warning text-white">Menú común</h2>
 
-            {/* MAP PARA MENU COMÚN */}
-            <h2 className="mx-3 bg-transparent text-dark">Menú común</h2>
-            <div className="d-flex justify-content-evenly mt-4 mb-4 mx-2">
+            <div className="row mt-4 mb-4 mx-5">
                 {
                 menuesComun.map((menu, index) => (< Menu key = {
                     index
@@ -39,8 +38,8 @@ export const Home = () => {
             } </div>
 
             {/* MAP PARA VENU VEGETARIANO */}
-            <h2 className="mx-3 bg-transparent text-dark">Menú Vegano</h2>
-            <div className="d-flex justify-content-evenly mt-4 mb-5 mx-2">
+            <h2 className="text-center bg-warning text-white">Menú Vegano</h2>
+            <div className="row d-flex justify-content-evenly mt-4 mb-5 mx-2">
                 {
                 menuesVegetarianos.map((menu, index) =>< Menu key = {
                     index

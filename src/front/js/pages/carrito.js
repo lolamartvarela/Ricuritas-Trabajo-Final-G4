@@ -1,31 +1,35 @@
 //
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import GooglePayButton from "@google-pay/button-react";
-import {Context} from "../store/appContext";
+import { Context } from "../store/appContext";
 
 const CarritoCompras = () => {
-  const {store, actions} = useContext(Context);
+  const { store, actions } = useContext(Context);
 
-  const menuSelected = store.cadaMenu.filter((item, index) => store.carrito.map(Number).includes(index));
+  const menuSelected = store.cadaMenu.filter((item, index) =>
+    store.carrito.map(Number).includes(index)
+  );
   const total = menuSelected.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <div>
-    <h2>Carrito de compras</h2>
-    <ul>
-      {menuSelected.map(item => (
-        <li key={item.id}>
-          <span>{item.title}</span>
-          <span>{item.price}</span>
-          <button onClick={() => actions.eliminarDelCarrito(item.index)}>Borrar</button>
-        </li>
-      ))}
-    </ul>
+    <div className="d-flex justify-content-end row col-4 mx-4 mt-5 mb-5">
+      <h2 className="mx-3 mb-2">Carrito de compras</h2>
+      <ul className="mb-3">
+        {menuSelected.map((item) => (
+          <li key={item.id}>
+            <span>{item.title}</span>
+            <span> $ {item.price} </span>
+            <button onClick={() => actions.eliminarDelCarrito(item.index)}> 
+              <i className="fas fa-trash"></i>
+            </button>
+          </li>
+        ))}
+      </ul>
 
-    <p>Total: {total}</p>
+      <p className="mx-3 fst-italic fw-normal">Total: $ {total}</p>
 
-{/* Este código es el responsable de integrar el botón de Google Pay en nuestra app */}
-            <GooglePayButton
+      {/* Este código es el responsable de integrar el botón de Google Pay en nuestra app */}
+      <GooglePayButton className="mx-4"
         environment="TEST"
         buttonSizeMode="fill"
         paymentRequest={{
@@ -60,12 +64,12 @@ const CarritoCompras = () => {
           },
         }}
         onLoadPaymentData={(paymentData) => {
-            addNewPurchase(paymentData);
+          addNewPurchase(paymentData);
         }}
       />
-            {/* Aquí finaliza el código de integración del botón de Google Pay */}
-            </div>
-    );
+      {/* Aquí finaliza el código de integración del botón de Google Pay */}
+    </div>
+  );
 };
 
 export default CarritoCompras;
