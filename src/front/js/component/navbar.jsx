@@ -30,7 +30,6 @@ export const Navbar = () => {
     };
 
 
-
     // ? Este useEffect controla si existe desplazamiento en la página para darle transparencia al navbar
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -38,16 +37,6 @@ export const Navbar = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
-
-    const handleScroll = () => {
-        if (window.pageYOffset > 0) {
-            setOpacity(0.8);
-        } else {
-            setOpacity(1);
-        }
-    };
-
 
 
     return (

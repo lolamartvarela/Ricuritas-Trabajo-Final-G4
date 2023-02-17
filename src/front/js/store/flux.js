@@ -21,8 +21,8 @@ const getState = ({
 
         actions: {
 
-            // ? Esta función le permite al admin borrar menús
 
+            //? Esta función le permite al admin borrar menús
             borrarMenu: async (menu_id) => {
                 const store = getStore();
                 await axios
@@ -191,6 +191,7 @@ const getState = ({
                     })
                     .then((data) => {
                         localStorage.setItem("token", data.access_token);
+                        localStorage.setItem("username", data.user);
                     })
                     .catch((err) => {
                         console.log(err);
