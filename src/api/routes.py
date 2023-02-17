@@ -393,7 +393,7 @@ def login():
     return jsonify(access_token=access_token, is_admin=is_admin)
 
 
-# # ? Esta ruta verifica si el user es admin o no lo es y autentifica el token al mismo tiempo
+#? Esta ruta verifica si el user es admin o no lo es y autentifica el token al mismo tiempo
 @api.route('/get-user-role', methods=['GET'])
 @jwt_required()
 def get_user_role():
@@ -408,4 +408,19 @@ def get_user_role():
     if user.role == "admin":
         return jsonify({'role': user.role}), 201
     else:
-        return jsonify({'role': user.role}), 200
+        return jsonify({'role': user.role, 'nombre': user.nombre}), 200
+
+
+#? Esta ruta retorna el nombre del usuario correspondiente al token
+@api.route('/get-username', methods=['GET'])
+@jwt_required()
+def get_username():
+    current_user = get_jwt_identity()
+    if not current_user:
+        return jsonify({'msg': 'Token inválido'}), 401
+
+    user = User.query.filter_by(email=current_user).first()
+    if not user:
+        return jsonify({'msg': 'Usuario no encontrado'}), 404
+
+    return jsonify({'nombre': user.nombre}), 200
