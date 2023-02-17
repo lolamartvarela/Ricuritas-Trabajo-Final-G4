@@ -20,6 +20,27 @@ const getState = ({
         },
 
         actions: {
+
+            // ? Esta función le permite al admin borrar menús
+
+            borrarMenu: async (menu_id) => {
+                const store = getStore();
+                await axios
+                    .delete(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/${menu_id}`)
+                    .then((resp) => {
+                        if (resp.status === 200) {
+                            const nuevosMenus = store.cadaMenu.filter((menu) => menu.id !== menu_id);
+                            setStore({
+                                cadaMenu: nuevosMenus
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+
+
             // ? Esta función agrega de a un menú al carrito de compras
             agregarAlCarrito: (menu) => {
                 const store = getStore();

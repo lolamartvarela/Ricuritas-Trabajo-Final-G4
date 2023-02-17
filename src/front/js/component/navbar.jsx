@@ -3,6 +3,7 @@ import {Link, Navigate} from "react-router-dom";
 import {AiOutlineShop} from "react-icons/ai";
 import {BsSearch} from "react-icons/bs";
 import Logo from "../component/logo/logo.png";
+
 import {Context} from "../store/appContext";
 
 export const Navbar = () => {
@@ -28,6 +29,27 @@ export const Navbar = () => {
         }
     };
 
+
+
+    // ? Este useEffect controla si existe desplazamiento en la página para darle transparencia al navbar
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return() => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+
+    const handleScroll = () => {
+        if (window.pageYOffset > 0) {
+            setOpacity(0.8);
+        } else {
+            setOpacity(1);
+        }
+    };
+
+
+
     return (
         <>
             <nav className="navbar bg-body-tertiary">
@@ -48,6 +70,7 @@ export const Navbar = () => {
                         </Link>
                     ) : null
                 }
+
                     {
                     store.auth === true ? (
                         <Link to={"/dashboard"}
@@ -81,6 +104,7 @@ export const Navbar = () => {
                                 {
                                     width: "160px",
                                     height: "160px"
+
                                 }
                             }/>
                     </div>
@@ -88,7 +112,9 @@ export const Navbar = () => {
                     {/* Aqui compienzan los links del navbar */}
                     <div>
                         <div className="collapse navbar-collapse" id="navbarNav">
+
                             <ul className="navbar-nav" id="navbarToggleExternalContent">
+
                                 <Link to={"/"}
                                     className="nav-link">
                                     Inicio
