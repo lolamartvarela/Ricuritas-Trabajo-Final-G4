@@ -1,5 +1,5 @@
 import React, {Component, useContext} from "react";
-import Logo from "../component/logo/logo.jpg";
+import Logo from "../component/logo/logo.png";
 import {BsInstagram} from "react-icons/bs";
 import {AiOutlineFacebook} from "react-icons/ai";
 import {AiOutlineMail} from "react-icons/ai";

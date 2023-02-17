@@ -38,8 +38,8 @@ export const Home = () => {
             } </div>
 
             {/* MAP PARA VENU VEGETARIANO */}
-            <h2 className="text-center bg-warning text-white">Menú Vegano</h2>
-            <div className="row d-flex justify-content-evenly mt-4 mb-5 mx-2">
+            <h2 className="text-center bg-warning text-white">Menú Vegetariano</h2>
+            <div className="row mt-4 mb-5 mx-5">
                 {
                 menuesVegetarianos.map((menu, index) =>< Menu key = {
                     index

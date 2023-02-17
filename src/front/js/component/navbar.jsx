@@ -2,7 +2,8 @@ import React, {useContext, useState, useEffect} from "react";
 import {Link, Navigate} from "react-router-dom";
 import {AiOutlineShop} from "react-icons/ai";
 import {BsSearch} from "react-icons/bs";
-import Logo from "../component/logo/logo.jpg";
+import Logo from "../component/logo/logo.png";
+
 import {Context} from "../store/appContext";
 
 export const Navbar = () => {
@@ -12,6 +13,22 @@ export const Navbar = () => {
     function handleLogout() {
         actions.logout(); <Navigate to="/"/>;
     }
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return() => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const handleScroll = () => {
+        if (window.pageYOffset > 0) {
+            setOpacity(0.8);
+        } else {
+            setOpacity(1);
+        }
+    };
+
 
 
     // ? Este useEffect controla si existe desplazamiento en la página para darle transparencia al navbar
@@ -30,6 +47,7 @@ export const Navbar = () => {
             setOpacity(1);
         }
     };
+
 
 
     return (
@@ -84,8 +102,9 @@ export const Navbar = () => {
                             alt="Logo"
                             style={
                                 {
-                                    width: "120px",
-                                    height: "120px"
+                                    width: "160px",
+                                    height: "160px"
+
                                 }
                             }/>
                     </div>
@@ -93,7 +112,9 @@ export const Navbar = () => {
                     {/* Aqui compienzan los links del navbar */}
                     <div>
                         <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav">
+
+                            <ul className="navbar-nav" id="navbarToggleExternalContent">
+
                                 <Link to={"/"}
                                     className="nav-link">
                                     Inicio

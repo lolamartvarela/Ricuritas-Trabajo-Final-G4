@@ -12,16 +12,16 @@ export const Menu = (props) => {
     }
 
     return (
-        <div className="col-lg-4 col-md-6 mb-3">
+        <div className="col-lg-3 col-md-6 mb-3 d-flex justify-content-center">
 
             {/* CARD */}
-            <div className="card mx-2"
+            <div className="card center"
                 style={
-                    {width: "18rem"}
+                    {width: "20rem"}
             }>
 
                 {/* Titulo */}
-                <h5 className="card-title mt-1 mx-4 text-responsive text-lg">
+                <h5 className="mt-2 mx-3 text-center text-responsive text-lg">
                     {
                     props ?. nombre
                 }</h5>
@@ -30,12 +30,12 @@ export const Menu = (props) => {
                 <img src={
                         props.imagen
                     }
-                    className="card-img-top container mt-1 img-fluid"
+                    className="container mt-1 img-fluid"
                     alt="Responsive image"
                     style={
                         {
-                            width: "280px",
-                            height: "200px"
+                            width: "300px",
+                            height: "220px"
                         }
                     }/> {/* Precio */}
                 <h5 className="text-responsive text-lg d-flex justify-content-end mx-4 mt-3 mb-1 fst-italic">$ {
