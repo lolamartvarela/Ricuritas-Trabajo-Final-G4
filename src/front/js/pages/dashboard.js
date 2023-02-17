@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {Context} from '../store/appContext';
 import AdminDashboard from './admin-dashboard';
 import UserDashboard from './user-dashboard';
-import MenuCreator from '../component/menu-creator';
+
 
 const Dashboard = () => {
     const {store, actions} = useContext(Context);
@@ -16,7 +16,6 @@ const Dashboard = () => {
         return (
             <>
                 <AdminDashboard/>
-                <MenuCreator/>
             </>
         )
 

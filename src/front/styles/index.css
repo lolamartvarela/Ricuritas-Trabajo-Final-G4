@@ -4,3 +4,7 @@
 .divHeight {
     min-height: 720px;
 }
+
+.buttonAdminWidth {
+    min-width: 160px !important;
+}

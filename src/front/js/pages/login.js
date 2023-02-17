@@ -42,10 +42,14 @@ export default function login() {
                         }/>
                 </div>
 
-                <div><button type="submit" className="btn btn-primary">Loguearse</button></div>
-                <div><button type="button" className="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    ¿Olvidaste tu contraseña?
-                </button></div>
+                <div>
+                    <button type="submit" className="btn btn-primary">Loguearse</button>
+                </div>
+                <div>
+                    <button type="button" className="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        ¿Olvidaste tu contraseña?
+                    </button>
+                </div>
             </form>
         }
             <div>

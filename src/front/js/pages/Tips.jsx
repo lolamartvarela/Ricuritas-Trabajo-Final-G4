@@ -8,7 +8,7 @@ function Carrusel() {
     return (
         <Carousel className='m-auto w-75 mb-5 mt-5'>
             <Carousel.Item interval={1000}>
-                <img className="d-block w-100"
+                <img className="d-block w-100 img-fluid img-thumbnail"
                     style={
                         {marginTop: "50px"}
                     }
@@ -26,7 +26,7 @@ function Carrusel() {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={500}>
-                <img className="d-block w-100"
+                <img className="d-block w-100 img-fluid img-thumbnail"
                     style={
                         {marginTop: "50px"}
                     }
@@ -45,7 +45,7 @@ function Carrusel() {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img className="d-block w-100"
+                <img className="d-block w-100 img-fluid img-thumbnail"
                     style={
                         {marginTop: "50px"}
                     }
