@@ -392,6 +392,22 @@ def login():
     is_admin = get_user.role == 'admin'
     return jsonify(access_token=access_token, is_admin=is_admin)
 
+#ENDPOINT REVIEW
+@api.route('/review/<int:user_id>', methods=['POST'])
+def create_review(user_id):
+    # Buscamos al usuario con la id especificada
+    user = User.query.get_or_404(user_id)
+
+    # Obtenemos los datos de la review desde el cuerpo de la petición
+    puntos = request.json.get('puntos')
+    comentario = request.json.get('comentario')
+
+    # Creamos la nueva review y la asociamos con el usuario
+    review = Reviews(user_id=user.id, puntos=puntos, comentario=comentario)
+    db.session.add(review)
+    db.session.commit()
+
+    return jsonify({'mensaje': 'Review creada correctamente'}), 201
 
 #? Esta ruta verifica si el user es admin o no lo es y autentifica el token al mismo tiempo
 @api.route('/get-user-role', methods=['GET'])
