@@ -29,7 +29,6 @@ const injectContext = (PassedComponent) => {
         useEffect(() => {
             state.actions.getUserRole();
             state.actions.getMenu();
-            state.actions.getUserName();
             console.log(state.store.carrito)
         }, []);
         // The initial value for the context is not null anymore, but the current state of this component,

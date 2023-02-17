@@ -20,11 +20,6 @@ const getState = ({
         },
 
         actions: {
-<<<<<<< HEAD
-
-=======
-            // ? Esta función le permite al admin borrar menús
->>>>>>> 1c3bd8bd439e6b6b79d545d8e560921fc5b35778
 
             //? Esta función le permite al admin borrar menús
             borrarMenu: async (menu_id) => {
