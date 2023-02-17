@@ -90,7 +90,6 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
-
 # ? Configuración de Flask-JWT-Extended
 app.config["JWT_SECRET_KEY"] = "super-secret"  # ! Cambiar Esto!
 jwt = JWTManager(app)

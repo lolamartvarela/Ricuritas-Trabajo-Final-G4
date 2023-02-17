@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import Guiso from "./tipsimg/guiso.jpg"
+import Guiso from "./tipsimg/verduras2.png"
 import Hamburgesa from "./tipsimg/hamburgesa.png"
 import Verduras from "./tipsimg/verduras.png"
 
