@@ -17,11 +17,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 #! Esta es la importación del Blueprint
 api = Blueprint('api', __name__)
 
-# mail = Mail(api)
-
 # ? Este es el endpoint que permite recuperar contraseñas
-
-
 @api.route("/forgotpassword", methods=["POST"])
 def forgotpassword():
     recover_email = request.json['email']
@@ -376,9 +372,7 @@ def delete_compra(compra_id):
     return {"msg": "La compra ha sido eliminada con éxito"}, 200
 
 
-# ? Aquí creamos el sistema de Login con JWT
-
-
+#? Aquí creamos el sistema de Login con JWT y devuelve el nombre del user que esté logueado
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
@@ -390,7 +384,8 @@ def login():
 
     access_token = create_access_token(identity=email)
     is_admin = get_user.role == 'admin'
-    return jsonify(access_token=access_token, is_admin=is_admin)
+    print(get_user.nombre)
+    return jsonify(access_token=access_token, is_admin=is_admin, user=get_user.nombre)
 
 #ENDPOINT REVIEW
 @api.route('/review/<int:user_id>', methods=['POST'])
@@ -425,18 +420,3 @@ def get_user_role():
         return jsonify({'role': user.role}), 201
     else:
         return jsonify({'role': user.role, 'nombre': user.nombre}), 200
-
-
-#? Esta ruta retorna el nombre del usuario correspondiente al token
-@api.route('/get-username', methods=['GET'])
-@jwt_required()
-def get_username():
-    current_user = get_jwt_identity()
-    if not current_user:
-        return jsonify({'msg': 'Token inválido'}), 401
-
-    user = User.query.filter_by(email=current_user).first()
-    if not user:
-        return jsonify({'msg': 'Usuario no encontrado'}), 404
-
-    return jsonify({'nombre': user.nombre}), 200
