@@ -1,6 +1,7 @@
 //
 import React, {useContext} from "react";
 import {Context} from "../store/appContext";
+import {FaTrash} from "react-icons/fa";
 
 export default function BorrarMenu() {
 
@@ -9,28 +10,28 @@ export default function BorrarMenu() {
 
     const mostrarMenu = () => {
         return store.cadaMenu.map((menu, index) => (
-            <li key={index}>
-                <span className="me-3">
-                    {
+            <div className="d-flex justify-content-between">
+                <div className="mx-1"
+                    key={index}>
+                    • {
                     menu.title
-                }</span>
-                -
-                <span className="me-3">
-                    {
+                }: {
                     menu.tipo_menu
-                }</span>
-                -
-                <button className="ms-3"
-                    onClick={
-                        () => actions.borrarMenu(menu.id)
-                }>Borrar</button>
-            </li>
+                } </div>
+
+                <div>
+                    <FaTrash className="mx-4"
+                        onClick={
+                            () => actions.borrarMenu(menu.id)
+                        }/>
+                </div>
+            </div>
         ));
     };
 
     return (
-        <div>
-            <h2>Lista de Menús Disponibles</h2>
+        <div className="card col-lg-6 col-md-6">
+            <h2 className="text-center mt-3 mb-3">Lista de Menús Disponibles</h2>
             <ul>{
                 mostrarMenu()
             }</ul>
