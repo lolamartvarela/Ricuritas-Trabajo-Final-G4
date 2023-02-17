@@ -15,10 +15,34 @@ const getState = ({
             message: null,
             auth: false,
             isAdmin: false,
-            cadaMenu: []
+            cadaMenu: [],
+            carrito: []
         },
 
         actions: {
+
+            // ? Esta función agrega de a un menú al carrito de compras
+            agregarAlCarrito: menu => {
+                const store = getStore();
+                setStore({
+                    carrito: [
+                        ...store.carrito,
+                        menu
+                    ]
+                });
+            },
+
+
+            // ? Esta función elimina menús del carrito de compras
+            eliminarDelCarrito: index => {
+                const store = getStore();
+                const newCarrito = [...store.carrito];
+                newCarrito.splice(index, 1);
+                setStore({
+                    carrito: newCarrito
+                });
+            },
+
 
             // ? POR FAVOR NO BORRAR: Nos ayuda a recuperar la contraseña
             recoverMail: async (email) => {
@@ -50,7 +74,7 @@ const getState = ({
 
             // ? Esta función obtiene todos los menues del backend
             getMenu: async () => {
-                await axios.get("https://3000-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/menues/").then((resp) => {
+                await axios.get("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/").then((resp) => {
                     setStore({
                         cadaMenu: resp.data
                     });
@@ -76,7 +100,7 @@ const getState = ({
                     };
 
                     const response = await Promise.all([
-                        fetch("https://3000-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/get-user-role", {
+                        fetch("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/get-user-role", {
                             method: "GET",
                             headers: headers
                         }),
@@ -148,7 +172,7 @@ const getState = ({
 
             // Acá está la función de crear un nuevo usuario
             register: (userEmail, userName, userNombre, userApellido, userPassword) => {
-                fetch("https://3000-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/admin/user/", {
+                fetch("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/admin/user/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -177,7 +201,7 @@ const getState = ({
 
             getMessage: async () => {
                 try { // fetching data from the backend
-                    const resp = await fetch("https://3000-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/hello");
+                    const resp = await fetch("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/hello");
                     const data = await resp.json();
                     setStore({
                         message: data.message

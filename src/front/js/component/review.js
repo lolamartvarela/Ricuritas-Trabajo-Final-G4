@@ -1,9 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, {useState, useContext} from "react";
+import {Context} from "../store/appContext";
+import swal from "sweetalert";
 
-const Review = () => {
-  const { store } = useContext(Context);
+export default function OpenReviewModal() {
+const { store } = useContext(Context);
   const [rating, setRating] = useState(0);
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
 
   function submitReview(e) {
     e.preventDefault();
@@ -18,32 +20,66 @@ const Review = () => {
     setReview(e.target.value);
   }
 
-  return (
-    <div>
-      <form onSubmit={submitReview}>
-        <div className="mb-3">
-          <label>
-            Calificación:
-            <select className="form-select" value={rating} onChange={handleRatingChange}>
-              <option value="0">Selecciona una calificación</option>
-              <option value="1">1 estrella</option>
-              <option value="2">2 estrellas</option>
-              <option value="3">3 estrellas</option>
-              <option value="4">4 estrellas</option>
-              <option value="5">5 estrellas</option>
-            </select>
-          </label>
+  function openReviewModal() {
+    swal({
+      title: "Escribe una reseña",
+      content: (
+        <div>
+          <form onSubmit={submitReview}>
+            <div className="mb-3">
+              <label>
+                Calificación:
+                <select
+                  className="form-select"
+                  value={rating}
+                  onChange={handleRatingChange}
+                >
+                  <option value="0"> Selecciona una calificación </option>{" "}
+                  <option value="1"> 1 estrella </option>{" "}
+                  <option value="2"> 2 estrellas </option>{" "}
+                  <option value="3"> 3 estrellas </option>{" "}
+                  <option value="4"> 4 estrellas </option>{" "}
+                  <option value="5"> 5 estrellas </option>{" "}
+                </select>{" "}
+              </label>{" "}
+            </div>{" "}
+            <div className="mb-3">
+              <label>
+                Reseña:
+                <textarea
+                  className="form-control"
+                  value={review}
+                  onChange={handleReviewChange}
+                >
+                  {" "}
+                </textarea>{" "}
+              </label>{" "}
+            </div>{" "}
+          </form>{" "}
         </div>
-        <div className="mb-3">
-          <label>
-            Reseña:
-            <textarea className="form-control" value={review} onChange={handleReviewChange}></textarea>
-          </label>
-        </div>
-        <button className="btn btn-primary" type="submit">Enviar</button>
-      </form>
-    </div>
-  );
+      ),
+      buttons: {
+        cancel: true,
+        confirm: {
+          text: "Enviar",
+          closeModal: false,
+        },
+      },
+    }).then((value) => {
+      if (value) {
+        // Lógica para enviar la revisión
+        swal("¡Gracias!", "Tu reseña ha sido enviada.", "success");
+      }
+    });
+}
+return (
+  <div>
+    <button className="btn btn-primary" onClick={openReviewModal}>
+      Escribir una reseña
+    </button>
+  </div>
+);
 };
 
-export default Review;
+  
+  
