@@ -2,9 +2,27 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 .divHeight {
-    min-height: 720px;
+  min-height: 720px;
 }
 
 .buttonAdminWidth {
-    min-width: 160px !important;
+  min-width: 160px !important;
+}
+
+.nav-link {
+  color: gray !important;
+}
+
+.nav-link:hover {
+  color: rgb(179, 179, 179) !important;
+}
+
+@media screen and (max-width: 780px) {
+  .carousel-caption h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem !important;
+  }
 }

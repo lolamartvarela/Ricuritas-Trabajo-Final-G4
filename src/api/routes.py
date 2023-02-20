@@ -387,7 +387,7 @@ def login():
     print(get_user.nombre)
     return jsonify(access_token=access_token, is_admin=is_admin, user=get_user.nombre)
 
-#ENDPOINT REVIEW
+#? Esta ruta sirve para que el usuario pueda escribir una review
 @api.route('/review/<int:user_id>', methods=['POST'])
 def create_review(user_id):
     # Buscamos al usuario con la id especificada
