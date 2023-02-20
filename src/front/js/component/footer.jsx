@@ -6,6 +6,7 @@ import {FaInstagramSquare} from "react-icons/fa";
 import {AiOutlineMail} from "react-icons/ai";
 import {Link, Navigate} from "react-router-dom";
 import {AiOutlineShop} from "react-icons/ai";
+import {BsWhatsapp} from "react-icons/bs";
 import {Context} from "../store/appContext";
 
 export const Footer = () => {
@@ -19,6 +20,14 @@ export const Footer = () => {
                 </div>
 
                 <div>
+                    <a href="https://wa.me/0059898592440" target="_blank">
+                        <i className="me-4 link-secondary"><BsWhatsapp style={
+                                {
+                                    height: "35px",
+                                    width: "35px"
+                                }
+                            }/></i>
+                    </a>
                     <Link to={"/"}
                         className="me-4 link-secondary">
                         <FaFacebookSquare style={

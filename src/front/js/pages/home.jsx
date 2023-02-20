@@ -13,6 +13,7 @@ export const Home = () => {
 
     const menuesVegetarianos = store.cadaMenu.filter((menu) => menu.tipo_menu === "Vegetariano");
 
+
     return (
         <div> {/* MAP PARA MENU COMÚN */}
             <h2 className="text-center bg-warning text-white">Menú común</h2>
@@ -39,7 +40,7 @@ export const Home = () => {
 
             {/* MAP PARA VENU VEGETARIANO */}
             <h2 className="text-center bg-warning text-white">Menú Vegetariano</h2>
-            <div className="row mt-4 mb-5 mx-5">
+            <div className="row mt-4 mb-4 mx-5">
                 {
                 menuesVegetarianos.map((menu, index) =>< Menu key = {
                     index

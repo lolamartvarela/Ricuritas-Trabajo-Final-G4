@@ -91,8 +91,8 @@ export const Navbar = () => {
                             alt="Logo"
                             style={
                                 {
-                                    width: "100px",
-                                    height: "100px"
+                                    width: "120px",
+                                    height: "120px"
                                 }
                             }/>
                     </Link>
