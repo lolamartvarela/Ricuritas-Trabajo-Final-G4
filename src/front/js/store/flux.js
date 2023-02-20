@@ -73,6 +73,22 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
+            // Fetch para crear la review 
+
+            createReview: async (userId, puntos, comentario) => {
+                try {
+                    const response = await axios.post(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/review/${userId}`, {
+                        puntos: puntos,
+                        comentario: comentario,
+                    });
+                    console.log(response.data);
+                    return response.data;
+                } catch (error) {
+                    console.log(error);
+                    throw error;
+                }
+            },
+
             // ? Esta función crea los menues en la base de datos
             createMenu: async (
                 tipoMenu,
