@@ -9,17 +9,18 @@ import {Context} from "../store/appContext";
 export const Navbar = () => {
     const {store, actions} = useContext(Context);
     const [opacity, setOpacity] = useState(1);
+    const [carritoCount, setCarritoCount] = useState(store.carrito.length);
+
+
+    useEffect(() => {
+        setCarritoCount(store.carrito.length);
+    }, [store.carrito]);
+
 
     function handleLogout() {
         actions.logout(); <Navigate to="/"/>;
     }
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return() => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
 
     const handleScroll = () => {
         if (window.pageYOffset > 0) {
@@ -59,14 +60,14 @@ export const Navbar = () => {
                         </Link>
                     ) : null
                 }
-
                     {
-                    store.auth === true ? (
+                    store.auth === true ? <div className="d-flex align-items-center">
+                        <h6 className="text-muted me-2">Bienvenide!, {
+                            localStorage.getItem("username")
+                        }</h6>
                         <Link to={"/dashboard"}
-                            className="btn btn-warning me-1">
-                            Dashboard
-                        </Link>
-                    ) : null
+                            className="btn btn-warning me-1">Dashboard</Link>
+                    </div> : null
                 }
                     {
                     store.auth === true ? (
@@ -76,66 +77,73 @@ export const Navbar = () => {
                             Logout
                         </Link>
                     ) : null
-                }
-                    {" "} </div>
+                } </div>
             </nav>
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top"
+            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top"
                 style={
                     {opacity}
             }>
-                <div className="navbar-brand mx-auto" href="#">
-                    {/* LOGO */}
-                    <div className="d-flex justify-content-center">
+                <div className="container">
+                    <Link to={"/"}
+                        className="navbar-brand">
                         <img src={Logo}
                             alt="Logo"
                             style={
                                 {
-                                    width: "160px",
-                                    height: "160px"
-
+                                    width: "100px",
+                                    height: "100px"
                                 }
                             }/>
-                    </div>
-
-                    {/* Aqui compienzan los links del navbar */}
-                    <div>
-                        <div className="collapse navbar-collapse" id="navbarNav">
-
-                            <ul className="navbar-nav" id="navbarToggleExternalContent">
-
+                    </Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav me-auto">
+                            <li className="nav-item">
                                 <Link to={"/"}
                                     className="nav-link">
                                     Inicio
                                 </Link>
-
+                            </li>
+                            <li className="nav-item">
                                 <Link to={"/ViewComeConsciente/"}
                                     className="nav-link">
                                     Come consciente
                                 </Link>
-
-                                <li className="nav-item">
-                                    <Link to={"/tips"}
+                            </li>
+                            <li className="nav-item">
+                                <Link to={"/tips"}
+                                    className="nav-link">
+                                    Tips
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                {
+                                store.auth === true && (
+                                    <Link to={"/carrito"}
                                         className="nav-link">
-                                        Tips
+                                        <span className="position-relative">
+                                            <AiOutlineShop style={
+                                                {
+                                                    width: "30px",
+                                                    height: "30px",
+                                                    color: carritoCount > 0 ? "green" : ""
+                                                }
+                                            }/> {
+                                            carritoCount > 0 && (
+                                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                    style={
+                                                        {fontSize: "12px"}
+                                                }>
+                                                    {carritoCount} </span>
+                                            )
+                                        } </span>
                                     </Link>
-                                </li>
-
-                                <li className="nav-item">
-                                    {
-                                    store.auth === true ? (
-                                        <Link to={"/carrito"}
-                                            className="nav-link">
-                                            <AiOutlineShop/>
-                                        </Link>
-                                    ) : null
-                                } </li>
-
-                                <li className="nav-item">
-                                    {/* Acá iría un dropdown para search. */}
-                                    {" "} </li>
-                            </ul>
-                        </div>
+                                )
+                            } </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

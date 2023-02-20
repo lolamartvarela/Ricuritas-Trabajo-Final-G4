@@ -203,7 +203,9 @@ const getState = ({
 
             logout: () => {
                 localStorage.removeItem("token");
-                localStorage.removeItem("admin");
+                localStorage.removeItem("username");
+                localStorage.removeItem("idDinamica");
+
                 setStore({
                     auth: false,
                 });
