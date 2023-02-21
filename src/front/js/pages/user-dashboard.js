@@ -1,5 +1,5 @@
 import React from "react";
-import OpenReviewModal from "../component/review";
+import showRatingAlert from "../component/review";
 
 export default function UserDashboard() {
   return (
@@ -69,7 +69,9 @@ export default function UserDashboard() {
             </div>
           </div>
         </div>
-        {<OpenReviewModal />}
+        <button className="btn btn-primary" onClick={showRatingAlert}>
+  Calificar servicio
+</button>
       </div>
       {/* <div className="container">
             <h2 className="text-center mb-5">February 2023</h2>

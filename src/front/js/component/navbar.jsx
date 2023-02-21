@@ -39,17 +39,6 @@ export const Navbar = () => {
         };
     }, []);
 
-
-    const handleScroll = () => {
-        if (window.pageYOffset > 0) {
-            setOpacity(0.8);
-        } else {
-            setOpacity(1);
-        }
-    };
-
-
-
     return (
         <>
             <nav className="navbar bg-body-tertiary">

@@ -1,85 +1,79 @@
-import React, {useState, useContext} from "react";
-import {Context} from "../store/appContext";
-import swal from "sweetalert";
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { FaStar } from 'react-icons/fa';
+import swal from 'sweetalert';
 
-export default function OpenReviewModal() {
-const { store } = useContext(Context);
+const Rating = () => {
   const [rating, setRating] = useState(0);
-  const [review, setReview] = useState("");
+  const [hover, setHover] = useState(null);
+  const handleClick = (value) => {
+    setRating(value);
+  };
 
-  function submitReview(e) {
-    e.preventDefault();
-    // Lógica para enviar la revisión
-  }
+  const content = (
+    <div>
+      <div className="d-flex">
+        {[...Array(5)].map((star, index) => {
+          const ratingValue = index + 1;
+          return (
+            <label key={ratingValue}>
+              <input
+                type="radio"
+                name="rating"
+                value={ratingValue}
+                onClick={() => handleClick(ratingValue)}
+              />
+              <FaStar
+                className="star"
+                color={ratingValue <= (hover || rating) ? '#ffc107' : '#666666'}
+                size={30}
+                onMouseEnter={() => setHover(ratingValue)}
+                onMouseLeave={() => setHover(null)}
+              />
+            </label>
+          );
+        })}
+      </div>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Comments</label>
+      </div>
+    </div>
+  );
 
-  function handleRatingChange(e) {
-    setRating(parseInt(e.target.value, 10));
-  }
-
-  function handleReviewChange(e) {
-    setReview(e.target.value);
-  }
-
-  function openReviewModal() {
-    swal({
-      title: "Escribe una reseña",
-      content: (
-        <div>
-          <form onSubmit={submitReview}>
-            <div className="mb-3">
-              <label>
-                Calificación:
-                <select
-                  className="form-select"
-                  value={rating}
-                  onChange={handleRatingChange}
-                >
-                  <option value="0"> Selecciona una calificación </option>{" "}
-                  <option value="1"> 1 estrella </option>{" "}
-                  <option value="2"> 2 estrellas </option>{" "}
-                  <option value="3"> 3 estrellas </option>{" "}
-                  <option value="4"> 4 estrellas </option>{" "}
-                  <option value="5"> 5 estrellas </option>{" "}
-                </select>{" "}
-              </label>{" "}
-            </div>{" "}
-            <div className="mb-3">
-              <label>
-                Reseña:
-                <textarea
-                  className="form-control"
-                  value={review}
-                  onChange={handleReviewChange}
-                >
-                  {" "}
-                </textarea>{" "}
-              </label>{" "}
-            </div>{" "}
-          </form>{" "}
-        </div>
-      ),
-      buttons: {
-        cancel: true,
-        confirm: {
-          text: "Enviar",
-          closeModal: false,
-        },
-      },
-    }).then((value) => {
-      if (value) {
-        // Lógica para enviar la revisión
-        swal("¡Gracias!", "Tu reseña ha sido enviada.", "success");
-      }
-    });
-}
-return (
-  <div>
-    <button className="btn btn-primary" onClick={openReviewModal}>
-      Escribir una reseña
-    </button>
-  </div>
-);
+  return content;
 };
 
-  
-  
+const showRatingAlert = () => {
+  const content = document.createElement('div');
+  ReactDOM.render(<Rating />, content);
+
+  swal({
+    title: 'Califica nuestro servicio',
+    content: content,
+    buttons: {
+      confirm: {
+        text: 'Enviar',
+        value: null,
+        visible: true,
+        className: '',
+        closeModal: true,
+      },
+    },
+    closeOnClickOutside: true,
+  }).then(() => {
+    swal({
+      title: '¡Gracias por calificar nuestro servicio!',
+      icon: 'success',
+      button: {
+        text: 'Ok',
+        value: null,
+        visible: true,
+        className: '',
+        closeModal: true,
+      },
+    });
+  });
+};
+
+export default showRatingAlert;

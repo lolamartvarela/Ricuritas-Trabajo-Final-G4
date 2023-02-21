@@ -45,14 +45,7 @@ const getState = ({
             agregarAlCarrito: (menu) => {
                 const store = getStore();
                 setStore({
-<<<<<<< HEAD
-                    carrito: [
-                        ...store.carrito,
-                        menu
-                    ]
-=======
                     carrito: [...store.carrito, menu],
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
                 });
             },
 
@@ -62,21 +55,12 @@ const getState = ({
                 const newCarrito = [...store.carrito];
                 newCarrito.splice(index, 1);
                 setStore({
-<<<<<<< HEAD
-                    carrito: newCarrito
-=======
                     carrito: newCarrito,
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
                 });
             },
 
             // ? POR FAVOR NO BORRAR: Nos ayuda a recuperar la contraseña
             recoverMail: async (email) => {
-<<<<<<< HEAD
-                axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {
-                    email: email
-                }).then(res => console.log(res.data)).catch(err => console.log(err));
-=======
                 axios
                     .post(
                         "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {
@@ -85,7 +69,6 @@ const getState = ({
                     )
                     .then((res) => console.log(res.data))
                     .catch((err) => console.log(err));
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
             },
 
             // ? Esta función crea los menues en la base de datos
@@ -118,13 +101,6 @@ const getState = ({
 
             // ? Esta función obtiene todos los menues del backend
             getMenu: async () => {
-<<<<<<< HEAD
-                await axios.get("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/").then((resp) => {
-                    setStore({
-                        cadaMenu: resp.data
-                    });
-                });
-=======
                 await axios
                     .get(
                         "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/"
@@ -134,7 +110,6 @@ const getState = ({
                             cadaMenu: resp.data,
                         });
                     });
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
             },
 
             // ? Esta función compara el token del usuario actual con el token válido en el JWT del backend
@@ -145,11 +120,7 @@ const getState = ({
                         setStore({
                             auth: false,
                             isAdmin: false,
-<<<<<<< HEAD
-                            userType: 0
-=======
                             userType: 0,
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
                         });
                         return;
                     }
@@ -173,11 +144,7 @@ const getState = ({
                         setStore({
                             auth: true,
                             isAdmin: true,
-<<<<<<< HEAD
-                            userType: 2
-=======
                             userType: 2,
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
                         });
                     } else if (res.status === 200) {
                         const data = await res.json();
@@ -190,11 +157,7 @@ const getState = ({
                         setStore({
                             auth: false,
                             isAdmin: false,
-<<<<<<< HEAD
-                            userType: 0
-=======
                             userType: 0,
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
                         });
                     }
                 } catch (error) {
@@ -204,26 +167,8 @@ const getState = ({
 
             // ? Acá empieza el fetch que nos permite conectar con el BackEnd
             login: (userEmail, userPassword) => {
-<<<<<<< HEAD
-                fetch("https://3001-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: userEmail,
-                        password: userPassword
-                    })
-                }).then((response) => {
-                    console.log(response.status);
-                    if (response.status === 200) {
-                        setStore({
-                            auth: true
-                        });
-                    }
-=======
                 fetch(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/login", {
+                        "https://3001-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/login", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -241,7 +186,6 @@ const getState = ({
                                 auth: true,
                             });
                         }
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
 
                         return response.json();
                     })
@@ -258,41 +202,13 @@ const getState = ({
                 localStorage.removeItem("token");
                 localStorage.removeItem("admin");
                 setStore({
-<<<<<<< HEAD
-                    auth: false
-=======
                     auth: false,
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
                 });
             },
 
             // ? Acá termina el fetch que nos permite conectar con el BackEnd
 
             // Acá está la función de crear un nuevo usuario
-<<<<<<< HEAD
-            register: (userEmail, userName, userNombre, userApellido, userPassword) => {
-                fetch("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/admin/user/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: userEmail,
-                        user_name: userName,
-                        nombre: userNombre,
-                        apellido: userApellido,
-                        password: userPassword
-                    })
-                }).then((response) => {
-                    console.log(response.status);
-                    if (response.status === 200) {
-                        setStore({
-                            auth: true
-                        });
-                    }
-                    return response.json();
-                }).catch((err) => swal("Algo salió mal", "No se ha podido crear un nuevo usuario, intentelo de nuevo"));
-=======
             register: (
                 userEmail,
                 userName,
@@ -301,7 +217,7 @@ const getState = ({
                 userPassword
             ) => {
                 fetch(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/admin/user/", {
+                        "https://3001-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/admin/user/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -330,7 +246,6 @@ const getState = ({
                             "No se ha podido crear un nuevo usuario, intentelo de nuevo"
                         )
                     );
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
             },
 
             exampleFunction: () => {
@@ -345,11 +260,7 @@ const getState = ({
                     );
                     const data = await resp.json();
                     setStore({
-<<<<<<< HEAD
-                        message: data.message
-=======
                         message: data.message,
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
                     });
                     // don't forget to return something, that is how the async resolves
                     return data;
@@ -365,31 +276,17 @@ const getState = ({
                 // we have to loop the entire demo array to look for the respective index
                 // and change its color
                 const demo = store.demo.map((elm, i) => {
-<<<<<<< HEAD
-                    if (i === index)
-                        elm.background = color;
-
-
-=======
                     if (i === index) elm.background = color;
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
 
                     return elm;
                 });
 
                 // reset the global store
                 setStore({
-<<<<<<< HEAD
-                    demo: demo
-                });
-            }
-        }
-=======
                     demo: demo,
                 });
             },
         },
->>>>>>> d5f8d39f04922809183489c304ec0f3cd024a408
     };
 };
 
