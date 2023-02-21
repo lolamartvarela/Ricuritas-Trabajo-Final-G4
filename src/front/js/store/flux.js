@@ -123,8 +123,7 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
-            // Fetch para crear la review
-
+            //? Fetch para crear la review
             createReview: async (username, puntos, comentario) => {
                 try {
                     const response = await axios.post(
