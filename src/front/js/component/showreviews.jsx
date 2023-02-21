@@ -41,27 +41,29 @@ const ShowReviews = () => {
     return (
         <div>
             <h2>Reseñas de nuestros clientes</h2>
-            <ul> {
+            <div className="m-auto w-50">
+                {
                 reviews.map((review) => (
-                    <li key={
-                        review.id
-                    }>
-                        <div className="d-flex align-items-center mb-2">
-                            <h5 className="me-2">
-                                {
-                                review.username
-                            }</h5>
-                            <StarRating puntos={
-                                review.puntos
-                            }/>
+                    <div key={
+                            review.id
+                        }
+                        className="card mb-3">
+                        <div className="card-body">
+                            <div className="d-flex mb-2">
+                                <h5 className="card-title me-2">Cliente: {
+                                    review.username
+                                }</h5>
+                                <StarRating puntos={
+                                    review.puntos
+                                }/>
+                            </div>
+                            <p className="card-text">Comentario: {
+                                review.comentario
+                            }</p>
                         </div>
-                        <p className="mb-0">
-                            {
-                            review.comentario
-                        }</p>
-                    </li>
+                    </div>
                 ))
-            } </ul>
+            } </div>
         </div>
     );
 }
