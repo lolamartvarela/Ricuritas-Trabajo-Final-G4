@@ -12,7 +12,6 @@ class User(db.Model):
     password = db.Column(db.String(100) , nullable=False)
     role = db.Column(db.String(120), default='user')
     ratings = db.relationship('Reviews', backref='user', lazy=True)
-    compras = db.relationship('Compras', backref='user', lazy=True)
     address = db.relationship('Address', backref='user', lazy=True)
     
     def __repr__(self):
@@ -36,7 +35,6 @@ class Menues(db.Model):
     description = db.Column(db.String(1000) , nullable=False)
     price = db.Column(db.Integer, nullable=False)
     url = db.Column(db.String(250), nullable=False)
-    compras = db.relationship('Compras', backref='menues', lazy=True)
     
 
     
@@ -57,11 +55,9 @@ class Menues(db.Model):
 
 class Compras(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    monto = db.Column(db.Integer, nullable=False)
-    fecha = db.Column(db.Date, default=date.today, nullable=False)
-    pago = db.Column(db.String(100) , nullable=False)
-    menu_name = db.Column(db.Integer , db.ForeignKey('menues.id'))
+    items = db.Column(db.String(255))
+    total_price = db.Column(db.Float)
+    username = db.Column(db.String(50))
     
     def __repr__(self):
         return '<Compras %r>' % self.id
@@ -69,11 +65,9 @@ class Compras(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "user_id": self.user_id,
-            "monto": self.monto,
-            "fecha": self.fecha,
-            "pago": self.pago,
-            "menu_name": self.menu_name,
+            "items": self.items,
+            "total_price": self.total_price,
+            "username": self.username,
         }
     
 

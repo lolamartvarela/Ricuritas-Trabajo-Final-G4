@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 // import PropTypes from "prop-types";
 import {useParams} from "react-router-dom";
 import {Context} from "../store/appContext.js";
-import {Link, useHistory} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 
 export const ViewCadaMenu = () => {
     const {store, actions} = useContext(Context);
@@ -12,9 +12,8 @@ export const ViewCadaMenu = () => {
         const id = localStorage.getItem('idDinamica');
         console.log('id:', id);
         await actions.agregarAlCarrito(id);
-        console.log(store.carrito)
-        console.log(store.cadaMenu)
-        history.push("/carrito");
+        console.log(store.carrito);
+        console.log(store.cadaMenu); <Navigate to="/"/>;
     }
 
     // VISTA CON LA INFO DE CADA MENU CARGADA EN LA BASE DE DATOS

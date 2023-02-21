@@ -18,6 +18,7 @@ export const Navbar = () => {
 
 
     function handleLogout() {
+        actions.clearCart()
         actions.logout(); <Navigate to="/"/>;
     }
 
@@ -43,44 +44,40 @@ export const Navbar = () => {
     return (
         <>
             <nav className="navbar bg-body-tertiary">
-                <div className="col-12 d-flex justify-content-end px-5">
+                <div className="col-12 d-flex justify-content-end px-2 px-md-5">
                     {
                     store.auth === false ? (
                         <Link to={"/login"}
-                            className="btn btn-warning me-1">
-                            Login
-                        </Link>
+                            className="btn btn-warning rounded-pill me-1">Logueárse</Link>
                     ) : null
                 }
                     {
                     store.auth === false ? (
                         <Link to={"/register"}
-                            className="btn btn-warning me-1">
-                            Register
-                        </Link>
+                            className="btn btn-warning rounded-pill me-1">Registrarse</Link>
                     ) : null
                 }
                     {
-                    store.auth === true ? <div className="d-flex align-items-center">
-                        <h6 className="text-muted me-2">Bienvenide!, {
-                            localStorage.getItem("username")
-                        }</h6>
-                        <Link to={"/dashboard"}
-                            className="btn btn-warning me-1">Dashboard</Link>
-                    </div> : null
+                    store.auth === true ? (
+                        <div className="d-flex align-items-center">
+                            <h6 className="text-muted me-2">Bienvenide!, {
+                                localStorage.getItem("username")
+                            }</h6>
+                            <Link to={"/dashboard"}
+                                className="btn btn-warning rounded-pill me-1">Panel</Link>
+                        </div>
+                    ) : null
                 }
                     {
                     store.auth === true ? (
                         <Link to={"/"}
-                            className="btn btn-warning me-1"
-                            onClick={handleLogout}>
-                            Logout
-                        </Link>
+                            className="btn btn-warning rounded-pill me-1"
+                            onClick={handleLogout}>Salir</Link>
                     ) : null
                 } </div>
             </nav>
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top"
+            <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top"
                 style={
                     {opacity}
             }>

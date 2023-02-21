@@ -21,9 +21,9 @@ export default function login() {
 
     return (
         <> {
-            store.auth === true ? <Navigate to="/"/> : <form className='container w-25 text-center divHeight'
+            store.auth === true ? <Navigate to="/"/> : <form className="container-sm text-center divHeight w-75"
                 onSubmit={enviarDatos}>
-                <h4 className='m-5'>Inicio de sesión</h4>
+                <h4 className="m-5">Inicio de sesión</h4>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -42,11 +42,11 @@ export default function login() {
                         }/>
                 </div>
 
-                <div>
-                    <button type="submit" className="btn btn-primary">Loguearse</button>
+                <div className="d-grid gap-2">
+                    <button type="submit" className="btn btn-primary btn-block">Loguearse</button>
                 </div>
-                <div>
-                    <button type="button" className="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div className="d-grid gap-2">
+                    <button type="button" className="btn btn-secondary btn-block mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         ¿Olvidaste tu contraseña?
                     </button>
                 </div>
