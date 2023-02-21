@@ -15,6 +15,7 @@ import injectContext from "./store/appContext";
 import {Navbar} from "./component/navbar.jsx";
 import {Footer} from "./component/footer.jsx";
 
+import PayConfirm from "./component/payconfirm.jsx";
 
 import {ViewCadaMenu} from "./pages/ViewCadaMenu.jsx";
 import {ViewCadaMenuVegano} from "./pages/ViewCadaMenuVegano.jsx";
@@ -61,6 +62,8 @@ const Layout = () => {
                             path="/dashboard"/>
                         <Route element={<Register/>}
                             path="/register"/>
+                        <Route element={<PayConfirm/>}
+                            path="/route-to-pay-12345"/>
                         <Route element={<Single/>}
                             path="/single/:theid"/>
                         <Route element={

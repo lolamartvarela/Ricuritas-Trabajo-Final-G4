@@ -43,6 +43,53 @@ const getState = ({
                     });
             },
 
+            //? Esta función borra todos los elementos de adentro del carrito de compras
+            clearCart: () => {
+                const store = getStore();
+                setStore({
+                    ...store,
+                    carrito: [],
+                });
+            },
+
+
+            //? Esta función permite enviar cada orden de compras a la base de datos
+            guardarInformacion: (items, totalPrice, username) => {
+                axios.post('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/', {
+                        items: items,
+                        totalPrice: totalPrice,
+                        username: username
+                    })
+                    .then(response => {
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            },
+
+            //? Esta función permite obtener todas las órdenes desde la base de datos
+            obtenerCompras: async () => {
+                try {
+                    const response = await axios.get('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/');
+                    return response.data;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            //? Esta función permite borrar de una orden por su id
+            borrarCompra: async (id) => {
+                try {
+                    const response = await axios.delete(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/${id}`);
+                    return response.data;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+
+
             // ? Esta función agrega de a un menú al carrito de compras
             agregarAlCarrito: (menu) => {
                 const store = getStore();
@@ -238,7 +285,7 @@ const getState = ({
                 userPassword
             ) => {
                 fetch(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/admin/user/", {
+                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/user/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",

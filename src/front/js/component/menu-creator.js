@@ -42,20 +42,22 @@ export default function MenuCreator() {
 
 
     return (
-        <form className='container w-50'
+        <form className='container-sm mx-auto'
             onSubmit={enviarDatos}>
             <div>
                 <h1>Puede crear un nuevo menú</h1>
             </div>
             <div className="mb-3">
                 <label htmlFor="MenuType" className="form-label">Tipo de Menú</label>
-                <input type="text" id="MenuType" className="form-control" placeholder="Tipo de Menú"
+                <select id="MenuType" className="form-control"
                     value={tipoMenu}
                     onChange={
                         (e) => setTipoMenu(e.target.value)
-                    }/>
+                }>
+                    <option value="Común">Común</option>
+                    <option value="Vegetariano">Vegetariano</option>
+                </select>
             </div>
-
 
             <div className="mb-3">
                 <label htmlFor="MenuName" className="form-label">Nombre de Menú</label>
@@ -77,11 +79,14 @@ export default function MenuCreator() {
 
             <div className="mb-3">
                 <label htmlFor="MenuPrice" className="form-label">Precio</label>
-                <span>$</span><input type="text" id="MenuPrice" className="form-control" placeholder="Precio de Menú"
-                    value={precioMenu}
-                    onChange={
-                        (e) => setPrecioMenu(e.target.value)
-                    }/>
+                <div className="input-group">
+                    <span className="input-group-text">$</span>
+                    <input type="text" id="MenuPrice" className="form-control" placeholder="Precio de Menú"
+                        value={precioMenu}
+                        onChange={
+                            (e) => setPrecioMenu(e.target.value)
+                        }/>
+                </div>
             </div>
 
             <div className="mb-3">
@@ -95,7 +100,6 @@ export default function MenuCreator() {
             </div>
 
             <button type="submit" className="btn btn-primary">Submit</button>
-
         </form>
     )
 }
