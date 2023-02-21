@@ -4,6 +4,7 @@ import {Menu} from "../component/cardMenu.jsx"
 
 
 import "../../styles/home.css";
+import ShowReviews from "../component/showreviews.jsx";
 
 
 export const Home = () => {
@@ -58,6 +59,7 @@ export const Home = () => {
                     menu.price
                 } />)
             } </div>
+            <ShowReviews/>
         </div>
 
 
