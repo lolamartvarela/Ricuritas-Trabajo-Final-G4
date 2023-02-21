@@ -55,7 +55,7 @@ export const ViewComeConsciente = () => {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <img className="img-fluid img-thumbnail"
+                        <img className="img-fluid"
                             src={"https://media.istockphoto.com/id/147032262/es/foto/pir%C3%A1mide-de-comida-con-verdadero-de-la-comida-se-coloca-en-un-c%C3%ADrculo.jpg?s=612x612&w=0&k=20&c=w66FItxrM-zwd7uOAj1eig7xv5CUT7M6XendzavkPbw="}
                             alt="..."/>
                     </div>

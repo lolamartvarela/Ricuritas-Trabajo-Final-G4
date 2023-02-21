@@ -21,10 +21,10 @@ export const Menu = (props) => {
             }>
 
                 {/* Titulo */}
-                <h5 className="mt-2 mx-3 text-center text-lg">
+                <h4 className="mt-3 mb-4 mx-3 text-center text-lg">
                     {
                     props ?. nombre
-                } </h5>
+                } </h4>
 
                 {/* Imagen */}
                 <img src={
@@ -41,7 +41,7 @@ export const Menu = (props) => {
                 <div className="card-body d-flex justify-content-center">
                     <Link to={"/ViewCadaMenu/"}
                         onClick={changeId}
-                        className="btn btn-light border mt-2 mx-1 mb-2">
+                        className="btn bgbuttonverde text-white rounded-pill mt-1 mx-1 mb-2">
                         Ver Más!
                     </Link>
                 </div>

@@ -6,6 +6,7 @@ import {FaInstagramSquare} from "react-icons/fa";
 import {AiOutlineMail} from "react-icons/ai";
 import {Link, Navigate} from "react-router-dom";
 import {AiOutlineShop} from "react-icons/ai";
+import {BsWhatsapp} from "react-icons/bs";
 import {Context} from "../store/appContext";
 
 export const Footer = () => {
@@ -15,12 +16,20 @@ export const Footer = () => {
         <footer className="text-center text-lg-start bg-white text-muted">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                 <div className="me-5 d-none d-lg-block">
-                    <span>Síguenos en nuestras redes sociales:</span>
+                    <h5 className="textcolor">Síguenos en nuestras redes sociales:</h5>
                 </div>
 
-                <div>
+                <div className="d-flex">
+                    {/* <a href="https://wa.me/0059898592440" target="_blank">
+                        <i className="me-4 link-secondary"><BsWhatsapp style={
+                                {
+                                    height: "35px",
+                                    width: "35px"
+                                }
+                            }/></i>
+                    </a> */}
                     <Link to={"/"}
-                        className="me-4 link-secondary">
+                        className="nav-link">
                         <FaFacebookSquare style={
                             {
                                 height: "40px",
@@ -29,7 +38,7 @@ export const Footer = () => {
                         }/>
                     </Link>
                     <Link to={"/"}
-                        className="me-4 link-secondary">
+                        className="nav-link">
                         <FaTwitterSquare style={
                             {
                                 height: "40px",
@@ -38,7 +47,7 @@ export const Footer = () => {
                         }/>
                     </Link>
                     <Link to={"/"}
-                        className="me-4 link-secondary">
+                        className="nav-link">
                         <FaInstagramSquare style={
                             {
                                 height: "40px",
@@ -65,9 +74,9 @@ export const Footer = () => {
                         </div>
 
                         <div className="col-6 col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <p className="text-grey">
+                            <p>
                                 <Link to={"/"}
-                                    className="nav-link nav-item">
+                                    className="nav-link">
                                     Inicio
                                 </Link>
                             </p>
@@ -81,6 +90,12 @@ export const Footer = () => {
                                 <Link to={"/tips"}
                                     className="nav-link">
                                     Tips
+                                </Link>
+                            </p>
+                            <p>
+                                <Link to={"/ViewSobreNosotros"}
+                                    className="nav-link">
+                                    Sobre nosotros
                                 </Link>
                             </p>
                             {
@@ -99,7 +114,7 @@ export const Footer = () => {
                             ) : null
                         } </div>
                         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 className="text-uppercase fw-bold mb-4">Ubicación</h6>
+                            <h6 className="text-uppercase fw-bold mb-4 textcolor">Ubicación</h6>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.81212399986518!2d-55.23454334387574!3d-34.376073268089975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x950aba257fb6bc63%3A0xf650e57c6eceadf!2sIntendencia%20Departamental%20de%20Lavalleja!5e0!3m2!1ses!2suy!4v1676058743881!5m2!1ses!2suy" width="100%" height="250"
                                 style={
                                     {border: "0"}
@@ -111,7 +126,7 @@ export const Footer = () => {
 
 
                         <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <h6 className="text-uppercase fw-bold mb-4">Info de Contacto</h6>
+                            <h6 className="text-uppercase fw-bold mb-4 textcolor">Info de Contacto</h6>
                             <p>
                                 <i className="fas fa-home me-3 text-secondary"></i>
                                 Calle Falsa 123
@@ -131,14 +146,14 @@ export const Footer = () => {
                 </div>
             </section>
 
-            <div className="text-center p-4"
+            <div className="text-center p-4 text-success"
                 style={
                     {backgroundColor: "rgba(0, 0, 0, 0.025)"}
             }>
                 © {
                 new Date().getFullYear()
             }
-                <span className="ms-2">Ricuritas</span>
+                <span className="ms-2 text-success">Ricuritas</span>
             </div>
 
         </footer>

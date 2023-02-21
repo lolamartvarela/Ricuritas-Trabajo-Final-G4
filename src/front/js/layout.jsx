@@ -20,6 +20,7 @@ import PayConfirm from "./component/payconfirm.jsx";
 import {ViewCadaMenu} from "./pages/ViewCadaMenu.jsx";
 import {ViewCadaMenuVegano} from "./pages/ViewCadaMenuVegano.jsx";
 import {ViewComeConsciente} from "./pages/ViewComeConsciente.jsx";
+import {ViewSobreNosotros} from "./pages/ViewSobreNosotros.jsx";
 import Carrusel from "./pages/Tips.jsx";
 import Perfil from "./pages/perfil.jsx";
 import CarritoCompras from "./pages/carrito";
@@ -44,6 +45,8 @@ const Layout = () => {
                             element={<CarritoCompras/>}/>
                         <Route path="/ViewComeConsciente"
                             element={<ViewComeConsciente/>}/>
+                        <Route path="/ViewSobreNosotros"
+                            element={<ViewSobreNosotros/>}/>
                         <Route path="/ViewCadaMenu"
                             element={<ViewCadaMenu/>}/>
                         <Route path="/ViewCadaMenuVegano"
