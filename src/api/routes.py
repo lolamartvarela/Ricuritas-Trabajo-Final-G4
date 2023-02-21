@@ -346,19 +346,14 @@ def get_all_compras():
 # * Esta función nos permite añadir una nueva compra mediante el método POST
 @api.route('/compras', methods=['POST'])
 def add_compra():
-    monto = request.json.get('monto')
-    fecha = request.json.get('fecha')
-    pago = request.json.get('pago')
-
-    new_compra = Compras(monto=monto, fecha=fecha, pago=pago)
-
-    try:
-        db.session.add(new_compra)
-        db.session.commit()
-        return jsonify(new_compra.serialize()), 201
-    except Exception as e:
-        db.session.rollback()
-        return str(e), 500
+    data = request.get_json()
+    items = data['items']
+    total_price = data['totalPrice']
+    username = data['username']
+    compra = Compras(items=items, total_price=total_price, username=username)
+    db.session.add(compra)
+    db.session.commit()
+    return jsonify({'message': 'La compra ha sido guardada correctamente.'})
 
 
 # * Esta función nos permite eliminar una compra mediante su ID usando el método DELETE
