@@ -92,6 +92,12 @@ export const Footer = () => {
                                     Tips
                                 </Link>
                             </p>
+                            <p>
+                                <Link to={"/ViewSobreNosotros"}
+                                    className="nav-link">
+                                    Sobre nosotros
+                                </Link>
+                            </p>
                             {
                             store.auth === true ? (
                                 <p>
