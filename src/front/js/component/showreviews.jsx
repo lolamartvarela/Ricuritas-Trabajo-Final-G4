@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-export default function ShowReviews() {
+const ShowReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
@@ -17,22 +17,46 @@ export default function ShowReviews() {
         fetchReviews();
     }, []);
 
+    const StarRating = ({puntos}) => {
+        const maxPuntos = 5;
+        const estrellas = [];
+        for (let i = 1; i <= maxPuntos; i++) {
+            if (i <= puntos) {
+                estrellas.push (
+                    <i key={i}
+                        className="fas fa-star"></i>
+                );
+            } else {
+                estrellas.push (
+                    <i key={i}
+                        className="far fa-star"></i>
+                );
+            }
+        }
+        return (
+            <div> {estrellas} </div>
+        );
+    }
+
     return (
         <div>
-            <h2>Reseñas de nuestros clientes
-            </h2>
+            <h2>Reseñas de nuestros clientes</h2>
             <ul> {
                 reviews.map((review) => (
                     <li key={
                         review.id
                     }>
-                        <p>Username: {
-                            review.username
-                        }</p>
-                        <p>Puntos: {
-                            review.puntos
-                        }</p>
-                        <p>Comentario: {
+                        <div className="d-flex align-items-center mb-2">
+                            <h5 className="me-2">
+                                {
+                                review.username
+                            }</h5>
+                            <StarRating puntos={
+                                review.puntos
+                            }/>
+                        </div>
+                        <p className="mb-0">
+                            {
                             review.comentario
                         }</p>
                     </li>
@@ -41,3 +65,5 @@ export default function ShowReviews() {
         </div>
     );
 }
+
+export default ShowReviews;
