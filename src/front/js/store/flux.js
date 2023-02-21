@@ -20,7 +20,6 @@ const getState = ({
         },
 
         actions: {
-
             //? Esta función le permite al admin borrar menús
             borrarMenu: async (menu_id) => {
                 const store = getStore();
@@ -52,18 +51,20 @@ const getState = ({
                 });
             },
 
-
             //? Esta función permite enviar cada orden de compras a la base de datos
             guardarInformacion: (items, totalPrice, username) => {
-                axios.post('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/', {
-                        items: items,
-                        totalPrice: totalPrice,
-                        username: username
-                    })
-                    .then(response => {
+                axios
+                    .post(
+                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/", {
+                            items: items,
+                            totalPrice: totalPrice,
+                            username: username,
+                        }
+                    )
+                    .then((response) => {
                         console.log(response);
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         console.log(error);
                     });
             },
@@ -71,7 +72,9 @@ const getState = ({
             //? Esta función permite obtener todas las órdenes desde la base de datos
             obtenerCompras: async () => {
                 try {
-                    const response = await axios.get('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/');
+                    const response = await axios.get(
+                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/"
+                    );
                     return response.data;
                 } catch (error) {
                     console.log(error);
@@ -81,14 +84,14 @@ const getState = ({
             //? Esta función permite borrar de una orden por su id
             borrarCompra: async (id) => {
                 try {
-                    const response = await axios.delete(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/${id}`);
+                    const response = await axios.delete(
+                        `https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/${id}`
+                    );
                     return response.data;
                 } catch (error) {
                     console.log(error);
                 }
             },
-
-
 
             // ? Esta función agrega de a un menú al carrito de compras
             agregarAlCarrito: (menu) => {
@@ -120,14 +123,17 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
-            // Fetch para crear la review 
+            // Fetch para crear la review
 
-            createReview: async (userId, puntos, comentario) => {
+            createReview: async (username, puntos, comentario) => {
                 try {
-                    const response = await axios.post(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/review/${userId}`, {
-                        puntos: puntos,
-                        comentario: comentario,
-                    });
+                    const response = await axios.post(
+                        `https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/reviews/`, {
+                            username: username,
+                            puntos: puntos,
+                            comentario: comentario,
+                        }
+                    );
                     console.log(response.data);
                     return response.data;
                 } catch (error) {

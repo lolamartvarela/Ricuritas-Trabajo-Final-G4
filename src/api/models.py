@@ -11,7 +11,6 @@ class User(db.Model):
     email = db.Column(db.String(250), unique= True, nullable=False)
     password = db.Column(db.String(100) , nullable=False)
     role = db.Column(db.String(120), default='user')
-    ratings = db.relationship('Reviews', backref='user', lazy=True)
     address = db.relationship('Address', backref='user', lazy=True)
     
     def __repr__(self):
@@ -97,10 +96,10 @@ class Address(db.Model):
 
 class Reviews(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    username = db.Column(db.String(50), nullable=False)
     puntos = db.Column(db.Integer, nullable=False)
     comentario = db.Column(db.String(400) , nullable=False)
-    menu_name = db.Column(db.Integer, db.ForeignKey('menues.id'))
+
     
     def __repr__(self):
         return '<Reviews %r>' % self.id
@@ -108,10 +107,9 @@ class Reviews(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "user_id": self.user_id,
+            "username": self.username,
             "puntos": self.puntos,
             "comentario": self.comentario,
-            "menu_name": self.menu_name,
         }
 
 
