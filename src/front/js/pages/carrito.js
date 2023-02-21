@@ -1,10 +1,41 @@
 //
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import GooglePayButton from "@google-pay/button-react";
 import { Context } from "../store/appContext";
+import { FaTrash } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+
+
 
 const CarritoCompras = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+  const [userName, setUsername] = useState("");
+
+  useEffect(() => {
+    setUsername(localStorage.getItem('username'));
+}, [store.carrito]);
+
+
+  console.log(store.carrito)
+
+  const misterClick = () => {
+    const menuSelected = store.cadaMenu.filter((item, index) =>
+      store.carrito.map(Number).includes(index)
+    );
+    const totalPrice = menuSelected.reduce((acc, item) => acc + item.price, 0);
+    // const username = localStorage.getItem('username');
+  
+    // Llamada a la función de Flux que guardará la información en la base de datos
+    actions.guardarInformacion(menuSelected.map(item => item.title).join(', '), totalPrice, userName);
+  
+//Con esto llamamos a la función que nos permite borrar todos los menús de adentro del Flux
+actions.clearCart()
+
+    // Redirección a la ruta "/route-to-pay-12345"
+    navigate('/route-to-pay-12345');
+  };
+
 
   const menuSelected = store.cadaMenu.filter((item, index) =>
     store.carrito.map(Number).includes(index)
@@ -12,24 +43,30 @@ const CarritoCompras = () => {
   const total = menuSelected.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <div className="d-flex justify-content-end row col-4 mx-4 mt-5 mb-5">
-      <h2 className="mx-3 mb-2">Carrito de compras</h2>
-      <ul className="mb-3">
+    <div className="card d-flex justify-content-end row mx-4 col-4 mt-5 mb-5">
+      <h2 className="text-center mt-3 mb-3">Carrito de compras</h2>
+      <div className="mx-3 mb-3">
         {menuSelected.map((item) => (
-          <li key={item.id}>
-            <span>{item.title}</span>
-            <span> $ {item.price} </span>
-            <button onClick={() => actions.eliminarDelCarrito(item.index)}> 
-              <i className="fas fa-trash"></i>
-            </button>
-          </li>
+          <div className="d-flex justify-content-between">
+          <div key={item.id}>
+          • {item.title}: 
+            ${item.price}
+          </div>
+          <div className="mx-4">
+          <FaTrash onClick={() => actions.eliminarDelCarrito(item.index)}/></div>
+          </div>
         ))}
-      </ul>
+        <h5 className="fst-italic fw-normal d-flex justify-content-end mx-5 mb-2 mt-2">Total: $ {total}</h5>
+      </div>
 
-      <p className="mx-3 fst-italic fw-normal">Total: $ {total}</p>
+<div className="d-flex justify-content-center">
 
+<button type="button" className="btn btn-outline-warning mt-3 mb-3" onClick={misterClick}>Pay TEST</button>
+
+</div>
       {/* Este código es el responsable de integrar el botón de Google Pay en nuestra app */}
-      <GooglePayButton className="mx-4"
+      <GooglePayButton
+        className="d-flex justify-content-center mb-3"
         environment="TEST"
         buttonSizeMode="fill"
         paymentRequest={{

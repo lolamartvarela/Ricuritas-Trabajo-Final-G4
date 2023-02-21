@@ -15,6 +15,7 @@ from flask_jwt_extended import JWTManager
 # from models import Person
 from flask_mail import Mail
 
+
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
@@ -33,9 +34,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
-
-# ? Acá va la configuración de Flask Mail
-
+#? Acá va la configuración de Flask Mail
 mail_settings = {
     "MAIL_SERVER": 'sandbox.smtp.mailtrap.io',
     "MAIL_PORT":  2525,
@@ -89,7 +88,6 @@ def serve_any_other_file(path):
     response = send_from_directory(static_file_dir, path)
     response.cache_control.max_age = 0  # avoid cache memory
     return response
-
 
 # ? Configuración de Flask-JWT-Extended
 app.config["JWT_SECRET_KEY"] = "super-secret"  # ! Cambiar Esto!

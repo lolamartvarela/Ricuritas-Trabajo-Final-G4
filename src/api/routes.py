@@ -17,11 +17,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 #! Esta es la importación del Blueprint
 api = Blueprint('api', __name__)
 
-# mail = Mail(api)
-
 # ? Este es el endpoint que permite recuperar contraseñas
-
-
 @api.route("/forgotpassword", methods=["POST"])
 def forgotpassword():
     recover_email = request.json['email']
@@ -350,19 +346,14 @@ def get_all_compras():
 # * Esta función nos permite añadir una nueva compra mediante el método POST
 @api.route('/compras', methods=['POST'])
 def add_compra():
-    monto = request.json.get('monto')
-    fecha = request.json.get('fecha')
-    pago = request.json.get('pago')
-
-    new_compra = Compras(monto=monto, fecha=fecha, pago=pago)
-
-    try:
-        db.session.add(new_compra)
-        db.session.commit()
-        return jsonify(new_compra.serialize()), 201
-    except Exception as e:
-        db.session.rollback()
-        return str(e), 500
+    data = request.get_json()
+    items = data['items']
+    total_price = data['totalPrice']
+    username = data['username']
+    compra = Compras(items=items, total_price=total_price, username=username)
+    db.session.add(compra)
+    db.session.commit()
+    return jsonify({'message': 'La compra ha sido guardada correctamente.'})
 
 
 # * Esta función nos permite eliminar una compra mediante su ID usando el método DELETE
@@ -376,9 +367,7 @@ def delete_compra(compra_id):
     return {"msg": "La compra ha sido eliminada con éxito"}, 200
 
 
-# ? Aquí creamos el sistema de Login con JWT
-
-
+#? Aquí creamos el sistema de Login con JWT y devuelve el nombre del user que esté logueado
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
@@ -390,8 +379,25 @@ def login():
 
     access_token = create_access_token(identity=email)
     is_admin = get_user.role == 'admin'
-    return jsonify(access_token=access_token, is_admin=is_admin)
+    print(get_user.nombre)
+    return jsonify(access_token=access_token, is_admin=is_admin, user=get_user.nombre)
 
+#? Esta ruta sirve para que el usuario pueda escribir una review
+@api.route('/review/<int:user_id>', methods=['POST'])
+def create_review(user_id):
+    # Buscamos al usuario con la id especificada
+    user = User.query.get_or_404(user_id)
+
+    # Obtenemos los datos de la review desde el cuerpo de la petición
+    puntos = request.json.get('puntos')
+    comentario = request.json.get('comentario')
+
+    # Creamos la nueva review y la asociamos con el usuario
+    review = Reviews(user_id=user.id, puntos=puntos, comentario=comentario)
+    db.session.add(review)
+    db.session.commit()
+
+    return jsonify({'mensaje': 'Review creada correctamente'}), 201
 
 #? Esta ruta verifica si el user es admin o no lo es y autentifica el token al mismo tiempo
 @api.route('/get-user-role', methods=['GET'])
@@ -409,18 +415,3 @@ def get_user_role():
         return jsonify({'role': user.role}), 201
     else:
         return jsonify({'role': user.role, 'nombre': user.nombre}), 200
-
-
-#? Esta ruta retorna el nombre del usuario correspondiente al token
-@api.route('/get-username', methods=['GET'])
-@jwt_required()
-def get_username():
-    current_user = get_jwt_identity()
-    if not current_user:
-        return jsonify({'msg': 'Token inválido'}), 401
-
-    user = User.query.filter_by(email=current_user).first()
-    if not user:
-        return jsonify({'msg': 'Usuario no encontrado'}), 404
-
-    return jsonify({'nombre': user.nombre}), 200

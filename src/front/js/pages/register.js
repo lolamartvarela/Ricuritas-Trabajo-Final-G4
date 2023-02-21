@@ -32,9 +32,9 @@ export const Register = () => {
             store.auth === true ? (
                 <Navigate to="/"/>
             ) : (
-                <form className="container w-50 text-center divHeight"
+                <form className="container-sm w-75 text-center divHeight"
                     onSubmit={enviarDatos}>
-                    <h4 className="m-5">Creación de nuevo usuario</h4>
+                    <h4 className="m-5">Nuevo usuario</h4>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">
                             Dirección de email
@@ -105,7 +105,7 @@ export const Register = () => {
                         </div>
                     </div>
                     <button type="submit" className="btn btn-primary">
-                        Submit
+                        Enviar
                     </button>
                 </form>
             )

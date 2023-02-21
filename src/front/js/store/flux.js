@@ -21,17 +21,20 @@ const getState = ({
 
         actions: {
 
-            // ? Esta función le permite al admin borrar menús
-
+            //? Esta función le permite al admin borrar menús
             borrarMenu: async (menu_id) => {
                 const store = getStore();
                 await axios
-                    .delete(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/${menu_id}`)
+                    .delete(
+                        `https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/${menu_id}`
+                    )
                     .then((resp) => {
                         if (resp.status === 200) {
-                            const nuevosMenus = store.cadaMenu.filter((menu) => menu.id !== menu_id);
+                            const nuevosMenus = store.cadaMenu.filter(
+                                (menu) => menu.id !== menu_id
+                            );
                             setStore({
-                                cadaMenu: nuevosMenus
+                                cadaMenu: nuevosMenus,
                             });
                         }
                     })
@@ -39,6 +42,52 @@ const getState = ({
                         console.log(error);
                     });
             },
+
+            //? Esta función borra todos los elementos de adentro del carrito de compras
+            clearCart: () => {
+                const store = getStore();
+                setStore({
+                    ...store,
+                    carrito: [],
+                });
+            },
+
+
+            //? Esta función permite enviar cada orden de compras a la base de datos
+            guardarInformacion: (items, totalPrice, username) => {
+                axios.post('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/', {
+                        items: items,
+                        totalPrice: totalPrice,
+                        username: username
+                    })
+                    .then(response => {
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            },
+
+            //? Esta función permite obtener todas las órdenes desde la base de datos
+            obtenerCompras: async () => {
+                try {
+                    const response = await axios.get('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/');
+                    return response.data;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            //? Esta función permite borrar de una orden por su id
+            borrarCompra: async (id) => {
+                try {
+                    const response = await axios.delete(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/${id}`);
+                    return response.data;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
 
 
             // ? Esta función agrega de a un menú al carrito de compras
@@ -69,6 +118,22 @@ const getState = ({
                     )
                     .then((res) => console.log(res.data))
                     .catch((err) => console.log(err));
+            },
+
+            // Fetch para crear la review 
+
+            createReview: async (userId, puntos, comentario) => {
+                try {
+                    const response = await axios.post(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/review/${userId}`, {
+                        puntos: puntos,
+                        comentario: comentario,
+                    });
+                    console.log(response.data);
+                    return response.data;
+                } catch (error) {
+                    console.log(error);
+                    throw error;
+                }
             },
 
             // ? Esta función crea los menues en la base de datos
@@ -168,7 +233,7 @@ const getState = ({
             // ? Acá empieza el fetch que nos permite conectar con el BackEnd
             login: (userEmail, userPassword) => {
                 fetch(
-                        "https://3001-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/api/login", {
+                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/login", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -191,6 +256,7 @@ const getState = ({
                     })
                     .then((data) => {
                         localStorage.setItem("token", data.access_token);
+                        localStorage.setItem("username", data.user);
                     })
                     .catch((err) => {
                         console.log(err);
@@ -200,7 +266,9 @@ const getState = ({
 
             logout: () => {
                 localStorage.removeItem("token");
-                localStorage.removeItem("admin");
+                localStorage.removeItem("username");
+                localStorage.removeItem("idDinamica");
+
                 setStore({
                     auth: false,
                 });
@@ -217,7 +285,7 @@ const getState = ({
                 userPassword
             ) => {
                 fetch(
-                        "https://3001-lolamartvar-ricuritastr-42c56mnz3pf.ws-us87.gitpod.io/admin/user/", {
+                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/user/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
