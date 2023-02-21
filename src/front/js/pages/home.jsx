@@ -16,7 +16,7 @@ export const Home = () => {
 
     return (
         <div> {/* MAP PARA MENU COMÚN */}
-            <h1 className="text-center bg-warning text-white">Menú común</h1>
+            <h1 className="text-center bgtext text-white">Menú común</h1>
 
             <div className="row mt-4 mb-4 mx-5">
                 {
@@ -39,7 +39,7 @@ export const Home = () => {
             } </div>
 
             {/* MAP PARA VENU VEGETARIANO */}
-            <h1 className="text-center bg-warning text-white">Menú Vegetariano</h1>
+            <h1 className="text-center bgtext text-white">Menú Vegetariano</h1>
             <div className="row mt-4 mb-4 mx-5">
                 {
                 menuesVegetarianos.map((menu, index) =>< Menu key = {

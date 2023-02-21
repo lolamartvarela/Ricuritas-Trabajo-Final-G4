@@ -48,13 +48,13 @@ export const Navbar = () => {
                     {
                     store.auth === false ? (
                         <Link to={"/login"}
-                            className="btn btn-warning me-1">Ingresar</Link>
+                            className="btn bgbuttonverde text-white rounded-pill me-1">Ingresar</Link>
                     ) : null
                 }
                     {
                     store.auth === false ? (
                         <Link to={"/register"}
-                            className="btn btn-warning me-1">Registrarse</Link>
+                            className="btn bgbuttonverde text-white rounded-pill me-1">Registrarse</Link>
                     ) : null
                 }
                     {
@@ -64,14 +64,14 @@ export const Navbar = () => {
                                 localStorage.getItem("username")
                             }</h6>
                             <Link to={"/dashboard"}
-                                className="btn btn-warning me-1">Panel</Link>
+                                className="btn bgbuttonverde text-white rounded-pill me-1">Panel</Link>
                         </div>
                     ) : null
                 }
                     {
                     store.auth === true ? (
                         <Link to={"/"}
-                            className="btn btn-warning me-1"
+                            className="btn bgbuttonverde text-white rounded-pill me-1"
                             onClick={handleLogout}>Salir</Link>
                     ) : null
                 } </div>

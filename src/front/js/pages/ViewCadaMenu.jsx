@@ -44,16 +44,16 @@ export const ViewCadaMenu = () => {
                             } </p>
 
                             {/* Precio */}
-                            <p className="text-responsive text-lg d-flex justify-content-end">
+                            <h4 className="mx-4 text-responsive text-lg d-flex justify-content-end">
                                 ${
                                 store.cadaMenu[localStorage.getItem('idDinamica')] ?. price
-                            } </p>
+                            } </h4>
 
                             {/* BOTON */}
                             <div className="d-flex justify-content-end mt-3">
                                 {
                                 store.auth === true ? (
-                                    <button className="btn btn-light border border-thumbnail me-1"
+                                    <button className="btn bgbuttonverde text-white rounded-pill me-1 mx-4 mt-3"
                                         onClick={agregarCarrito}>
                                         <Link to="/carrito"
                                             style={
@@ -66,8 +66,8 @@ export const ViewCadaMenu = () => {
                                         </Link>
                                     </button>
                                 ) : (
-                                    <h6 className="text-danger">
-                                        Si quieres comprar alguno de nuestros menús, debes loguearte o registrarte en caso de que no tengas una cuenta
+                                    <h6 className="text-danger mt-2 mb-2">
+                                        Si quieres comprar alguno de nuestros menús, debes loguearte o registrarte en caso de que no tengas una cuenta!
                                     </h6>
                                 )
                             } </div>
