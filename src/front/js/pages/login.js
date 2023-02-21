@@ -21,36 +21,40 @@ export default function login() {
 
     return (
         <> {
-            store.auth === true ? <Navigate to="/"/> : <form className="container-sm text-center divHeight w-75"
-                onSubmit={enviarDatos}>
-                <h4 className="m-5">Inicio de sesión</h4>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        value={email}
-                        onChange={
-                            (e) => setEmail(e.target.value)
-                        }/>
-                    <div id="emailHelp" className="form-text">Nunca compartiremos tu email con nadie más</div>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1"
-                        value={password}
-                        onChange={
-                            (e) => setPassword(e.target.value)
-                        }/>
-                </div>
+            store.auth === true ? <Navigate to="/"/> : <div className='container'>
+                <div className="row justify-content-center"
+                    onSubmit={enviarDatos}>
+                    <h4 className="text-center mb-5">Inicio de sesión</h4>
+                    <div className='col-4'>
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                value={email}
+                                onChange={
+                                    (e) => setEmail(e.target.value)
+                                }/>
+                            <div id="emailHelp" className="form-text">Nunca compartiremos tu email con nadie más</div>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputPassword1" className="form-label mb-2">Contraseña</label>
+                            <input type="password" className="form-control mb-5" id="exampleInputPassword1"
+                                value={password}
+                                onChange={
+                                    (e) => setPassword(e.target.value)
+                                }/>
+                        </div>
 
-                <div className="d-grid gap-2">
-                    <button type="submit" className="btn btn-primary btn-block">Loguearse</button>
+                        <div className="d-grid gap-2">
+                            <button type="submit" className="btn btn-warning btn-block mb-2">Ingresar</button>
+                        </div>
+                        <div className="d-grid gap-2">
+                            <button type="button" className="btn btn-light border btn-block mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                ¿Olvidaste tu contraseña?
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div className="d-grid gap-2">
-                    <button type="button" className="btn btn-secondary btn-block mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        ¿Olvidaste tu contraseña?
-                    </button>
-                </div>
-            </form>
+            </div>
         }
             <div>
                 <RecuperarPass/>
