@@ -44,7 +44,7 @@ function Carrusel() {
                             style={
                                 {fontSize: "1.5rem"}
                         }>
-                            El consumo de alimentos procesados y ultraprocesados. Estos alimentos tienen grandes cantidades de sal, aceites, azúcares y conservantes. Si los consumes, te recomendamos hacerlo solo en porciones pequeñas y ocasionalmente.
+                            El consumo de alimentos procesados y ultraprocesados. Estos alimentos tienen grandes cantidades de sal, aceites, azúcares y conservantes.
                         </p>
                     </Carousel.Caption>
                 </Carousel.Item>
