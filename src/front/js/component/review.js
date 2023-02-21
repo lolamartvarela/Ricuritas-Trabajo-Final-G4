@@ -1,79 +1,53 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import { FaStar } from 'react-icons/fa';
-import swal from 'sweetalert';
+import React, { useState } from "react";
 
-const Rating = () => {
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(null);
-  const handleClick = (value) => {
-    setRating(value);
-  };
+export default function Review() {
+  const [reseña, setReseña] = useState("");
+  const [puntaje, setPuntaje] = useState("");
+  let username = localStorage.getItem("username");
 
-  const content = (
-    <div>
-      <div className="d-flex">
-        {[...Array(5)].map((star, index) => {
-          const ratingValue = index + 1;
-          return (
-            <label key={ratingValue}>
-              <input
-                type="radio"
-                name="rating"
-                value={ratingValue}
-                onClick={() => handleClick(ratingValue)}
-              />
-              <FaStar
-                className="star"
-                color={ratingValue <= (hover || rating) ? '#ffc107' : '#666666'}
-                size={30}
-                onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}
-              />
-            </label>
-          );
-        })}
-      </div>
-      <div class="form-floating mb-3">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-        <label for="floatingTextarea">Comments</label>
-      </div>
-    </div>
+  function enviarDatos(e) {
+    e.preventDefault();
+    actions.createReview(username, reseña, puntaje);
+    setReseña("");
+    setPuntaje("");
+  }
+  return (
+    <form className="w-50 m-auto" onSubmit={enviarDatos}>
+      <fieldset>
+        <legend> Califícanos! </legend>{" "}
+        <div className="mb-3">
+          <label for="disabledTextInput" className="form-label">
+            Escribe tu reseña aquí{" "}
+          </label>{" "}
+          <input
+            type="text"
+            id="disabledTextInput"
+            className="form-control"
+            placeholder="Su reseña"
+            onChange={(e) => setTipoMenu(e.target.value)}
+            value={reseña}
+          />{" "}
+        </div>{" "}
+        <div className="mb-3">
+          <label for="disabledSelect" className="form-label">
+            {" "}
+            ¿En cuantos puntos valora nuestro servicio ?
+          </label>{" "}
+          <select
+            id="disabledSelect"
+            className="form-select"
+            onChange={(e) => setTipoMenu(e.target.value)}
+            value={puntaje}
+          >
+            <option value="1"> 1 </option> <option value="2"> 2 </option>{" "}
+            <option value="3"> 3 </option> <option value="4"> 4 </option>{" "}
+            <option value="5"> 5 </option>{" "}
+          </select>{" "}
+        </div>{" "}
+        <button type="submit" className="btn btn-primary">
+          Submit{" "}
+        </button>{" "}
+      </fieldset>{" "}
+    </form>
   );
-
-  return content;
-};
-
-const showRatingAlert = () => {
-  const content = document.createElement('div');
-  ReactDOM.render(<Rating />, content);
-
-  swal({
-    title: 'Califica nuestro servicio',
-    content: content,
-    buttons: {
-      confirm: {
-        text: 'Enviar',
-        value: null,
-        visible: true,
-        className: '',
-        closeModal: true,
-      },
-    },
-    closeOnClickOutside: true,
-  }).then(() => {
-    swal({
-      title: '¡Gracias por calificar nuestro servicio!',
-      icon: 'success',
-      button: {
-        text: 'Ok',
-        value: null,
-        visible: true,
-        className: '',
-        closeModal: true,
-      },
-    });
-  });
-};
-
-export default showRatingAlert;
+}

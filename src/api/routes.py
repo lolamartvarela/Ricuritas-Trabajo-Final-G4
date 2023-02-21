@@ -238,10 +238,11 @@ def get_all_reviews():
 # * Esta función nos permite añadir una nueva review mediante el método POST
 @api.route('/reviews', methods=['POST'])
 def add_reviews():
+    username = request.json.get('username')
     puntos = request.json.get('puntos')
     comentario = request.json.get('comentario')
 
-    new_review = Reviews(puntos=puntos, comentario=comentario)
+    new_review = Reviews(username= username, puntos=puntos, comentario=comentario)
 
     try:
         db.session.add(new_review)
