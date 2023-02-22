@@ -24,12 +24,12 @@ const ShowReviews = () => {
             if (i <= puntos) {
                 estrellas.push (
                     <i key={i}
-                        className="fas fa-star"></i>
+                        className="fas fa-star star-color"></i>
                 );
             } else {
                 estrellas.push (
                     <i key={i}
-                        className="far fa-star"></i>
+                        className="far fa-star star-color"></i>
                 );
             }
         }
@@ -53,9 +53,12 @@ const ShowReviews = () => {
                                 <h5 className="card-title me-2">Cliente: {
                                     review.username
                                 }</h5>
-                                <StarRating puntos={
-                                    review.puntos
-                                }/>
+                                <StarRating style={
+                                        {color: "yellow"}
+                                    }
+                                    puntos={
+                                        review.puntos
+                                    }/>
                             </div>
                             <p className="card-text">Comentario: {
                                 review.comentario
