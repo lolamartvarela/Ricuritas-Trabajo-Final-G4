@@ -70,7 +70,7 @@
     bottom: 20px;
     right: 20px;
     background: #f5f8f6;
-    color: rgb(60, 180, 72);
+    color: rgb(18, 139, 30);
     border: none;
     border-radius: 50%;
     width: 60px;
@@ -82,7 +82,7 @@
 }
 
 .whatsapp-button:hover {
-    background: #128c7e;
+    background: #b5edc9;
     cursor: pointer;
 }
 
@@ -92,4 +92,18 @@
 
 .whatsapp-button:active {
     transform: scale(0.9);
+}
+
+/* Redes sociales */
+
+.twitter {
+    color: rgb(64, 141, 218);
+}
+
+.linkedin {
+    color: rgb(27, 84, 141);
+}
+
+.instagram {
+    color: rgb(117, 17, 77);
 }

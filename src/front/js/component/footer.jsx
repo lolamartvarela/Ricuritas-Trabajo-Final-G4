@@ -20,14 +20,6 @@ export const Footer = () => {
                 </div>
 
                 <div className="d-flex">
-                    {/* <a href="https://wa.me/0059898592440" target="_blank">
-                        <i className="me-4 link-secondary"><BsWhatsapp style={
-                                {
-                                    height: "35px",
-                                    width: "35px"
-                                }
-                            }/></i>
-                    </a> */}
                     <Link to={"/"}
                         className="nav-link">
                         <FaFacebookSquare style={
@@ -146,14 +138,14 @@ export const Footer = () => {
                 </div>
             </section>
 
-            <div className="text-center p-4 text-success"
+            <div className="text-center p-4 textorange"
                 style={
                     {backgroundColor: "rgba(0, 0, 0, 0.025)"}
             }>
                 © {
                 new Date().getFullYear()
             }
-                <span className="ms-2 text-success">Ricuritas</span>
+                <span className="ms-2 textorange">Ricuritas</span>
             </div>
 
         </footer>
