@@ -20,7 +20,7 @@ const AdminDashboard = () => {
 
             <div className="d-flex">
 
-                <div className="container colorhueso col-2 pt-4">
+                <div className="container colorhueso col-4 pt-4">
 
                     <div className="mb-3">
                         <button type="button" className="container-fluid btn bgbuttonverde text-white rounded-pill buttonAdminWidth btn-sm btn-block"

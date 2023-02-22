@@ -23,7 +23,7 @@ export default function Pedidos() {
 
     return (
         <div className="card col-lg-6 col-md-6">
-            <h2 className="text-center mt-3 mb-3 text-secondary">Lista de Menús Disponibles</h2>
+            <h2 className="text-center mt-3 mb-3 text-secondary">Lista de Pedidos Disponibles</h2>
 
             {
             compras.length > 0 ? (

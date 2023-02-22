@@ -26,38 +26,39 @@ export default function login() {
                     onSubmit={enviarDatos}>
 
                     <h4 className="mb-4 mt-2">Inicio de sesión</h4>
+                    <div className="row">
+                        <div className="col-12 col-xl-8 col-md-8 col-sm-12 m-auto">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Email address
+                            </label>
+                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                value={email}
+                                onChange={
+                                    (e) => setEmail(e.target.value)
+                                }/>
+                            <div id="emailHelp" className="form-text">
+                                Nunca compartiremos tu email con nadie más
+                            </div>
 
-                    <div className="col-4">
-                        <label htmlFor="exampleInputEmail1" className="form-label">
-                            Email address
-                        </label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            value={email}
-                            onChange={
-                                (e) => setEmail(e.target.value)
-                            }/>
-                        <div id="emailHelp" className="form-text">
-                            Nunca compartiremos tu email con nadie más
+                            <label htmlFor="exampleInputPassword1" className="form-label">
+                                Password
+                            </label>
+                            <input type="password" className="mb-3 form-control" id="exampleInputPassword1"
+                                value={password}
+                                onChange={
+                                    (e) => setPassword(e.target.value)
+                                }/>
                         </div>
 
-                        <label htmlFor="exampleInputPassword1" className="form-label">
-                            Password
-                        </label>
-                        <input type="password" className="mb-3 form-control" id="exampleInputPassword1"
-                            value={password}
-                            onChange={
-                                (e) => setPassword(e.target.value)
-                            }/>
-                    </div>
+                        <div className="d-flex justify-content-center align-items-center w-100 mb-5">
+                            <button type="submit" className="btn bgbuttonverde text-white rounded-pill mx-2 mt-2">
+                                Iniciar sesión
+                            </button>
 
-                    <div className="d-flex justify-content-center align-items-center w-100 mb-5">
-                        <button type="submit" className="btn bgbuttonverde text-white rounded-pill mx-2 mt-2">
-                            Iniciar sesión
-                        </button>
-
-                        <button type="button" className="btn borderbottom rounded-pill mx-2 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            ¿Olvidaste tu contraseña?
-                        </button>
+                            <button type="button" className="btn borderbottom rounded-pill mx-2 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                ¿Olvidaste tu contraseña?
+                            </button>
+                        </div>
                     </div>
                 </form>
             )
