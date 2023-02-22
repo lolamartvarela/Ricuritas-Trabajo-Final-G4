@@ -1,5 +1,6 @@
 import React, {useState, useContext} from "react";
 import {Context} from "../store/appContext";
+import {BsFillStarFill} from 'react-icons/bs';
 
 export default function Review() {
     const {actions} = useContext(Context)
@@ -19,12 +20,12 @@ export default function Review() {
         swal({title: "Comentario enviado", text: "¡Gracias por tu opinión!", icon: "success", button: "Cerrar"});
     }
     return (
-        <form className="w-50 m-auto"
+        <form className="container-sm d-flex flex-column justify-content-center align-items-center w-75"
             onSubmit={enviarDatos}>
             <fieldset>
-                <legend>
-                    Califícanos!
-                </legend>
+                <h4 className="mt-4 mb-3">
+                    Califícanos! < BsFillStarFill className="text-warning"/>
+                </h4>
                 {" "}
                 <div className="mb-3">
                     <label htmlFor="disabledTextInput" className="form-label">
@@ -67,8 +68,8 @@ export default function Review() {
                         {" "} </select>
                     {" "} </div>
                 {" "}
-                <button type="submit" className="btn btn-primary">
-                    Submit{" "} </button>
+                <button type="submit" className="mb-5 mt-3 col-12 btn bgbuttonverde text-white rounded-pill">
+                    Enviar{" "} </button>
                 {" "} </fieldset>
             {" "} </form>
     );

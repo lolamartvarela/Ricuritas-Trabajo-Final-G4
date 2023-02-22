@@ -2,6 +2,10 @@
     min-height: 720px;
 }
 
+.colorhueso {
+    background-color: #e4e9e6;
+}
+
 .buttonAdminWidth {
     min-width: 100px !important;
 }
@@ -42,6 +46,10 @@
     color: rgb(154, 155, 95);
 }
 
+.textorange {
+    color: rgb(200, 81, 45);
+}
+
 .bgtext {
     background-color: rgb(154, 155, 95);
 }
@@ -53,5 +61,35 @@
 }
 
 .star-color {
-    color: #b5e605 !important;
+    color: rgb(247, 199, 9) !important;
+}
+
+/* Whatsapp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #f5f8f6;
+    color: rgb(60, 180, 72);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.whatsapp-button:hover {
+    background: #128c7e;
+    cursor: pointer;
+}
+
+.whatsapp-button:focus {
+    outline: none;
+}
+
+.whatsapp-button:active {
+    transform: scale(0.9);
 }

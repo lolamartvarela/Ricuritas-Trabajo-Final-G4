@@ -5,6 +5,7 @@ import {Menu} from "../component/cardMenu.jsx"
 
 import "../../styles/home.css";
 import ShowReviews from "../component/showreviews.jsx";
+import WhatsappButton from "../component/botonflotante.jsx";
 
 
 export const Home = () => {
@@ -63,6 +64,7 @@ export const Home = () => {
             <div className='scrollable container'>
                 <ShowReviews/>
             </div>
+            <WhatsappButton/>
         </div>
 
 

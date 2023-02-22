@@ -7,7 +7,7 @@ const ShowReviews = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/reviews');
+                const response = await axios.get('https://3001-lolamartvar-ricuritastr-tbcgf0n76jo.ws-us87.gitpod.io/api/reviews');
                 setReviews(response.data);
             } catch (error) {
                 console.log(error);
@@ -40,7 +40,8 @@ const ShowReviews = () => {
 
     return (
         <div>
-            <h2>Reseñas de nuestros clientes</h2>
+            <h3 className="text-center text-secondary">Reseñas de nuestros clientes</h3>
+
             <div className="m-auto w-50">
                 {
                 reviews.map((review) => (
