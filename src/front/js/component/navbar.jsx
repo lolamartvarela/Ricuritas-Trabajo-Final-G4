@@ -1,7 +1,6 @@
 import React, {useContext, useState, useEffect} from "react";
 import {Link, Navigate} from "react-router-dom";
 import {AiOutlineShop} from "react-icons/ai";
-import {BsSearch} from "react-icons/bs";
 import Logo from "../component/logo/logo.png";
 
 import {Context} from "../store/appContext";

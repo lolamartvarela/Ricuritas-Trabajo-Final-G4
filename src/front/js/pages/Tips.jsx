@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Guiso from "./tipsimg/verduras2.png"
 import Hamburgesa from "./tipsimg/hamburgesa.png"
 import Verduras from "./tipsimg/verduras.png"
+import WhatsappButton from "../component/botonflotante.jsx";
 
 function Carrusel() {
     return (
@@ -69,6 +70,7 @@ function Carrusel() {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+            <WhatsappButton/>
         </div>
 
 
