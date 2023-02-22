@@ -32,7 +32,7 @@ export const Register = () => {
             store.auth === true ? (
                 <Navigate to="/"/>
             ) : (
-                <form className="container-sm text-center divHeight w-75"
+                <form className="container-sm divHeight w-75"
                     onSubmit={enviarDatos}>
 
                     <div className="row">
