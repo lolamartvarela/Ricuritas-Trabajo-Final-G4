@@ -22,33 +22,43 @@ export default function Pedidos() {
     };
 
     return (
-        <div> {
+        <div className="card col-lg-6 col-md-6">
+            <h2 className="text-center mt-3 mb-3 text-secondary">Lista de Menús Disponibles</h2>
+
+            {
             compras.length > 0 ? (
                 <ul> {
                     compras.map(compra => (
-                        <li key={
-                            compra.id
+                        <div className="d-flex justify-content-between"
+                            key={
+                                compra.id
                         }>
-                            <span>{
-                                compra.username
-                            }</span>
-                            <span>-</span>
-                            <span>{
-                                compra.items
-                            }</span>
-                            <span>-</span>
-                            <span>{
-                                compra.total_price
-                            }</span>
-                            <span>-</span>
-                            <FaTrash onClick={
-                                () => handleBorrarCompra(compra.id)
-                            }/>
-                        </li>
+                            <div>
+                                <span>
+                                    • {
+                                    compra.username
+                                }:
+                                </span>
+
+                                <span> {
+                                    compra.items
+                                } </span>
+
+                                <span className='fst-italic fw-bold'>
+                                    ${
+                                    compra.total_price
+                                }</span>
+                            </div>
+                            <div>
+                                <FaTrash className='mx-4'
+                                    onClick={
+                                        () => handleBorrarCompra(compra.id)
+                                    }/></div>
+                        </div>
                     ))
                 } </ul>
             ) : (
-                <h1>Aún no hay ningún pedido disponible</h1>
+                <h3 className='text-center textcolor'>Aún no hay ningún pedido disponible</h3>
             )
         } </div>
     );

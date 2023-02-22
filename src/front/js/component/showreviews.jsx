@@ -7,7 +7,7 @@ const ShowReviews = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/reviews');
+                const response = await axios.get('https://3001-lolamartvar-ricuritastr-tbcgf0n76jo.ws-us87.gitpod.io/api/reviews');
                 setReviews(response.data);
             } catch (error) {
                 console.log(error);
@@ -40,7 +40,8 @@ const ShowReviews = () => {
 
     return (
         <div>
-            <h2>Reseñas de nuestros clientes</h2>
+            <h3 className="text-center text-secondary">Reseñas de nuestros clientes</h3>
+
             <div className="m-auto w-50">
                 {
                 reviews.map((review) => (
@@ -50,7 +51,8 @@ const ShowReviews = () => {
                         className="card mb-3">
                         <div className="card-body">
                             <div className="d-flex mb-2">
-                                <h5 className="card-title me-2">Cliente: {
+                                <h5 className="card-title me-2">
+                                    {
                                     review.username
                                 }</h5>
                                 <StarRating style={
@@ -60,7 +62,8 @@ const ShowReviews = () => {
                                         review.puntos
                                     }/>
                             </div>
-                            <p className="card-text">Comentario: {
+                            <p className="card-text">
+                                {
                                 review.comentario
                             }</p>
                         </div>

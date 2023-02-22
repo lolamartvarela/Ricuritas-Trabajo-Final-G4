@@ -57,12 +57,12 @@ export default function MenuCreator() {
 
 
     return (
-        <form className='container-sm mx-auto'
+        <form className='mx-1 container-sm flex-column align-items-center w-75'
             onSubmit={enviarDatos}>
             <div>
-                <h1>Puede crear un nuevo menú</h1>
+                <h2 className='mb-3 text-secondary'>Crear nuevo menú</h2>
             </div>
-            <div className="mb-3">
+            <div className="col-6">
                 <label htmlFor="MenuType" className="form-label">Tipo de Menú</label>
                 <select id="MenuType" className="form-control"
                     value={tipoMenu}
@@ -75,8 +75,8 @@ export default function MenuCreator() {
                 </select>
             </div>
 
-            <div className="mb-3">
-                <label htmlFor="MenuName" className="form-label">Nombre de Menú</label>
+            <div className="col-6">
+                <label htmlFor="MenuName" className="form-label mt-3">Nombre de Menú</label>
                 <input type="text" id="MenuName" className="form-control" placeholder="Nombre de Menú"
                     value={nombreMenu}
                     onChange={
@@ -84,8 +84,8 @@ export default function MenuCreator() {
                     }/>
             </div>
 
-            <div className="mb-3">
-                <label htmlFor="MenuDescription" className="form-label">Descripción</label>
+            <div className="col-6">
+                <label htmlFor="MenuDescription" className="form-label mt-3">Descripción</label>
                 <input type="text" id="MenuDescription" className="form-control" placeholder="Descripción del Menú"
                     value={descriptionMenu}
                     onChange={
@@ -93,8 +93,8 @@ export default function MenuCreator() {
                     }/>
             </div>
 
-            <div className="mb-3">
-                <label htmlFor="MenuPrice" className="form-label">Precio</label>
+            <div className="col-6">
+                <label htmlFor="MenuPrice" className="form-label mt-3">Precio</label>
                 <div className="input-group">
                     <span className="input-group-text">$</span>
                     <input type="number" id="MenuPrice" className="form-control" placeholder="Precio de Menú"
@@ -105,8 +105,8 @@ export default function MenuCreator() {
                 </div>
             </div>
 
-            <div className="mb-3">
-                <label htmlFor="ImageUrl" className="form-label">URL de Imagen</label>
+            <div className="col-6">
+                <label htmlFor="ImageUrl" className="form-label mt-3">URL de Imagen</label>
                 <input type="file" id="ImageUrl"
                     onChange={
                         (e) => setUrlMenu(e.target.files[0])
@@ -114,8 +114,8 @@ export default function MenuCreator() {
                     className="form-control"
                     placeholder="Imagen del Menú"/>
             </div>
+            <button type="submit" className="col-6 btn bgbuttonverde text-white rounded-pill mt-4">Crear</button>
 
-            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     )
 }
