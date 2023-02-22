@@ -46,5 +46,12 @@
     background-color: rgb(154, 155, 95);
 }
 
-/* Colores del logo 
-rgb(200, 81, 45) rgb(154, 155, 95) */
+.scrollable {
+    overflow-y: scroll;
+    max-height: 250px;
+    margin-top: 20px;
+}
+
+.star-color {
+    color: #b5e605 !important;
+}

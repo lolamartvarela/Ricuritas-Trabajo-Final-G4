@@ -15,6 +15,20 @@ export default function MenuCreator() {
     async function enviarDatos(e) {
         e.preventDefault();
 
+        if (!tipoMenu || !nombreMenu || !descriptionMenu || !precioMenu || !urlMenu) {
+            return swal({title: "Algo ha salido mal!", text: "Debe completar todos los campos para crear un nuevo menú.", icon: "error", button: "Cerrar"});
+        }
+
+        // Validación de caracteres especiales
+        const regExp = /[!@#$%^&*()?":{}|<>]/;
+        if (regExp.test(tipoMenu) || regExp.test(nombreMenu) || regExp.test(descriptionMenu)) {
+            return swal({title: "Algo ha salido mal!", text: "No se permiten caracteres especiales en los campos de texto.", icon: "error", button: "Cerrar"});
+        }
+
+        if (isNaN(parseInt(precioMenu))) {
+            return swal({title: "Algo ha salido mal!", text: "El campo de precio solo acepta números enteros.", icon: "error", button: "Cerrar"});
+        }
+
         const data = new FormData();
         data.append("file", urlMenu);
         data.append("upload_preset", "kxtirvhp");
@@ -35,6 +49,7 @@ export default function MenuCreator() {
             setDescriptionMenu("");
             setPrecioMenu("");
             setUrlMenu("");
+            swal({title: "Muy Bien!", text: "Un nuevo Menú ha sido creado con todo éxito", icon: "success", button: "Cerrar"})
         } catch (err) {
             console.error(err);
         }
@@ -54,6 +69,7 @@ export default function MenuCreator() {
                     onChange={
                         (e) => setTipoMenu(e.target.value)
                 }>
+                    <option value="">Seleccione una opción</option>
                     <option value="Común">Común</option>
                     <option value="Vegetariano">Vegetariano</option>
                 </select>
@@ -81,10 +97,10 @@ export default function MenuCreator() {
                 <label htmlFor="MenuPrice" className="form-label">Precio</label>
                 <div className="input-group">
                     <span className="input-group-text">$</span>
-                    <input type="text" id="MenuPrice" className="form-control" placeholder="Precio de Menú"
+                    <input type="number" id="MenuPrice" className="form-control" placeholder="Precio de Menú"
                         value={precioMenu}
                         onChange={
-                            (e) => setPrecioMenu(e.target.value)
+                            (e) => setPrecioMenu(parseInt(e.target.value))
                         }/>
                 </div>
             </div>

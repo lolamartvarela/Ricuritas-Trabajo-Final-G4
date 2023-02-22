@@ -1,6 +1,5 @@
 import React, {useState, useContext} from "react";
 import {Context} from "../store/appContext";
-import {AiFillStar} from "react-icons/ai"
 
 export default function Review() {
     const {actions} = useContext(Context)
@@ -10,17 +9,22 @@ export default function Review() {
 
     function enviarDatos(e) {
         e.preventDefault();
+        if (!comentario || !puntos) {
+            swal({title: "Error", text: "Por favor, completa todos los campos", icon: "error", button: "Cerrar"});
+            return;
+        };
         actions.createReview(username, puntos, comentario);
         setComentario("");
         setPuntos("");
+        swal({title: "Comentario enviado", text: "¡Gracias por tu opinión!", icon: "success", button: "Cerrar"});
     }
     return (
         <form className="w-50 m-auto"
             onSubmit={enviarDatos}>
             <fieldset>
-                <h4 className="mb-3 mt-3">
-                    Califícanos < AiFillStar className="text-warning"/>
-                </h4>
+                <legend>
+                    Califícanos!
+                </legend>
                 {" "}
                 <div className="mb-3">
                     <label htmlFor="disabledTextInput" className="form-label">
@@ -63,7 +67,7 @@ export default function Review() {
                         {" "} </select>
                     {" "} </div>
                 {" "}
-                <button type="submit" className="btn bgbuttonverde text-white rounded-pill mb-5">
+                <button type="submit" className="btn btn-primary">
                     Submit{" "} </button>
                 {" "} </fieldset>
             {" "} </form>

@@ -265,7 +265,12 @@ const getState = ({
                     })
                     .catch((err) => {
                         console.log(err);
-                        swal("Algo salió mal", "Su password o su email son incorrectos");
+                        swal({
+                            title: "Algo ha salido mal!",
+                            text: "Debe ingresar mail y password correctos.",
+                            icon: "error",
+                            button: "Cerrar"
+                        });
                     });
             },
 
@@ -314,10 +319,12 @@ const getState = ({
                         return response.json();
                     })
                     .catch((err) =>
-                        swal(
-                            "Algo salió mal",
-                            "No se ha podido crear un nuevo usuario, intentelo de nuevo"
-                        )
+                        swal({
+                            title: "Algo ha salido mal!",
+                            text: "No se ha podido crear un nuevo usuario, vuelva a intentarlo más tarde",
+                            icon: "error",
+                            button: "Cerrar"
+                        })
                     );
             },
 
