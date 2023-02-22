@@ -60,7 +60,9 @@ export const Home = () => {
                     menu.price
                 } />)
             } </div>
-            <ShowReviews/>
+            <div className='scrollable container'>
+                <ShowReviews/>
+            </div>
         </div>
 
 

@@ -24,7 +24,6 @@ const CarritoCompras = () => {
       store.carrito.map(Number).includes(index)
     );
     const totalPrice = menuSelected.reduce((acc, item) => acc + item.price, 0);
-    // const username = localStorage.getItem('username');
   
     // Llamada a la función de Flux que guardará la información en la base de datos
     actions.guardarInformacion(menuSelected.map(item => item.title).join(', '), totalPrice, userName);
@@ -41,6 +40,7 @@ actions.clearCart()
     store.carrito.map(Number).includes(index)
   );
   const total = menuSelected.reduce((acc, item) => acc + item.price, 0);
+  const shouldShowPayButton = menuSelected.length > 0; 
 
   return (
     <div className="card d-flex justify-content-end row mx-4 col-4 mt-5 mb-5">
@@ -61,7 +61,13 @@ actions.clearCart()
 
 <div className="d-flex justify-content-center">
 
-<button type="button" className="btn btn-outline-warning mt-3 mb-3" onClick={misterClick}>Pay TEST</button>
+{shouldShowPayButton && (
+        <div className="d-flex justify-content-center">
+          <button type="button" className="btn btn-outline-warning mt-3 mb-3" onClick={misterClick}>
+            Pay TEST
+          </button>
+        </div>
+      )}
 
 </div>
       {/* Este código es el responsable de integrar el botón de Google Pay en nuestra app */}
@@ -101,7 +107,7 @@ actions.clearCart()
           },
         }}
         onLoadPaymentData={(paymentData) => {
-          addNewPurchase(paymentData);
+          misterClick();
         }}
       />
       {/* Aquí finaliza el código de integración del botón de Google Pay */}
