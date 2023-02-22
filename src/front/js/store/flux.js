@@ -267,7 +267,7 @@ const getState = ({
                         console.log(err);
                         swal({
                             title: "Algo ha salido mal!",
-                            text: "Debe ingresar mail y password correctos.",
+                            text: "Hemos tenido un problema de conexión y no ha sido posible loguearse.",
                             icon: "error",
                             button: "Cerrar"
                         });
