@@ -71,9 +71,10 @@ actions.clearCart()
 
 </div>
       {/* Este código es el responsable de integrar el botón de Google Pay en nuestra app */}
+
       <GooglePayButton
         className="d-flex justify-content-center mb-3 text-warning"
-        style={{ color: 'green' }}
+        style={{ color: 'white' }}
         environment="TEST"
         buttonSizeMode="fill"
         paymentRequest={{
@@ -111,6 +112,7 @@ actions.clearCart()
           misterClick();
         }}
       />
+
       {/* Aquí finaliza el código de integración del botón de Google Pay */}
     </div>
   );
