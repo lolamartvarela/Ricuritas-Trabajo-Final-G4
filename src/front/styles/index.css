@@ -1,49 +1,49 @@
 .divHeight {
-  min-height: 720px;
+    min-height: 720px;
 }
 
 .buttonAdminWidth {
-  min-width: 100px !important;
+    min-width: 100px !important;
 }
 
 .nav-link {
-  color: rgb(128, 128, 128) !important;
+    color: rgb(128, 128, 128) !important;
 }
 
 .nav-link:hover {
-  color: rgb(200, 81, 45) !important;
+    color: rgb(200, 81, 45) !important;
 }
 
 @media screen and (max-width: 780px) {
-  .carousel-caption h3 {
-    font-size: 1.2rem !important;
-  }
+    .carousel-caption h3 {
+        font-size: 1.2rem !important;
+    }
 
-  .carousel-caption p {
-    font-size: 0.8rem !important;
-  }
+    .carousel-caption p {
+        font-size: 0.8rem !important;
+    }
 }
 
 /* BOTONES Y TITULOS */
 
 .bgbutton {
-  background-color: rgb(200, 81, 45);
+    background-color: rgb(200, 81, 45);
 }
 
 .bgbuttonverde {
-  background-color: rgb(154, 155, 95);
+    background-color: rgb(154, 155, 95);
 }
 
 .borderbottom {
-  border-color: rgb(200, 81, 45);
+    border-color: rgb(154, 155, 95);
 }
 
 .textcolor {
-  color: rgb(154, 155, 95);
+    color: rgb(154, 155, 95);
 }
 
 .bgtext {
-  background-color: rgb(154, 155, 95);
+    background-color: rgb(154, 155, 95);
 }
 
 /* Colores del logo 

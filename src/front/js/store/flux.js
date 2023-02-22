@@ -25,7 +25,7 @@ const getState = ({
                 const store = getStore();
                 await axios
                     .delete(
-                        `https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/${menu_id}`
+                        `https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/menues/${menu_id}`
                     )
                     .then((resp) => {
                         if (resp.status === 200) {
@@ -55,7 +55,7 @@ const getState = ({
             guardarInformacion: (items, totalPrice, username) => {
                 axios
                     .post(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/", {
+                        "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/compras/", {
                             items: items,
                             totalPrice: totalPrice,
                             username: username,
@@ -73,7 +73,7 @@ const getState = ({
             obtenerCompras: async () => {
                 try {
                     const response = await axios.get(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/"
+                        "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/compras/"
                     );
                     return response.data;
                 } catch (error) {
@@ -85,7 +85,7 @@ const getState = ({
             borrarCompra: async (id) => {
                 try {
                     const response = await axios.delete(
-                        `https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/compras/${id}`
+                        `https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/compras/${id}`
                     );
                     return response.data;
                 } catch (error) {
@@ -115,7 +115,7 @@ const getState = ({
             recoverMail: async (email) => {
                 axios
                     .post(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {
+                        "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/forgotpassword", {
                             email: email,
                         }
                     )
@@ -127,7 +127,7 @@ const getState = ({
             createReview: async (username, puntos, comentario) => {
                 try {
                     const response = await axios.post(
-                        `https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/reviews/`, {
+                        `https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/reviews/`, {
                             username: username,
                             puntos: puntos,
                             comentario: comentario,
@@ -151,7 +151,7 @@ const getState = ({
             ) => {
                 try {
                     const response = await axios.post(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/", {
+                        "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/menues/", {
                             tipo_menu: tipoMenu,
                             title: nombreMenu,
                             description: descriptionMenu,
@@ -173,7 +173,7 @@ const getState = ({
             getMenu: async () => {
                 await axios
                     .get(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/"
+                        "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/menues/"
                     )
                     .then((resp) => {
                         setStore({
@@ -202,7 +202,7 @@ const getState = ({
 
                     const response = await Promise.all([
                         fetch(
-                            "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/get-user-role", {
+                            "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/get-user-role", {
                                 method: "GET",
                                 headers: headers,
                             }
@@ -238,7 +238,7 @@ const getState = ({
             // ? Acá empieza el fetch que nos permite conectar con el BackEnd
             login: (userEmail, userPassword) => {
                 fetch(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/login", {
+                        "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/login", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -290,7 +290,7 @@ const getState = ({
                 userPassword
             ) => {
                 fetch(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/user/", {
+                        "https://3001-lolamartvar-ricuritastr-4t5z451f7ae.ws-us87.gitpod.io/api/user/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",

@@ -50,14 +50,16 @@ const ShowReviews = () => {
                         className="card mb-3">
                         <div className="card-body">
                             <div className="d-flex mb-2">
-                                <h5 className="card-title me-2">Cliente: {
+                                <h5 className="card-title me-2">
+                                    {
                                     review.username
                                 }</h5>
                                 <StarRating puntos={
                                     review.puntos
                                 }/>
                             </div>
-                            <p className="card-text">Comentario: {
+                            <p className="card-text">
+                                {
                                 review.comentario
                             }</p>
                         </div>
