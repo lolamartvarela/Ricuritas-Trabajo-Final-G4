@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-// import PropTypes from "prop-types";
 import {useParams} from "react-router-dom";
 import {Context} from "../store/appContext.js";
 import {Link, Navigate} from "react-router-dom";
+import WhatsappButton from "../component/botonflotante.jsx";
 
 export const ViewCadaMenu = () => {
     const {store, actions} = useContext(Context);
@@ -75,6 +75,7 @@ export const ViewCadaMenu = () => {
                     </div>
                 </div>
             </div>
+            <WhatsappButton/>
         </div>
     );
 };
