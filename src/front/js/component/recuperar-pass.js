@@ -15,17 +15,15 @@ const RecuperarPass = () => {
     }
 
     const enviarCorreo = (email) => {
-        actions.recoverMail(email)
-            .then(response => {
-                swal("Contraseña enviada exitosamente", "", "success");
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        actions.recoverMail(email).then(response => {
+            swal("Contraseña enviada exitosamente", "", "success");
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     return (
-        
+
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
@@ -44,14 +42,14 @@ const RecuperarPass = () => {
                                     }/>
                                 <div id="emailHelp" className="form-text">Nunca compartiremos tu información con nadie</div>
                             </div>
-                            <button type="submit" className="btn btn-primary">Enviar</button>
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" className="btn bgbuttonverde text-white rounded-pill mx-2 mt-2">Enviar</button>
+                            <button type="button" className="btn borderbottom rounded-pill mx-2 mt-2" data-bs-dismiss="modal">Cerrar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        
+
     );
 };
 

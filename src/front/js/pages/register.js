@@ -40,91 +40,91 @@ export const Register = () => {
                 <form className="container-sm d-flex flex-column justify-content-center align-items-center w-75"
                     onSubmit={enviarDatos}>
                     <h3 className="mb-5 mt-3">Nuevo usuario</h3>
+                    <div className="col-10 col-xl-4 col-md-6 col-sm-10 ">
+                        <div>
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Dirección de email
+                            </label>
 
-                    <div className="col-4">
-                        <label htmlFor="exampleInputEmail1" className="form-label">
-                            Dirección de email
-                        </label>
+                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                value={email}
+                                onChange={
+                                    (e) => setEmail(e.target.value)
+                                }/>
 
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            value={email}
-                            onChange={
-                                (e) => setEmail(e.target.value)
-                            }/>
-
-                        <div id="emailHelp" className="mb-2 form-text">
-                            Nunca compartiremos tu email con nadie más
+                            <div id="emailHelp" className="mb-2 form-text">
+                                Nunca compartiremos tu email con nadie más
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="col-4">
-                        <label htmlFor="exampleInputUserName1" className="form-label">
-                            Nombe de usuario
-                        </label>
+                        <div>
+                            <label htmlFor="exampleInputUserName1" className="form-label">
+                                Nombe de usuario
+                            </label>
 
-                        <input type="text" className="form-control" id="exampleInputUserName1" aria-describedby="userNameHelp"
-                            value={nombre}
-                            onChange={
-                                (e) => setNombre(e.target.value)
-                            }/>
+                            <input type="text" className="form-control" id="exampleInputUserName1" aria-describedby="userNameHelp"
+                                value={nombre}
+                                onChange={
+                                    (e) => setNombre(e.target.value)
+                                }/>
 
-                        <div id="userNameHelp" className="mb-2 form-text">
-                            Aquí va su nombre
+                            <div id="userNameHelp" className="mb-2 form-text">
+                                Aquí va su nombre
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="col-4">
-                        <label htmlFor="exampleInputUserName2" className="form-label">
-                            Apellido de usuario
-                        </label>
+                        <div>
+                            <label htmlFor="exampleInputUserName2" className="form-label">
+                                Apellido de usuario
+                            </label>
 
-                        <input type="text" className="form-control" id="exampleInputUserName2" aria-describedby="userNameHelp"
-                            value={apellido}
-                            onChange={
-                                (e) => setApellido(e.target.value)
-                            }/>
+                            <input type="text" className="form-control" id="exampleInputUserName2" aria-describedby="userNameHelp"
+                                value={apellido}
+                                onChange={
+                                    (e) => setApellido(e.target.value)
+                                }/>
 
-                        <div id="userNameHelp" className="mb-2 form-text">
-                            Aquí va su apellido
+                            <div id="userNameHelp" className="mb-2 form-text">
+                                Aquí va su apellido
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="col-4">
-                        <label htmlFor="exampleInputUserName3" className="form-label">
-                            Username
-                        </label>
+                        <div>
+                            <label htmlFor="exampleInputUserName3" className="form-label">
+                                Username
+                            </label>
 
-                        <input type="text" className="form-control" id="exampleInputUserName3" aria-describedby="userNameHelp"
-                            value={user_name}
-                            onChange={
-                                (e) => setUser_Name(e.target.value)
-                            }/>
+                            <input type="text" className="form-control" id="exampleInputUserName3" aria-describedby="userNameHelp"
+                                value={user_name}
+                                onChange={
+                                    (e) => setUser_Name(e.target.value)
+                                }/>
 
-                        <div id="userNameHelp" className="mb-2 form-text">
-                            Elija un nombre de usuario
+                            <div id="userNameHelp" className="mb-2 form-text">
+                                Elija un nombre de usuario
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="col-4">
-                        <label htmlFor="exampleInputPassword1" className="form-label">
-                            Password
-                        </label>
+                        <div>
+                            <label htmlFor="exampleInputPassword1" className="form-label">
+                                Password
+                            </label>
 
-                        <input type="password" className="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp"
-                            value={password}
-                            onChange={
-                                (e) => setPassword(e.target.value)
-                            }/>
+                            <input type="password" className="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp"
+                                value={password}
+                                onChange={
+                                    (e) => setPassword(e.target.value)
+                                }/>
 
-                        <div id="passwordHelp" className="mb-4 form-text">
-                            Elija una clave segura
+                            <div id="passwordHelp" className="mb-4 form-text">
+                                Elija una clave segura
+                            </div>
                         </div>
+
+                        <button type="submit" className="mb-3 btn bgbuttonverde text-white rounded-pill mb-5">
+                            Enviar
+                        </button>
                     </div>
-
-                    <button type="submit" className="col-4 mb-3 btn bgbuttonverde text-white rounded-pill mb-5">
-                        Enviar
-                    </button>
-
                 </form>
             )
         }

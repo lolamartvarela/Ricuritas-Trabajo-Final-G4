@@ -43,7 +43,7 @@ actions.clearCart()
   const shouldShowPayButton = menuSelected.length > 0; 
 
   return (
-    <div className="card d-flex justify-content-end row mx-4 col-4 mt-5 mb-5">
+    <div className="card d-flex justify-content-end row mx-4 col-10 col-sm-10 col-xl-8 col-md-8 mt-5 mb-5">
       <h2 className="text-center mt-3 mb-3">Carrito de compras</h2>
       <div className="mx-3 mb-3">
         {menuSelected.map((item) => (
@@ -72,7 +72,8 @@ actions.clearCart()
 </div>
       {/* Este código es el responsable de integrar el botón de Google Pay en nuestra app */}
       <GooglePayButton
-        className="d-flex justify-content-center mb-3"
+        className="d-flex justify-content-center mb-3 text-warning"
+        style={{ color: 'green' }}
         environment="TEST"
         buttonSizeMode="fill"
         paymentRequest={{

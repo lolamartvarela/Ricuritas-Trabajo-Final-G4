@@ -57,65 +57,66 @@ export default function MenuCreator() {
 
 
     return (
-        <form className='mx-1 container-sm flex-column align-items-center w-75'
+        <form className='mx-1 flex-column align-items-center'
             onSubmit={enviarDatos}>
-            <div>
-                <h2 className='mb-3 text-secondary'>Crear nuevo menú</h2>
-            </div>
-            <div className="col-6">
-                <label htmlFor="MenuType" className="form-label">Tipo de Menú</label>
-                <select id="MenuType" className="form-control"
-                    value={tipoMenu}
-                    onChange={
-                        (e) => setTipoMenu(e.target.value)
-                }>
-                    <option value="">Seleccione una opción</option>
-                    <option value="Común">Común</option>
-                    <option value="Vegetariano">Vegetariano</option>
-                </select>
-            </div>
-
-            <div className="col-6">
-                <label htmlFor="MenuName" className="form-label mt-3">Nombre de Menú</label>
-                <input type="text" id="MenuName" className="form-control" placeholder="Nombre de Menú"
-                    value={nombreMenu}
-                    onChange={
-                        (e) => setNombreMenu(e.target.value)
-                    }/>
-            </div>
-
-            <div className="col-6">
-                <label htmlFor="MenuDescription" className="form-label mt-3">Descripción</label>
-                <input type="text" id="MenuDescription" className="form-control" placeholder="Descripción del Menú"
-                    value={descriptionMenu}
-                    onChange={
-                        (e) => setDescriptionMenu(e.target.value)
-                    }/>
-            </div>
-
-            <div className="col-6">
-                <label htmlFor="MenuPrice" className="form-label mt-3">Precio</label>
-                <div className="input-group">
-                    <span className="input-group-text">$</span>
-                    <input type="number" id="MenuPrice" className="form-control" placeholder="Precio de Menú"
-                        value={precioMenu}
+            <div className='col-12 col-sm-10 col-md-12 col-xl-12'>
+                <div>
+                    <h2 className='mb-3 text-secondary'>Crear nuevo menú</h2>
+                </div>
+                <div className="col-6">
+                    <label htmlFor="MenuType" className="form-label">Tipo de Menú</label>
+                    <select id="MenuType" className="form-control"
+                        value={tipoMenu}
                         onChange={
-                            (e) => setPrecioMenu(parseInt(e.target.value))
+                            (e) => setTipoMenu(e.target.value)
+                    }>
+                        <option value="">Seleccione una opción</option>
+                        <option value="Común">Común</option>
+                        <option value="Vegetariano">Vegetariano</option>
+                    </select>
+                </div>
+
+                <div className="col-6">
+                    <label htmlFor="MenuName" className="form-label mt-3">Nombre de Menú</label>
+                    <input type="text" id="MenuName" className="form-control" placeholder="Nombre de Menú"
+                        value={nombreMenu}
+                        onChange={
+                            (e) => setNombreMenu(e.target.value)
                         }/>
                 </div>
-            </div>
 
-            <div className="col-6">
-                <label htmlFor="ImageUrl" className="form-label mt-3">URL de Imagen</label>
-                <input type="file" id="ImageUrl"
-                    onChange={
-                        (e) => setUrlMenu(e.target.files[0])
-                    }
-                    className="form-control"
-                    placeholder="Imagen del Menú"/>
-            </div>
-            <button type="submit" className="col-6 btn bgbuttonverde text-white rounded-pill mt-4">Crear</button>
+                <div className="col-6">
+                    <label htmlFor="MenuDescription" className="form-label mt-3">Descripción</label>
+                    <input type="text" id="MenuDescription" className="form-control" placeholder="Descripción del Menú"
+                        value={descriptionMenu}
+                        onChange={
+                            (e) => setDescriptionMenu(e.target.value)
+                        }/>
+                </div>
 
+                <div className="col-6">
+                    <label htmlFor="MenuPrice" className="form-label mt-3">Precio</label>
+                    <div className="input-group">
+                        <span className="input-group-text">$</span>
+                        <input type="number" id="MenuPrice" className="form-control" placeholder="Precio de Menú"
+                            value={precioMenu}
+                            onChange={
+                                (e) => setPrecioMenu(parseInt(e.target.value))
+                            }/>
+                    </div>
+                </div>
+
+                <div className="col-6">
+                    <label htmlFor="ImageUrl" className="form-label mt-3">URL de Imagen</label>
+                    <input type="file" id="ImageUrl"
+                        onChange={
+                            (e) => setUrlMenu(e.target.files[0])
+                        }
+                        className="form-control"
+                        placeholder="Imagen del Menú"/>
+                </div>
+                <button type="submit" className="col-6 btn bgbuttonverde text-white rounded-pill mt-4">Crear</button>
+            </div>
         </form>
     )
 }
