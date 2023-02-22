@@ -31,7 +31,7 @@ export default function BorrarMenu() {
 
     return (
         <div className="card col-lg-6 col-md-6">
-            <h2 className="text-center mt-3 mb-3">Lista de Menús Disponibles</h2>
+            <h2 className="text-center mt-3 mb-3 text-secondary">Lista de Menús Disponibles</h2>
             <ul>{
                 mostrarMenu()
             }</ul>
