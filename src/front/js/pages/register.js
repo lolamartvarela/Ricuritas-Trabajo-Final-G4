@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {Context} from "../store/appContext";
 import {useNavigate} from "react-router-dom";
 import {Navigate} from "react-router-dom";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 
 export const Register = () => {
     const [email, setEmail] = useState("");
@@ -16,10 +16,32 @@ export const Register = () => {
     function enviarDatos(e) {
         e.preventDefault();
         if (!email || !nombre || !apellido || !user_name || !password) {
-            return swal({title: "Algo ha salido mal!", text: "Debe completar todos los campos para crear un nuevo usuario.", icon: "error", button: "Cerrar"});
+            return swal({
+                title: "Algo ha salido mal!",
+                text: "Debe completar todos los campos para crear un nuevo usuario.",
+                icon: "error",
+                buttons: {
+                    cerrar: {
+                        text: "Cerrar",
+                        className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                    }
+                },
+                buttonsStyling: false
+            });
         }
         if (password.length < 5) {
-            return swal({title: "Algo ha salido mal!", text: "Debe ingresar un password de al menos cinco caracteres.", icon: "error", button: "Cerrar"});
+            return swal({
+                title: "Algo ha salido mal!",
+                text: "Debe ingresar un password de al menos cinco caracteres.",
+                icon: "error",
+                buttons: {
+                    cerrar: {
+                        text: "Cerrar",
+                        className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                    }
+                },
+                buttonsStyling: false
+            });
         }
         actions.register(email, user_name, nombre, apellido, password);
         setEmail("");
@@ -28,7 +50,18 @@ export const Register = () => {
         setUser_Name("");
         setPassword("");
         console.log(email, user_name, nombre, apellido, password);
-        swal({title: "Bienvenide!", text: "Su usuario ha sido creado con éxito", icon: "success", button: "Cerrar"}).then(() => navigate("/login"));
+        swal({
+            title: "Bienvenide!",
+            text: "Su usuario ha sido creado con éxito",
+            icon: "success",
+            buttons: {
+                cerrar: {
+                    text: "Cerrar",
+                    className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                }
+            },
+            buttonsStyling: false
+        }).then(() => navigate("/login"));
     }
 
     return (
