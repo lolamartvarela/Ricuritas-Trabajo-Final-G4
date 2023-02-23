@@ -30,7 +30,10 @@ def forgotpassword():
 
     current_password = user.password
     msg = Message("Hi", recipients=[recover_email])
-    msg.html = f"""<h1>Su contraseña actual es: {current_password}</h1>"""
+    msg.html = f"""<h1>Su contraseña actual es: {current_password}</h1> <br/>
+<hr/>
+<br/>
+<img src="https://res.cloudinary.com/deqzwxlgq/image/upload/v1677160342/R_I_C_U_R_I_T_A_S_wd6ff1.png" alt="Ricuritas Logo" width="200" height="200">"""
     current_app.mail.send(msg)
     return jsonify({"msg": "Su contraseña actual ha sido enviada al correo electrónico ingresado"}), 200
 
