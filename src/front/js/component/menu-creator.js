@@ -16,17 +16,50 @@ export default function MenuCreator() {
         e.preventDefault();
 
         if (!tipoMenu || !nombreMenu || !descriptionMenu || !precioMenu || !urlMenu) {
-            return swal({title: "Algo ha salido mal!", text: "Debe completar todos los campos para crear un nuevo menú.", icon: "error", button: "Cerrar"});
+            return swal({
+                title: "Algo ha salido mal!",
+                text: "Debe completar todos los campos para crear un nuevo menú.",
+                icon: "error",
+                buttons: {
+                    cerrar: {
+                        text: "Cerrar",
+                        className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                    }
+                },
+                buttonsStyling: false
+            });
         }
 
         // Validación de caracteres especiales
         const regExp = /[!@#$%^&*()?":{}|<>]/;
         if (regExp.test(tipoMenu) || regExp.test(nombreMenu) || regExp.test(descriptionMenu)) {
-            return swal({title: "Algo ha salido mal!", text: "No se permiten caracteres especiales en los campos de texto.", icon: "error", button: "Cerrar"});
+            return swal({
+                title: "Algo ha salido mal!",
+                text: "No se permiten caracteres especiales en los campos de texto.",
+                icon: "error",
+                buttons: {
+                    cerrar: {
+                        text: "Cerrar",
+                        className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                    }
+                },
+                buttonsStyling: false
+            });
         }
 
         if (isNaN(parseInt(precioMenu))) {
-            return swal({title: "Algo ha salido mal!", text: "El campo de precio solo acepta números enteros.", icon: "error", button: "Cerrar"});
+            return swal({
+                title: "Algo ha salido mal!",
+                text: "El campo de precio solo acepta números enteros.",
+                icon: "error",
+                buttons: {
+                    cerrar: {
+                        text: "Cerrar",
+                        className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                    }
+                },
+                buttonsStyling: false
+            });
         }
 
         const data = new FormData();
@@ -49,7 +82,18 @@ export default function MenuCreator() {
             setDescriptionMenu("");
             setPrecioMenu("");
             setUrlMenu("");
-            swal({title: "Muy Bien!", text: "Un nuevo Menú ha sido creado con todo éxito", icon: "success", button: "Cerrar"})
+            swal({
+                title: "Muy Bien!",
+                text: "Un nuevo Menú ha sido creado con todo éxito",
+                icon: "success",
+                buttons: {
+                    cerrar: {
+                        text: "Cerrar",
+                        className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                    }
+                },
+                buttonsStyling: false
+            });
         } catch (err) {
             console.error(err);
         }
