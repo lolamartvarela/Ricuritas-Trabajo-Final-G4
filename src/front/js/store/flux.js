@@ -1,8 +1,15 @@
 import React from "react";
 import swal from "sweetalert";
-import axios, {isCancel, AxiosError} from "axios";
+import axios, {
+    isCancel,
+    AxiosError
+} from "axios";
 
-const getState = ({getStore, getActions, setStore}) => {
+const getState = ({
+    getStore,
+    getActions,
+    setStore
+}) => {
     return {
         store: {
             message: null,
@@ -19,7 +26,9 @@ const getState = ({getStore, getActions, setStore}) => {
                 await axios.delete(`https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/${menu_id}`).then((resp) => {
                     if (resp.status === 200) {
                         const nuevosMenus = store.cadaMenu.filter((menu) => menu.id !== menu_id);
-                        setStore({cadaMenu: nuevosMenus});
+                        setStore({
+                            cadaMenu: nuevosMenus
+                        });
                     }
                 }).catch((error) => {
                     console.log(error);
@@ -30,7 +39,7 @@ const getState = ({getStore, getActions, setStore}) => {
             clearCart: () => {
                 const store = getStore();
                 setStore({
-                    ... store,
+                    ...store,
                     carrito: []
                 });
             },
@@ -73,7 +82,7 @@ const getState = ({getStore, getActions, setStore}) => {
                 const store = getStore();
                 setStore({
                     carrito: [
-                        ... store.carrito,
+                        ...store.carrito,
                         menu
                     ]
                 });
@@ -82,15 +91,19 @@ const getState = ({getStore, getActions, setStore}) => {
             // ? Esta función elimina menús del carrito de compras
             eliminarDelCarrito: (index) => {
                 const store = getStore();
-                const newCarrito = [... store.carrito];
+                const newCarrito = [...store.carrito];
                 newCarrito.splice(index, 1);
-                setStore({carrito: newCarrito});
+                setStore({
+                    carrito: newCarrito
+                });
             },
 
             // ? POR FAVOR NO BORRAR: Nos ayuda a recuperar la contraseña
             recoverMail: async (email) => {
                 try {
-                    const response = await axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {email: email});
+                    const response = await axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {
+                        email: email
+                    });
                     return response;
                 } catch (error) {
                     console.log(error);
@@ -130,14 +143,27 @@ const getState = ({getStore, getActions, setStore}) => {
                     }
                 } catch (error) {
                     console.log(error);
-                    swal("Algo salió mal", "El menú no pudo ser creado");
+                    swal({
+                        title: "Algo ha salido mal!",
+                        text: "El menú no pudo ser creado.",
+                        icon: "error",
+                        buttons: {
+                            cerrar: {
+                                text: "Cerrar",
+                                className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2"
+                            }
+                        },
+                        buttonsStyling: false
+                    });
                 }
             },
 
             // ? Esta función obtiene todos los menues del backend
             getMenu: async () => {
                 await axios.get("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/menues/").then((resp) => {
-                    setStore({cadaMenu: resp.data});
+                    setStore({
+                        cadaMenu: resp.data
+                    });
                 });
             },
 
@@ -145,8 +171,12 @@ const getState = ({getStore, getActions, setStore}) => {
             getUserRole: async () => {
                 try {
                     const token = localStorage.getItem("token");
-                    if (! token) {
-                        setStore({auth: false, isAdmin: false, userType: 0});
+                    if (!token) {
+                        setStore({
+                            auth: false,
+                            isAdmin: false,
+                            userType: 0
+                        });
                         return;
                     }
 
@@ -164,7 +194,11 @@ const getState = ({getStore, getActions, setStore}) => {
 
                     const [res] = response;
                     if (res.status === 201) {
-                        setStore({auth: true, isAdmin: true, userType: 2});
+                        setStore({
+                            auth: true,
+                            isAdmin: true,
+                            userType: 2
+                        });
                     } else if (res.status === 200) {
                         const data = await res.json();
                         setStore({
@@ -173,7 +207,11 @@ const getState = ({getStore, getActions, setStore}) => {
                             userType: 1
                         });
                     } else {
-                        setStore({auth: false, isAdmin: false, userType: 0});
+                        setStore({
+                            auth: false,
+                            isAdmin: false,
+                            userType: 0
+                        });
                     }
                 } catch (error) {
                     console.error(error);
@@ -187,13 +225,16 @@ const getState = ({getStore, getActions, setStore}) => {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(
-                        {email: userEmail, password: userPassword}
-                    )
+                    body: JSON.stringify({
+                        email: userEmail,
+                        password: userPassword
+                    })
                 }).then((response) => {
                     console.log(response.status);
                     if (response.status === 200) {
-                        setStore({auth: true});
+                        setStore({
+                            auth: true
+                        });
                     } else if (response.status === 401) {
                         swal({
                             title: "Algo ha salido mal!",
@@ -235,7 +276,9 @@ const getState = ({getStore, getActions, setStore}) => {
                 localStorage.removeItem("username");
                 localStorage.removeItem("idDinamica");
 
-                setStore({auth: false});
+                setStore({
+                    auth: false
+                });
             },
 
             // ? Acá termina el fetch que nos permite conectar con el BackEnd
@@ -247,19 +290,19 @@ const getState = ({getStore, getActions, setStore}) => {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(
-                        {
-                            email: userEmail,
-                            user_name: userName,
-                            nombre: userNombre,
-                            apellido: userApellido,
-                            password: userPassword
-                        }
-                    )
+                    body: JSON.stringify({
+                        email: userEmail,
+                        user_name: userName,
+                        nombre: userNombre,
+                        apellido: userApellido,
+                        password: userPassword
+                    })
                 }).then((response) => {
                     console.log(response.status);
                     if (response.status === 200) {
-                        setStore({auth: true});
+                        setStore({
+                            auth: true
+                        });
                     }
                     return response.json();
                 }).catch((err) => swal({
@@ -284,7 +327,9 @@ const getState = ({getStore, getActions, setStore}) => {
                 try { // fetching data from the backend
                     const resp = await fetch("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/hello");
                     const data = await resp.json();
-                    setStore({message: data.message});
+                    setStore({
+                        message: data.message
+                    });
                     // don't forget to return something, that is how the async resolves
                     return data;
                 } catch (error) {
@@ -298,15 +343,17 @@ const getState = ({getStore, getActions, setStore}) => {
                 // we have to loop the entire demo array to look for the respective index
                 // and change its color
                 const demo = store.demo.map((elm, i) => {
-                    if (i === index) 
+                    if (i === index)
                         elm.background = color;
-                    
+
 
                     return elm;
                 });
 
                 // reset the global store
-                setStore({demo: demo});
+                setStore({
+                    demo: demo
+                });
             }
         }
     };
