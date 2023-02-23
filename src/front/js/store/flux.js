@@ -24,9 +24,7 @@ const getState = ({
             borrarMenu: async (menu_id) => {
                 const store = getStore();
                 await axios
-                    .delete(
-                        `https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/menues/${menu_id}`
-                    )
+                    .delete(process.env.BACKEND_URL + `/api/menues/${menu_id}`)
                     .then((resp) => {
                         if (resp.status === 200) {
                             const nuevosMenus = store.cadaMenu.filter(
@@ -54,13 +52,11 @@ const getState = ({
             // ? Esta función permite enviar cada orden de compras a la base de datos
             guardarInformacion: (items, totalPrice, username) => {
                 axios
-                    .post(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/compras/", {
-                            items: items,
-                            totalPrice: totalPrice,
-                            username: username,
-                        }
-                    )
+                    .post(process.env.BACKEND_URL + "/api/compras/", {
+                        items: items,
+                        totalPrice: totalPrice,
+                        username: username,
+                    })
                     .then((response) => {
                         console.log(response);
                     })
@@ -73,7 +69,7 @@ const getState = ({
             obtenerCompras: async () => {
                 try {
                     const response = await axios.get(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/compras/"
+                        process.env.BACKEND_URL + "/api/compras/"
                     );
                     return response.data;
                 } catch (error) {
@@ -85,7 +81,7 @@ const getState = ({
             borrarCompra: async (id) => {
                 try {
                     const response = await axios.delete(
-                        `https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/compras/${id}`
+                        process.env.BACKEND_URL + `/api/compras/${id}`
                     );
                     return response.data;
                 } catch (error) {
@@ -115,7 +111,7 @@ const getState = ({
             recoverMail: async (email) => {
                 try {
                     const response = await axios.post(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/forgotpassword", {
+                        process.env.BACKEND_URL + "/api/forgotpassword", {
                             email: email,
                         }
                     );
@@ -130,7 +126,7 @@ const getState = ({
             createReview: async (username, puntos, comentario) => {
                 try {
                     const response = await axios.post(
-                        `https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/reviews/`, {
+                        process.env.BACKEND_URL + `/api/reviews/`, {
                             username: username,
                             puntos: puntos,
                             comentario: comentario,
@@ -154,7 +150,7 @@ const getState = ({
             ) => {
                 try {
                     const response = await axios.post(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/menues/", {
+                        process.env.BACKEND_URL + "/api/menues/", {
                             tipo_menu: tipoMenu,
                             title: nombreMenu,
                             description: descriptionMenu,
@@ -186,9 +182,7 @@ const getState = ({
             // ? Esta función obtiene todos los menues del backend
             getMenu: async () => {
                 await axios
-                    .get(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/menues/"
-                    )
+                    .get(process.env.BACKEND_URL + "/api/menues/")
                     .then((resp) => {
                         setStore({
                             cadaMenu: resp.data,
@@ -215,12 +209,10 @@ const getState = ({
                     };
 
                     const response = await Promise.all([
-                        fetch(
-                            "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/get-user-role", {
-                                method: "GET",
-                                headers: headers,
-                            }
-                        ),
+                        fetch(process.env.BACKEND_URL + "/api/get-user-role", {
+                            method: "GET",
+                            headers: headers,
+                        }),
                     ]);
 
                     const [res] = response;
@@ -251,18 +243,16 @@ const getState = ({
 
             // ? Acá empieza el fetch que nos permite conectar con el BackEnd
             login: (userEmail, userPassword) => {
-                fetch(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/login", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                email: userEmail,
-                                password: userPassword,
-                            }),
-                        }
-                    )
+                fetch(process.env.BACKEND_URL + "/api/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            email: userEmail,
+                            password: userPassword,
+                        }),
+                    })
                     .then((response) => {
                         console.log(response.status);
                         if (response.status === 200) {
@@ -327,21 +317,19 @@ const getState = ({
                 userApellido,
                 userPassword
             ) => {
-                fetch(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/user/", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                email: userEmail,
-                                user_name: userName,
-                                nombre: userNombre,
-                                apellido: userApellido,
-                                password: userPassword,
-                            }),
-                        }
-                    )
+                fetch(process.env.BACKEND_URL + "/api/user/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            email: userEmail,
+                            user_name: userName,
+                            nombre: userNombre,
+                            apellido: userApellido,
+                            password: userPassword,
+                        }),
+                    })
                     .then((response) => {
                         console.log(response.status);
                         if (response.status === 200) {
@@ -374,9 +362,7 @@ const getState = ({
             getMessage: async () => {
                 try {
                     // fetching data from the backend
-                    const resp = await fetch(
-                        "https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/hello"
-                    );
+                    const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
                     const data = await resp.json();
                     setStore({
                         message: data.message,
