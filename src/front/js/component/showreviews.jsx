@@ -7,7 +7,7 @@ const ShowReviews = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get('https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/reviews');
+                const response = await axios.get('https://3001-lolamartvar-ricuritastr-3uprz33w0qv.ws-us87.gitpod.io/api/reviews');
                 setReviews(response.data);
             } catch (error) {
                 console.log(error);
