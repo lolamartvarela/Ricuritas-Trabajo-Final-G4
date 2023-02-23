@@ -113,14 +113,15 @@ const getState = ({
 
             // ? POR FAVOR NO BORRAR: Nos ayuda a recuperar la contraseña
             recoverMail: async (email) => {
-                axios
-                    .post(
-                        "https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {
-                            email: email,
-                        }
-                    )
-                    .then((res) => console.log(res.data))
-                    .catch((err) => console.log(err));
+                try {
+                    const response = await axios.post("https://3001-lolamartvar-ricuritastr-yk0h84oabi1.ws-us87.gitpod.io/api/forgotpassword", {
+                        email: email,
+                    });
+                    return response;
+                } catch (error) {
+                    console.log(error);
+                    return error.response;
+                }
             },
 
             //? Fetch para crear la review

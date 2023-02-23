@@ -8,18 +8,17 @@ const RecuperarPass = () => {
     const [emailRecovery, setEmailRecovery] = useState("")
     const {store, actions} = useContext(Context);
 
-    function recuperarMail(e) {
+    const recuperarMail = async (e) => {
         e.preventDefault()
         setEmailRecovery("")
-        enviarCorreo(emailRecovery)
-    }
-
-    const enviarCorreo = (email) => {
-        actions.recoverMail(email).then(response => {
-            swal("Contraseña enviada exitosamente", "", "success");
-        }).catch(error => {
-            console.log(error);
-        });
+        const response = await actions.recoverMail(emailRecovery);
+        if (response.status === 200) {
+            swal({title: "Recuperación exitosa!", text: "Su contraseña ha sido enviada a la dirección de email provista", icon: "success", button: "Cerrar"});
+        } else if (response.status === 400) {
+            swal({title: "Algo ha salido mal!", text: "El mail ingresado no se encuentra en nuestra base de datos.", icon: "error", button: "Cerrar"});
+        } else if (response.status === 401) {
+            swal({title: "Algo ha salido mal!", text: "Debe ingresar un correo electrónico.", icon: "error", button: "Cerrar"});
+        }
     }
 
     return (

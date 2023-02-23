@@ -112,6 +112,7 @@ const CarritoCompras = () => {
           misterClick();
         }}
       />
+
       {/* Aquí finaliza el código de integración del botón de Google Pay */}
       </div>
   );
