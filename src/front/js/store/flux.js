@@ -168,7 +168,18 @@ const getState = ({
                     }
                 } catch (error) {
                     console.log(error);
-                    swal("Algo salió mal", "El menú no pudo ser creado");
+                    swal({
+                        title: "Algo ha salido mal!",
+                        text: "El menú no pudo ser creado.",
+                        icon: "error",
+                        buttons: {
+                            cerrar: {
+                                text: "Cerrar",
+                                className: "btn bgbuttonverde text-white rounded-pill mx-2 mt-2",
+                            },
+                        },
+                        buttonsStyling: false,
+                    });
                 }
             },
 
