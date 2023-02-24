@@ -4,7 +4,7 @@ Les compartimos aqui el link a nuestra Web App ---> https://ricuritas.onrender.c
 ---> INTEGRANTES DEL GRUPO <---
 
 Lucía Martínez: 
-https://github.com/lolamartvarela // https://www.linkedin.com/in/luc%C3%ADa-mart%C3%ADnez-varela/
+https://github.com/lolamartvarela // www.linkedin.com/in/lucía-martínez-varela
 
 Ramiro García: 
 https://github.com/NebyX1 // https://www.linkedin.com/in/mba-ramiro-garc%C3%ADa-pereira-a9093519/
